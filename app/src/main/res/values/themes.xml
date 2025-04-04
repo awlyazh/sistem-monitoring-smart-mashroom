@@ -1,0 +1,13 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.SmartMashroom" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Menjadikan tampilan fullscreen -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <!-- Tema utama aplikasi -->
+    <style name="Theme.SmartMashroom" parent="Base.Theme.SmartMashroom" />
+</resources>
