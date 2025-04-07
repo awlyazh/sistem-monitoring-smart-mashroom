@@ -12,7 +12,5 @@
         android:text="Smart Mushroom"
         android:textSize="24sp"
         android:textColor="@android:color/white"
-        android:layout_centerInParent="true"/>
-
-    <!-- ✅ Fix: Perbaiki dari android:marginTop menjadi android:layout_marginTop -->
+        android:layout_centerInParent="true" />
 </RelativeLayout>
