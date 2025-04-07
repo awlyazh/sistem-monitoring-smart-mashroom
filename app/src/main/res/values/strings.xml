@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">SmartMashroom</string>
+
+    <string name="hint_new_password">Masukkan sandi baru</string>
+    <string name="hint_confirm_password">Konfirmasi sandi baru</string>
+    <string name="btn_submit_password">Submit</string>
+    <string name="reset_password">Atur Ulang Sandi</string> <!-- ✅ string baru ditambahkan -->
 </resources>

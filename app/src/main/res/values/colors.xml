@@ -7,4 +7,5 @@
     <color name="green">#4CAF50</color> <!-- Warna hijau -->
     <color name="gray">#B0B0B0</color> <!-- Warna abu-abu untuk teks hint -->
     <color name="light_gray">#F5F5F5</color> <!-- Latar belakang input -->
+    <color name="purple_500">#9C27B0</color> <!-- Warna ungu -->
 </resources>
