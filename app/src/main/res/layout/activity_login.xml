@@ -52,31 +52,25 @@
             android:padding="10dp"
             android:layout_marginBottom="10dp"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <!-- Lupa Sandi -->
+        <TextView
+            android:id="@+id/tvLupaSandi"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_marginBottom="10dp">
+            android:text="Lupa kata sandi?"
+            android:textColor="#3F51B5"
+            android:textSize="14sp"
+            android:layout_gravity="end"
+            android:padding="8dp"
+            android:layout_marginBottom="10dp"/>
 
-            <CheckBox
-                android:id="@+id/cbRememberMe"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ingat Saya"
-                android:textColor="@android:color/black"/>
-
-            <!-- Ganti ID ini -->
-            <TextView
-                android:id="@+id/tvLupaSandi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_weight="1"
-                android:text="Lupa sandi"
-                android:textColor="@android:color/holo_blue_dark"
-                android:textSize="14sp" />
-        </LinearLayout>
+        <CheckBox
+            android:id="@+id/cbRememberMe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Ingat Saya"
+            android:textColor="@android:color/black" />
 
         <Button
             android:id="@+id/btnLogin"
