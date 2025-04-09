@@ -1,3 +1,29 @@
 <resources>
-    <string name="app_name">SmartMashroom</string>
+    <!-- 🔰 App Name -->
+    <string name="app_name">SmartMushroom</string>
+
+    <!-- 🔐 Reset Password Screen -->
+    <string name="reset_password">Atur Ulang Sandi</string>
+    <string name="hint_new_password">Masukkan sandi baru</string>
+    <string name="hint_confirm_password">Konfirmasi sandi baru</string>
+    <string name="btn_submit_password">Submit</string>
+
+    <!-- 🔐 Login Screen -->
+    <string name="login">LOG IN</string>
+    <string name="remember_me">Ingat Saya</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Sandi</string>
+    <string name="forgot_password">Lupa sandi</string>
+    <string name="or">OR</string>
+    <string name="sign_in_google">Sign in with Google</string>
+    <string name="sign_in_apple">Sign in with Apple</string>
+
+    <!-- 🆕 Tambahan untuk aksesibilitas -->
+    <string name="google_icon_desc">Ikon Google Sign In</string>
+    <string name="apple_icon_desc">Ikon Apple Sign In</string>
+
+    <!-- ✅ Tambahan opsional (kalau butuh) -->
+    <string name="signup">DAFTAR</string>
+    <string name="welcome_back">Selamat datang kembali!</string>
+    <string name="enter_credentials">Silakan masukkan email dan sandi Anda</string>
 </resources>

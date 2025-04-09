@@ -52,6 +52,7 @@
             android:padding="10dp"
             android:layout_marginBottom="10dp"/>
 
+        <!-- Gabungan CheckBox + Lupa Sandi -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -70,11 +71,12 @@
                 android:id="@+id/tvForgotPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
                 android:layout_weight="1"
-                android:text="Lupa sandi"
-                android:textColor="@android:color/holo_blue_dark"
-                android:textSize="14sp" />
+                android:gravity="end"
+                android:text="Lupa kata sandi?"
+                android:textColor="#3F51B5"
+                android:textSize="14sp"
+                android:padding="8dp"/>
         </LinearLayout>
 
         <Button
@@ -96,7 +98,7 @@
             android:gravity="center"
             android:layout_marginBottom="10dp"/>
 
-        <!-- Tombol Google dengan ImageView -->
+        <!-- Tombol Google -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -120,7 +122,7 @@
                 android:textColor="@android:color/black"/>
         </LinearLayout>
 
-        <!-- Tombol Apple dengan ImageView -->
+        <!-- Tombol Apple -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
