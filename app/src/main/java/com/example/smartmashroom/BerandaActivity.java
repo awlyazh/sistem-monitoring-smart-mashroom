@@ -17,7 +17,7 @@ public class BerandaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_beranda);
 
         // Inisialisasi BottomNavigationView
-        BottomNavigationView bottomNav = findViewById(R.id.bottomNavigationView);
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
 
         // Listener klik item navigasi bawah
         bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
