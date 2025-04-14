@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Compiled class file
 *.class
 
@@ -24,6 +25,8 @@
 hs_err_pid*
 replay_pid*
 =======
+=======
+>>>>>>> deb53972a17242c76bd54f6e55ca7b8b129e99f7
 *.iml
 .gradle
 /local.properties
@@ -39,4 +42,7 @@ replay_pid*
 .externalNativeBuild
 .cxx
 local.properties
+<<<<<<< HEAD
 >>>>>>> bdcdc9c59d3d2b056488e5c8d70aafd945f764eb
+=======
+>>>>>>> deb53972a17242c76bd54f6e55ca7b8b129e99f7
