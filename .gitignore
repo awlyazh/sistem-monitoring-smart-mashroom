@@ -1,0 +1,19 @@
+# Android Studio
+.idea/
+*.iml
+
+# Gradle files
+.gradle/
+local.properties
+
+# Build output
+/build/
+captures/
+.externalNativeBuild/
+
+# Android specific
+.cxx/
+.DS_Store
+
+Documents/KULIAH/
+
