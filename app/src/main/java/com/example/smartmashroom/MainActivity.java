@@ -23,8 +23,4 @@ public class MainActivity extends AppCompatActivity {
             }
         }, SPLASH_DELAY);
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 543f8b392e507ba6660bcfaf1cc0869d1a236be8

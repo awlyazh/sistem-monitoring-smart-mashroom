@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-// BerandaActivity.java
-package com.example.smartmashroom;
-
-import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-
-public class BerandaActivity extends AppCompatActivity {
-=======
 package com.example.smartmashroom;
 
 import android.content.Intent;
@@ -20,15 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class BerandaActivity extends AppCompatActivity {
 
->>>>>>> 543f8b392e507ba6660bcfaf1cc0869d1a236be8
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beranda);
-<<<<<<< HEAD
-    }
-}
-=======
 
         // Inisialisasi BottomNavigationView
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
@@ -52,4 +38,3 @@ public class BerandaActivity extends AppCompatActivity {
         });
     }
 }
->>>>>>> 543f8b392e507ba6660bcfaf1cc0869d1a236be8
