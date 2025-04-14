@@ -35,4 +35,8 @@ public class ResetPasswordActivity extends AppCompatActivity {
             }
         });
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 543f8b392e507ba6660bcfaf1cc0869d1a236be8

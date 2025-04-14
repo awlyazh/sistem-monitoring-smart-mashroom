@@ -26,4 +26,16 @@
     <string name="signup">DAFTAR</string>
     <string name="welcome_back">Selamat datang kembali!</string>
     <string name="enter_credentials">Silakan masukkan email dan sandi Anda</string>
+<<<<<<< HEAD
+=======
+
+    <!-- 👤 Profil Screen -->
+    <string name="profile_image">Foto Profil</string>
+    <string name="edit_name">Edit Nama</string>
+    <string name="edit_password">Edit Sandi</string>
+    <string name="edit_email">Edit Email</string>
+    <string name="nama_user">Soehardi</string>
+    <string name="email_user">jamurtiramridho@gmail.com</string>
+    <string name="hidden_password">******</string> <!-- 🔧 Ini yang ditambahkan -->
+>>>>>>> 543f8b392e507ba6660bcfaf1cc0869d1a236be8
 </resources>

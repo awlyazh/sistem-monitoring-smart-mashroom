@@ -52,6 +52,7 @@
             android:padding="10dp"
             android:layout_marginBottom="10dp"/>
 
+<<<<<<< HEAD
         <!-- Lupa Sandi -->
         <TextView
             android:id="@+id/tvLupaSandi"
@@ -71,6 +72,34 @@
             android:layout_marginBottom="10dp"
             android:text="Ingat Saya"
             android:textColor="@android:color/black" />
+=======
+        <!-- Gabungan CheckBox + Lupa Sandi -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="10dp">
+
+            <CheckBox
+                android:id="@+id/cbRememberMe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ingat Saya"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/tvForgotPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="Lupa kata sandi?"
+                android:textColor="#3F51B5"
+                android:textSize="14sp"
+                android:padding="8dp"/>
+        </LinearLayout>
+>>>>>>> 543f8b392e507ba6660bcfaf1cc0869d1a236be8
 
         <Button
             android:id="@+id/btnLogin"
