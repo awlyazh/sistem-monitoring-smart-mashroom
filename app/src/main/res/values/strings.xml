@@ -1,0 +1,69 @@
+<resources>
+    <!-- 🔰 App Name -->
+    <string name="app_name">SmartMushroom</string>
+
+    <!-- 🔐 Reset Password Screen -->
+    <string name="reset_password">Atur Ulang Sandi</string>
+    <string name="hint_new_password">Masukkan sandi baru</string>
+    <string name="hint_confirm_password">Konfirmasi sandi baru</string>
+    <string name="btn_submit_password">Submit</string>
+
+    <!-- 🔐 Login Screen -->
+    <string name="login">LOG IN</string>
+    <string name="remember_me">Ingat Saya</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Sandi</string>
+    <string name="forgot_password">Lupa sandi</string>
+    <string name="or">OR</string>
+    <string name="sign_in_google">Sign in with Google</string>
+    <string name="sign_in_apple">Sign in with Apple</string>
+
+    <!-- 🆕 Tambahan untuk aksesibilitas -->
+    <string name="google_icon_desc">Ikon Google Sign In</string>
+    <string name="apple_icon_desc">Ikon Apple Sign In</string>
+
+    <!-- ✅ Tambahan opsional (kalau butuh) -->
+    <string name="signup">DAFTAR</string>
+    <string name="welcome_back">Selamat datang kembali!</string>
+    <string name="enter_credentials">Silakan masukkan email dan sandi Anda</string>
+
+    <!-- Informasi -->
+    <string name="title_monitoring">Informasi</string>
+    <string name="status_label">Status</string>
+    <string name="humidity_label">Kelembaban</string>
+    <string name="temperature_label">Suhu</string>
+    <string name="stable">Stabil</string>
+    <string name="unstable">Tidak Stabil</string>
+    <string name="refresh">Muat Ulang</string>
+    <string name="humidity_value">70%</string>
+    <string name="temperature_value">26°C</string>
+    <string name="status_label_text">Status: Stabil</string>
+
+    <!-- Pengembunan -->
+    <string name="header_pengembunan">Pengembunan Jamur Tiram</string>
+    <string name="lokasi">Taruna Jaya</string>
+    <string name="temp">25.1°</string>
+    <string name="feels_like">Feels like: 25.1° | Humidity: 90%</string>
+    <string name="auto">Auto</string>
+    <string name="status_pengembunan">Pengembunan otomatis sedang berjalan</string>
+    <string name="btn_on">ON</string>
+    <string name="humidity">Humidity</string>
+    <string name="value_humidity">85.0 %</string>
+    <string name="temp_control">Temp. Control</string>
+    <string name="value_temp">25.1 °C</string>
+
+    <!-- Toast & Feedback -->
+    <string name="penyiraman_manual_aktif">Penyiraman manual diaktifkan</string>
+    <string name="penyiraman_otomatis">Penyiraman otomatis aktif!</string>
+    <string name="toast_mode_otomatis">Mode Otomatis Aktif</string>
+    <string name="toast_mode_manual">Mode Manual Aktif</string>
+
+    <!-- 👤 Profil Screen -->
+    <string name="profile_image">Foto Profil</string>
+    <string name="edit_name">Edit Nama</string>
+    <string name="edit_password">Edit Sandi</string>
+    <string name="edit_email">Edit Email</string>
+    <string name="nama_user">Soehardi</string>
+    <string name="email_user">jamurtiramridho@gmail.com</string>
+    <string name="hidden_password">******</string> <!-- 🔧 Ini yang ditambahkan -->
+</resources>

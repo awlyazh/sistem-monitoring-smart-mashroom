@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SmartMashroom.iml" filepath="$PROJECT_DIR$/.idea/modules/SmartMashroom.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SmartMashroom.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SmartMashroom.app.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SmartMashroom.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SmartMashroom.app.androidTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SmartMashroom.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SmartMashroom.app.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SmartMashroom.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SmartMashroom.app.unitTest.iml" />
