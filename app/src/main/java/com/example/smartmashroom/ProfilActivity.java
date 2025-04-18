@@ -115,9 +115,6 @@ public class ProfilActivity extends AppCompatActivity {
             if (itemId == R.id.menu_home) {
                 startActivity(new Intent(this, BerandaActivity.class));
                 return true;
-            } else if (itemId == R.id.menu_info) {
-                startActivity(new Intent(this, InformasiActivity.class));
-                return true;
             } else if (itemId == R.id.menu_fogging) {
                 startActivity(new Intent(this, PengembunanActivity.class));
                 return true;

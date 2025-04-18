@@ -46,9 +46,6 @@ public class EditEmailActivity extends AppCompatActivity {
             if (itemId == R.id.menu_home) {
                 startActivity(new Intent(EditEmailActivity.this, BerandaActivity.class));
                 return true;
-            } else if (itemId == R.id.menu_info) {
-                startActivity(new Intent(EditEmailActivity.this, InformasiActivity.class));
-                return true;
             } else if (itemId == R.id.menu_fogging) {
                 startActivity(new Intent(EditEmailActivity.this, PengembunanActivity.class));
                 return true;

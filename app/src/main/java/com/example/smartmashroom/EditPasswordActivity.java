@@ -61,9 +61,6 @@ public class EditPasswordActivity extends AppCompatActivity {
             if (id == R.id.menu_home) {
                 startActivity(new Intent(EditPasswordActivity.this, BerandaActivity.class));
                 return true;
-            } else if (id == R.id.menu_info) {
-                startActivity(new Intent(EditPasswordActivity.this, InformasiActivity.class));
-                return true;
             } else if (id == R.id.menu_fogging) {
                 startActivity(new Intent(EditPasswordActivity.this, PengembunanActivity.class));
                 return true;
