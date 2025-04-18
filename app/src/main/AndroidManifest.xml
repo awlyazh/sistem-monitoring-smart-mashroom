@@ -44,10 +44,14 @@
         <activity android:name=".EditEmailActivity" />
 
         <!-- InformasiActivity -->
-        <activity android:name=".InformasiActivity" />
+        <activity
+            android:name=".InformasiActivity"
+            android:exported="false" />
 
         <!-- PengembunanActivity -->
-        <activity android:name=".PengembunanActivity" />
+        <activity
+            android:name=".PengembunanActivity"
+            android:exported="false" />
 
         <!-- NotifikasiActivity -->
         <activity android:name=".NotifikasiActivity" />

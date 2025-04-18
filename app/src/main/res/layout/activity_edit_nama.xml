@@ -84,8 +84,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/blue"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
+        android:background="#4677B2"
+        app:labelVisibilityMode="labeled"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemTextColor="@color/nav_item_color"
         app:menu="@menu/bottom_nav_menu" />
+
 </RelativeLayout>
