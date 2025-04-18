@@ -31,7 +31,7 @@
                     android:layout_height="80dp"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="40dp"
-                    android:src="@android:drawable/sym_def_app_icon"
+                    android:src="@drawable/ic_profile"
                     android:background="@drawable/circle_bg"
                     android:scaleType="centerCrop" />
 
@@ -74,7 +74,7 @@
                 android:textColor="#FFFFFF"
                 android:backgroundTint="#3E6FB3"
                 android:layout_marginTop="32dp"
-                android:background="@drawable/rounded_button" />
+                android:background="@drawable/rounded_background" />
         </LinearLayout>
     </ScrollView>
 
@@ -84,8 +84,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/blue"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
+        android:background="#4677B2"
+        app:labelVisibilityMode="labeled"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemTextColor="@color/nav_item_color"
         app:menu="@menu/bottom_nav_menu" />
+
 </RelativeLayout>
