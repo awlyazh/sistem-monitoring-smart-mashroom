@@ -26,8 +26,37 @@
     <string name="signup">DAFTAR</string>
     <string name="welcome_back">Selamat datang kembali!</string>
     <string name="enter_credentials">Silakan masukkan email dan sandi Anda</string>
-<<<<<<< HEAD
-=======
+
+    <!-- Informasi -->
+    <string name="title_monitoring">Informasi</string>
+    <string name="status_label">Status</string>
+    <string name="humidity_label">Kelembaban</string>
+    <string name="temperature_label">Suhu</string>
+    <string name="stable">Stabil</string>
+    <string name="unstable">Tidak Stabil</string>
+    <string name="refresh">Muat Ulang</string>
+    <string name="humidity_value">70%</string>
+    <string name="temperature_value">26°C</string>
+    <string name="status_label_text">Status: Stabil</string>
+
+    <!-- Pengembunan -->
+    <string name="header_pengembunan">Pengembunan Jamur Tiram</string>
+    <string name="lokasi">Taruna Jaya</string>
+    <string name="temp">25.1°</string>
+    <string name="feels_like">Feels like: 25.1° | Humidity: 90%</string>
+    <string name="auto">Auto</string>
+    <string name="status_pengembunan">Pengembunan otomatis sedang berjalan</string>
+    <string name="btn_on">ON</string>
+    <string name="humidity">Humidity</string>
+    <string name="value_humidity">85.0 %</string>
+    <string name="temp_control">Temp. Control</string>
+    <string name="value_temp">25.1 °C</string>
+
+    <!-- Toast & Feedback -->
+    <string name="penyiraman_manual_aktif">Penyiraman manual diaktifkan</string>
+    <string name="penyiraman_otomatis">Penyiraman otomatis aktif!</string>
+    <string name="toast_mode_otomatis">Mode Otomatis Aktif</string>
+    <string name="toast_mode_manual">Mode Manual Aktif</string>
 
     <!-- 👤 Profil Screen -->
     <string name="profile_image">Foto Profil</string>
@@ -37,5 +66,4 @@
     <string name="nama_user">Soehardi</string>
     <string name="email_user">jamurtiramridho@gmail.com</string>
     <string name="hidden_password">******</string> <!-- 🔧 Ini yang ditambahkan -->
->>>>>>> 543f8b392e507ba6660bcfaf1cc0869d1a236be8
 </resources>

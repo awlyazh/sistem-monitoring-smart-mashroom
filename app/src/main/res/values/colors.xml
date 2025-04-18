@@ -8,4 +8,9 @@
     <color name="gray">#B0B0B0</color> <!-- Warna abu-abu untuk teks hint -->
     <color name="light_gray">#F5F5F5</color> <!-- Latar belakang input -->
     <color name="purple_500">#9C27B0</color> <!-- Warna ungu -->
+    <color name="teal_700">#3169A7</color>
+    <color name="colorRed">#F44336</color> <!-- Merah -->
+    <color name="colorGreen">#4CAF50</color> <!-- Hijau -->
+    <color name="red">#F44336</color>    <!-- Merah -->
+
 </resources>

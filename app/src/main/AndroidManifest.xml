@@ -23,24 +23,6 @@
         </activity>
 
         <!-- LoginActivity hanya bisa diakses dari dalam aplikasi -->
-<<<<<<< HEAD
-        <activity
-            android:name=".LoginActivity"
-            android:exported="false" />
-
-        <!-- ResetPasswordActivity hanya bisa diakses dari dalam aplikasi -->
-        <activity
-            android:name=".ResetPasswordActivity"
-            android:exported="false" />
-
-        <!-- ✅ Tambahkan ini -->
-        <activity
-            android:name=".BerandaActivity"
-            android:exported="false" />
-
-    </application>
-
-=======
         <activity android:name=".LoginActivity" android:exported="false" />
 
         <!-- ResetPasswordActivity -->
@@ -52,14 +34,27 @@
         <!-- ProfilActivity -->
         <activity android:name=".ProfilActivity" android:exported="false" />
 
-        <!-- EditNamaActivity (halaman edit nama) -->
+        <!-- EditNamaActivity -->
         <activity android:name=".EditNamaActivity" android:exported="false" />
+
+        <!-- EditPasswordActivity -->
         <activity android:name=".EditPasswordActivity" />
+
+        <!-- EditEmailActivity -->
         <activity android:name=".EditEmailActivity" />
-        <activity android:name=".InformasiActivity" />
-        <activity android:name=".PengembunanActivity" />
+
+        <!-- InformasiActivity -->
+        <activity
+            android:name=".InformasiActivity"
+            android:exported="false" />
+
+        <!-- PengembunanActivity -->
+        <activity
+            android:name=".PengembunanActivity"
+            android:exported="false" />
+
+        <!-- NotifikasiActivity -->
         <activity android:name=".NotifikasiActivity" />
 
     </application>
->>>>>>> 543f8b392e507ba6660bcfaf1cc0869d1a236be8
 </manifest>
