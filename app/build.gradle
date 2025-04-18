@@ -23,26 +23,14 @@ android {
         }
     }
 
-<<<<<<< HEAD
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
 
-=======
->>>>>>> 543f8b392e507ba6660bcfaf1cc0869d1a236be8
-    // (Opsional) Jika ingin pakai ViewBinding
     buildFeatures {
         viewBinding true
     }
-<<<<<<< HEAD
-=======
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
-    }
->>>>>>> 543f8b392e507ba6660bcfaf1cc0869d1a236be8
 }
 
 dependencies {
