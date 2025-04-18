@@ -15,5 +15,23 @@
         android:gravity="center"
         android:lineSpacingExtra="6dp"
         android:textColor="@android:color/white"
-        android:layout_centerInParent="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:layout_centerVertical="true" />
+
+    <Button
+        android:id="@+id/btnMasuk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Masuk"
+        android:textColor="@android:color/white"
+        android:background="@drawable/button_background"
+        android:elevation="4dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:layout_below="@id/tvTitle"
+        android:layout_marginTop="24dp"
+        android:layout_centerHorizontal="true"/>
 </RelativeLayout>

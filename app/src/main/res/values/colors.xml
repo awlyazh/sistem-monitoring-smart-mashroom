@@ -1,16 +1,16 @@
-<resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="blue">#4A78A6</color> <!-- Background utama -->
-    <color name="dark_blue">#3A5F85</color> <!-- Warna tombol submit -->
-    <color name="green">#4CAF50</color> <!-- Warna hijau -->
-    <color name="gray">#B0B0B0</color> <!-- Warna abu-abu untuk teks hint -->
-    <color name="light_gray">#F5F5F5</color> <!-- Latar belakang input -->
-    <color name="purple_500">#9C27B0</color> <!-- Warna ungu -->
-    <color name="teal_700">#3169A7</color>
-    <color name="colorRed">#F44336</color> <!-- Merah -->
-    <color name="colorGreen">#4CAF50</color> <!-- Hijau -->
-    <color name="red">#F44336</color>    <!-- Merah -->
-    <color name="red_light">#FFCDD2</color> <!-- Merah Muda -->
-    <color name="yellow">#FFEB3B</color> <!-- Kuning -->
-</resources>
+    <resources>
+        <color name="black">#FF000000</color>
+        <color name="white">#FFFFFFFF</color>
+        <color name="blue">#4A78A6</color> <!-- Background utama -->
+        <color name="dark_blue">#3A5F85</color> <!-- Warna tombol submit -->
+        <color name="green">#4CAF50</color> <!-- Warna hijau -->
+        <color name="gray">#B0B0B0</color> <!-- Warna abu-abu untuk teks hint -->
+        <color name="light_gray">#F5F5F5</color> <!-- Latar belakang input -->
+        <color name="purple_500">#9C27B0</color> <!-- Warna ungu -->
+        <color name="teal_700">#3169A7</color>
+        <color name="colorRed">#F44336</color> <!-- Merah -->
+        <color name="colorGreen">#4CAF50</color> <!-- Hijau -->
+        <color name="red">#F44336</color>    <!-- Merah -->
+        <color name="red_light">#FFCDD2</color> <!-- Merah Muda -->
+        <color name="yellow">#FFEB3B</color> <!-- Kuning -->
+    </resources>

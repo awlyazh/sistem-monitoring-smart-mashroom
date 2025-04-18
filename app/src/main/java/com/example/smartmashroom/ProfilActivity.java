@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.method.PasswordTransformationMethod;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -29,6 +30,7 @@ public class ProfilActivity extends AppCompatActivity {
     LinearLayout itemNama, itemPassword, itemEmail;
     TextView tvNama, tvEmail, tvPassword;
     ImageView imageProfile, ivTogglePassword, btnEditPhoto;
+    Button btnKeluar;
 
     String nama = "Soehardi";
     String email = "jamutriamirdho@gmail.com";
@@ -51,6 +53,7 @@ public class ProfilActivity extends AppCompatActivity {
         imageProfile = findViewById(R.id.imageProfile);
         ivTogglePassword = findViewById(R.id.iv_toggle_password);
         btnEditPhoto = findViewById(R.id.btn_edit_photo);
+        btnKeluar = findViewById(R.id.btn_keluar); // Tombol keluar akun
 
         // Ambil data dari SharedPreferences
         SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
@@ -96,14 +99,25 @@ public class ProfilActivity extends AppCompatActivity {
         // Toggle password eye icon
         ivTogglePassword.setOnClickListener(v -> {
             if (tvPassword.getTransformationMethod() instanceof PasswordTransformationMethod) {
-                // Show plain password
                 tvPassword.setTransformationMethod(null);
                 ivTogglePassword.setImageResource(R.drawable.ic_eye_open);
             } else {
-                // Hide password
                 tvPassword.setTransformationMethod(new PasswordTransformationMethod());
                 ivTogglePassword.setImageResource(R.drawable.ic_eye_closed);
             }
+        });
+
+        // Aksi tombol keluar akun
+        btnKeluar.setOnClickListener(v -> {
+            SharedPreferences.Editor editor = getSharedPreferences("UserPrefs", MODE_PRIVATE).edit();
+            editor.clear(); // hapus semua data
+            editor.apply();
+
+            // Arahkan ke halaman login
+            Intent intent = new Intent(ProfilActivity.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
         });
 
         // Bottom Navigation
@@ -160,7 +174,7 @@ public class ProfilActivity extends AppCompatActivity {
                     break;
             }
 
-            editor.apply(); // Simpan semua perubahan
+            editor.apply();
             updateUI();
         }
     }
@@ -170,7 +184,7 @@ public class ProfilActivity extends AppCompatActivity {
         tvEmail.setText(email);
 
         if (password.isEmpty()) {
-            password = "123456"; // Set default password kalau belum diset
+            password = "123456"; // Set default jika kosong
         }
 
         tvPassword.setText(password);
