@@ -22,27 +22,23 @@ public class PengembunanActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pengembunan);
 
-        // ====== ✅ Bottom Navigation Tetap Ada ======
+        // Bottom Navigation
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.menu_fogging);
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.menu_home) {
-                // Mengarah ke BerandaActivity
                 startActivity(new Intent(this, BerandaActivity.class));
                 overridePendingTransition(0, 0);
                 return true;
             } else if (itemId == R.id.menu_fogging) {
-                // Tetap di PengembunanActivity
                 return true;
             } else if (itemId == R.id.menu_notif) {
-                // Mengarah ke NotifikasiActivity
                 startActivity(new Intent(this, NotifikasiActivity.class));
                 overridePendingTransition(0, 0);
                 return true;
             } else if (itemId == R.id.menu_profile) {
-                // Mengarah ke ProfilActivity
                 startActivity(new Intent(this, ProfilActivity.class));
                 overridePendingTransition(0, 0);
                 return true;
@@ -50,62 +46,59 @@ public class PengembunanActivity extends AppCompatActivity {
             return false;
         });
 
-        // ====== ✅ Inisialisasi View ======
+        // Inisialisasi View
         Switch switchMode = findViewById(R.id.switchAuto);
         Button btnManual = findViewById(R.id.btnManual);
         TextView txtStatus = findViewById(R.id.textStatus);
-        TextView txtFoggingStatus = findViewById(R.id.textFoggingStatus);
         TextView txtSuhu = findViewById(R.id.textSuhu);
         TextView txtFeels = findViewById(R.id.textFeels);
         LinearLayout cardHumidity = findViewById(R.id.cardHumidity);
         LinearLayout cardTemp = findViewById(R.id.cardTemp);
 
-        // ====== ✅ Awal Manual OFF ======
+        // Mode Manual OFF Awal
         isManualOn = false;
-        updateManualUI(btnManual, txtFoggingStatus);
+        updateManualUI(btnManual);
 
-        // ====== ✅ Switch Otomatis/Manual ======
+        // Switch Otomatis/Manual
         switchMode.setOnCheckedChangeListener((buttonView, isChecked) -> {
             double suhu = getSuhu(txtSuhu);
             double kelembaban = getKelembaban(txtFeels);
 
             if (isChecked) {
-                // AUTO MODE
+                // Mode Otomatis
                 btnManual.setEnabled(false);
                 txtStatus.setText("Mode Otomatis");
 
                 if (suhu < 24 || kelembaban < 80) {
-                    txtFoggingStatus.setText("Pengembunan: ON");
-                    txtFoggingStatus.setTextColor(Color.GREEN);
                     txtStatus.setText("Pengembunan Aktif (Otomatis)");
                     cardHumidity.setBackgroundColor(ContextCompat.getColor(this, R.color.green)); // Hijau
                     cardTemp.setBackgroundColor(ContextCompat.getColor(this, R.color.blue)); // Biru
                 } else {
-                    txtFoggingStatus.setText("Pengembunan: OFF");
-                    txtFoggingStatus.setTextColor(Color.RED);
                     txtStatus.setText("Kondisi Stabil, Pengembunan OFF");
                     cardHumidity.setBackgroundColor(ContextCompat.getColor(this, R.color.red_light)); // Merah Muda
                     cardTemp.setBackgroundColor(ContextCompat.getColor(this, R.color.red_light));
                 }
             } else {
-                // MANUAL MODE
+                // Mode Manual
                 btnManual.setEnabled(true);
                 txtStatus.setText("Mode Manual: Atur Sendiri");
                 cardHumidity.setBackgroundColor(ContextCompat.getColor(this, R.color.yellow)); // Kuning
                 cardTemp.setBackgroundColor(ContextCompat.getColor(this, R.color.yellow));
-                updateManualUI(btnManual, txtFoggingStatus);
+                updateManualUI(btnManual);
             }
         });
 
-        // ====== ✅ Button Manual ON/OFF ======
+        // Button Manual ON/OFF
         btnManual.setOnClickListener(v -> {
             isManualOn = !isManualOn;
-            updateManualUI(btnManual, txtFoggingStatus);
+            updateManualUI(btnManual);
         });
     }
 
     // Update UI berdasarkan tombol manual
-    private void updateManualUI(Button btnManual, TextView statusView) {
+    private void updateManualUI(Button btnManual) {
+        TextView statusView = findViewById(R.id.textStatus); // Ambil TextView untuk status
+
         if (isManualOn) {
             btnManual.setText("ON");
             btnManual.setBackgroundResource(R.drawable.bg_button_on);
@@ -119,28 +112,15 @@ public class PengembunanActivity extends AppCompatActivity {
         }
     }
 
-    // Ambil nilai suhu dari TextView
+    // Ambil suhu dari TextView
     private double getSuhu(TextView txtSuhu) {
-        try {
-            String suhuStr = txtSuhu.getText().toString().replace("°", "").trim();
-            return Double.parseDouble(suhuStr);
-        } catch (Exception e) {
-            return 0;
-        }
+        String suhuText = txtSuhu.getText().toString().replace("°", "");
+        return Double.parseDouble(suhuText);
     }
 
     // Ambil kelembaban dari TextView
     private double getKelembaban(TextView txtFeels) {
-        try {
-            String feelsText = txtFeels.getText().toString();
-            int index = feelsText.indexOf("Humidity:");
-            if (index != -1) {
-                String kelembabanStr = feelsText.substring(index + 9).replace("%", "").trim();
-                return Double.parseDouble(kelembabanStr);
-            }
-        } catch (Exception e) {
-            return 0;
-        }
-        return 0;
+        String feelsText = txtFeels.getText().toString().split(":")[1].replace("%", "").trim();
+        return Double.parseDouble(feelsText);
     }
 }
