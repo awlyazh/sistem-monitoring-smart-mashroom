@@ -14,19 +14,16 @@ public class NotifikasiActivity extends AppCompatActivity {
         setContentView(R.layout.activity_notifikasi);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.menu_notif);
+        bottomNavigationView.setSelectedItemId(R.id.menu_notif); // Set item aktif ke menu_notif
 
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
 
+                // Menavigasi ke halaman sesuai dengan item yang dipilih
                 if (id == R.id.menu_home) {
                     startActivity(new Intent(getApplicationContext(), BerandaActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                } else if (id == R.id.menu_info) {
-                    startActivity(new Intent(getApplicationContext(), InformasiActivity.class));
                     overridePendingTransition(0, 0);
                     return true;
                 } else if (id == R.id.menu_fogging) {
@@ -34,7 +31,7 @@ public class NotifikasiActivity extends AppCompatActivity {
                     overridePendingTransition(0, 0);
                     return true;
                 } else if (id == R.id.menu_notif) {
-                    // Saat ini sudah berada di halaman Notifikasi
+                    // Halaman ini sudah aktif (Notifikasi)
                     return true;
                 } else if (id == R.id.menu_profile) {
                     startActivity(new Intent(getApplicationContext(), ProfilActivity.class));

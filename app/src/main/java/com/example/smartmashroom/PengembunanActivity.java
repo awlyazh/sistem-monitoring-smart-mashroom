@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -28,20 +29,20 @@ public class PengembunanActivity extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.menu_home) {
+                // Mengarah ke BerandaActivity
                 startActivity(new Intent(this, BerandaActivity.class));
                 overridePendingTransition(0, 0);
                 return true;
-            } else if (itemId == R.id.menu_info) {
-                startActivity(new Intent(this, InformasiActivity.class));
-                overridePendingTransition(0, 0);
-                return true;
             } else if (itemId == R.id.menu_fogging) {
+                // Tetap di PengembunanActivity
                 return true;
             } else if (itemId == R.id.menu_notif) {
+                // Mengarah ke NotifikasiActivity
                 startActivity(new Intent(this, NotifikasiActivity.class));
                 overridePendingTransition(0, 0);
                 return true;
             } else if (itemId == R.id.menu_profile) {
+                // Mengarah ke ProfilActivity
                 startActivity(new Intent(this, ProfilActivity.class));
                 overridePendingTransition(0, 0);
                 return true;
@@ -77,21 +78,21 @@ public class PengembunanActivity extends AppCompatActivity {
                     txtFoggingStatus.setText("Pengembunan: ON");
                     txtFoggingStatus.setTextColor(Color.GREEN);
                     txtStatus.setText("Pengembunan Aktif (Otomatis)");
-                    cardHumidity.setBackgroundColor(Color.parseColor("#4CAF50")); // Hijau
-                    cardTemp.setBackgroundColor(Color.parseColor("#2196F3")); // Biru
+                    cardHumidity.setBackgroundColor(ContextCompat.getColor(this, R.color.green)); // Hijau
+                    cardTemp.setBackgroundColor(ContextCompat.getColor(this, R.color.blue)); // Biru
                 } else {
                     txtFoggingStatus.setText("Pengembunan: OFF");
                     txtFoggingStatus.setTextColor(Color.RED);
                     txtStatus.setText("Kondisi Stabil, Pengembunan OFF");
-                    cardHumidity.setBackgroundColor(Color.parseColor("#FFCDD2")); // Merah Muda
-                    cardTemp.setBackgroundColor(Color.parseColor("#FFCDD2"));
+                    cardHumidity.setBackgroundColor(ContextCompat.getColor(this, R.color.red_light)); // Merah Muda
+                    cardTemp.setBackgroundColor(ContextCompat.getColor(this, R.color.red_light));
                 }
             } else {
                 // MANUAL MODE
                 btnManual.setEnabled(true);
                 txtStatus.setText("Mode Manual: Atur Sendiri");
-                cardHumidity.setBackgroundColor(Color.parseColor("#FFEB3B")); // Kuning
-                cardTemp.setBackgroundColor(Color.parseColor("#FFEB3B"));
+                cardHumidity.setBackgroundColor(ContextCompat.getColor(this, R.color.yellow)); // Kuning
+                cardTemp.setBackgroundColor(ContextCompat.getColor(this, R.color.yellow));
                 updateManualUI(btnManual, txtFoggingStatus);
             }
         });

@@ -43,11 +43,6 @@
         <!-- EditEmailActivity -->
         <activity android:name=".EditEmailActivity" />
 
-        <!-- InformasiActivity -->
-        <activity
-            android:name=".InformasiActivity"
-            android:exported="false" />
-
         <!-- PengembunanActivity -->
         <activity
             android:name=".PengembunanActivity"

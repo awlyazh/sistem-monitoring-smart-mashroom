@@ -1,196 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".ProfilActivity">
+    android:background="@color/blue">
 
-    <!-- Scrollable content -->
-    <ScrollView
+    <!-- Header Profile -->
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/bottom_navigation"
-        android:fillViewport="true">
+        android:layout_height="250dp"
+        android:background="@drawable/bg_header_profile"
+        android:paddingTop="40dp"
+        android:paddingBottom="20dp"
+        android:gravity="center_horizontal">
 
+        <ImageView
+            android:id="@+id/imageProfile"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="35dp"
+            android:background="@drawable/circle_background"
+            android:padding="4dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_profile" />
+
+        <ImageView
+            android:id="@+id/btn_edit_photo"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_edit"
+            android:background="@drawable/circle_gray"
+            android:layout_alignBottom="@id/imageProfile"
+            android:layout_alignEnd="@id/imageProfile"
+            android:padding="4dp"
+            android:layout_marginEnd="4dp"
+            android:elevation="4dp" />
+    </RelativeLayout>
+
+    <!-- Konten Putih -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:padding="24dp">
+
+        <!-- Nama -->
         <LinearLayout
+            android:id="@+id/item_nama"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:paddingVertical="12dp"
+            android:gravity="center_vertical"
+            android:background="?attr/selectableItemBackground">
 
-            <!-- Header Profile -->
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:background="@drawable/bg_header_profile"
-                android:paddingTop="40dp"
-                android:paddingBottom="20dp"
-                android:gravity="center_horizontal">
-
-                <!-- Profile Photo -->
-                <ImageView
-                    android:id="@+id/imageProfile"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_centerHorizontal="true"
-                    android:src="@drawable/ic_profile"
-                    android:background="@drawable/circle_white"
-                    android:scaleType="centerCrop"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:padding="15dp"
-                    android:elevation="4dp"
-                    android:contentDescription="Foto Profil" />
-
-                <!-- Edit Photo Icon (Pencil) -->
-                <ImageView
-                    android:id="@+id/btn_edit_photo"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:layout_alignBottom="@id/imageProfile"
-                    android:layout_alignEnd="@id/imageProfile"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="@drawable/circle_white"
-                    android:padding="4dp"
-                    android:src="@drawable/ic_edit"
-                    android:contentDescription="Edit Foto"
-                    android:elevation="6dp"
-                    android:clickable="true"
-                    android:focusable="true" />
-
-                <!-- Name -->
-                <TextView
-                    android:id="@+id/tv_nama"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/imageProfile"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="12dp"
-                    android:text="Soehardi"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:textSize="20sp" />
-            </RelativeLayout>
-
-            <!-- Account Info -->
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tv_nama"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/rounded_top_box"
-                android:padding="20dp"
-                android:layout_margin="16dp"
-                android:layout_marginTop="-50dp"
-                android:clipToPadding="false"
-                android:elevation="2dp"
-                android:layout_gravity="center">
+                android:layout_weight="1"
+                android:text="Nama"
+                android:textSize="16sp"
+                android:textColor="@color/black" />
 
-                <!-- Edit Name -->
-                <LinearLayout
-                    android:id="@+id/item_nama"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal"
-                    android:background="@drawable/rounded_field"
-                    android:padding="12dp"
-                    android:gravity="center_vertical">
-
-                    <TextView
-                        android:id="@+id/tv_nama_item"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Soehardi"
-                        android:textSize="16sp"
-                        android:textColor="@color/black" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_arrow_right"
-                        app:tint="@color/gray"
-                        android:contentDescription="Edit Nama" />
-                </LinearLayout>
-
-                <!-- Edit Password -->
-                <LinearLayout
-                    android:id="@+id/item_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal"
-                    android:background="@drawable/rounded_field"
-                    android:padding="12dp"
-                    android:layout_marginTop="12dp"
-                    android:gravity="center_vertical">
-
-                    <TextView
-                        android:id="@+id/tv_password"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text=""
-                        android:textSize="16sp"
-                        android:textColor="@color/black" />
-
-                    <ImageView
-                        android:id="@+id/iv_toggle_password"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/ic_eye_closed"
-                        android:contentDescription="Lihat Sandi"
-                        android:layout_marginEnd="12dp" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_arrow_right"
-                        app:tint="@color/gray"
-                        android:contentDescription="Edit Password" />
-                </LinearLayout>
-
-                <!-- Edit Email -->
-                <LinearLayout
-                    android:id="@+id/item_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal"
-                    android:background="@drawable/rounded_field"
-                    android:padding="12dp"
-                    android:layout_marginTop="12dp"
-                    android:gravity="center_vertical">
-
-                    <TextView
-                        android:id="@+id/tv_email"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="jamurtiramridho@gmail.com"
-                        android:textSize="14sp"
-                        android:textColor="@color/black" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_arrow_right"
-                        app:tint="@color/gray"
-                        android:contentDescription="Edit Email" />
-                </LinearLayout>
-            </LinearLayout>
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_arrow_right" />
         </LinearLayout>
-    </ScrollView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray" />
+
+        <!-- Password -->
+        <LinearLayout
+            android:id="@+id/item_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingVertical="12dp"
+            android:gravity="center_vertical"
+            android:background="?attr/selectableItemBackground">
+
+            <TextView
+                android:id="@+id/tv_password"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="******"
+                android:textSize="16sp"
+                android:textColor="@color/black" />
+
+            <ImageView
+                android:id="@+id/iv_toggle_password"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_eye_closed" />
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_arrow_right" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray" />
+
+        <!-- Email -->
+        <LinearLayout
+            android:id="@+id/item_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingVertical="12dp"
+            android:gravity="center_vertical"
+            android:background="?attr/selectableItemBackground">
+
+            <TextView
+                android:id="@+id/tv_email"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="email@example.com"
+                android:textSize="16sp"
+                android:textColor="@color/black" />
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_arrow_right" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray" />
+
+        <!-- Tombol Keluar Akun -->
+        <Button
+            android:id="@+id/btn_keluar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/rounded_button"
+            android:text="Keluar Akun"
+            android:textColor="@color/white" />
+    </LinearLayout>
 
     <!-- Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="#4677B2"
-        app:labelVisibilityMode="labeled"
+        android:layout_gravity="bottom"
+        android:background="@color/blue"
+        app:menu="@menu/bottom_nav_menu"
         app:itemIconTint="@color/nav_item_color"
-        app:itemTextColor="@color/nav_item_color"
-        app:menu="@menu/bottom_nav_menu" />
+        app:itemTextColor="@color/nav_item_color" />
 
-</RelativeLayout>
+</LinearLayout>
