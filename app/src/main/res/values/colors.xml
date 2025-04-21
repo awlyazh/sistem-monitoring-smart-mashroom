@@ -1,4 +1,5 @@
-    <resources>
+<resources>
+        <!-- Dasar -->
         <color name="black">#FF000000</color>
         <color name="white">#FFFFFFFF</color>
         <color name="blue">#4A78A6</color> <!-- Background utama -->
@@ -8,9 +9,23 @@
         <color name="light_gray">#F5F5F5</color> <!-- Latar belakang input -->
         <color name="purple_500">#9C27B0</color> <!-- Warna ungu -->
         <color name="teal_700">#3169A7</color>
+
+        <!-- ON/OFF Button -->
+        <color name="button_on">#66BB6A</color>  <!-- Tombol ON -->
+        <color name="button_off">#EF5350</color> <!-- Tombol OFF -->
+
+        <!-- Kartu Temperature -->
+        <color name="card_temp_stable">#BBDEFB</color> <!-- Suhu Stabil (biru muda) -->
+        <color name="card_temp_unstable">#FFCDD2</color> <!-- Suhu Tidak Stabil (merah muda) -->
+
+        <!-- Kartu Humidity -->
+        <color name="card_humid_stable">#C8E6C9</color> <!-- Kelembapan Stabil (hijau muda) -->
+        <color name="card_humid_unstable">#FFF9C4</color> <!-- Kelembapan Tidak Stabil (kuning muda) -->
+
+        <!-- Tambahan -->
         <color name="colorRed">#F44336</color> <!-- Merah -->
         <color name="colorGreen">#4CAF50</color> <!-- Hijau -->
-        <color name="red">#F44336</color>    <!-- Merah -->
+        <color name="red">#F44336</color> <!-- Merah -->
         <color name="red_light">#FFCDD2</color> <!-- Merah Muda -->
         <color name="yellow">#FFEB3B</color> <!-- Kuning -->
-    </resources>
+</resources>

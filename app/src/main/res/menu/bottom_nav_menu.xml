@@ -9,7 +9,7 @@
     <item
         android:id="@+id/menu_fogging"
         android:icon="@drawable/ic_fog"
-        android:title="Pengembunan" />
+        android:title="Fogging" />
 
     <item
         android:id="@+id/menu_notif"
