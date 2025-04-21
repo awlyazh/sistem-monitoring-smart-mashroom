@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
@@ -12,5 +11,6 @@
     <color name="colorRed">#F44336</color> <!-- Merah -->
     <color name="colorGreen">#4CAF50</color> <!-- Hijau -->
     <color name="red">#F44336</color>    <!-- Merah -->
-
+    <color name="red_light">#FFCDD2</color> <!-- Merah Muda -->
+    <color name="yellow">#FFEB3B</color> <!-- Kuning -->
 </resources>
