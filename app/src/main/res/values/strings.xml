@@ -65,5 +65,8 @@
     <string name="edit_email">Edit Email</string>
     <string name="nama_user">Soehardi</string>
     <string name="email_user">jamurtiramridho@gmail.com</string>
-    <string name="hidden_password">******</string> <!-- 🔧 Ini yang ditambahkan -->
+    <string name="hidden_password">******</string>
+
+    <!-- 🔙 Aksesibilitas untuk tombol kembali -->
+    <string name="back_to_profile">Kembali ke Profil</string>
 </resources>

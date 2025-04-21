@@ -4,16 +4,16 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue">
+    android:background="@color/white"> <!-- putih untuk konten utama -->
 
-    <!-- Header Profile -->
+    <!-- Header Profile dengan background melengkung -->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:background="@drawable/bg_header_profile"
+        android:layout_height="245dp"
+        android:gravity="center_horizontal"
         android:paddingTop="40dp"
         android:paddingBottom="20dp"
-        android:gravity="center_horizontal">
+        android:background="@drawable/bg_header_blue"> <!-- tetap pakai lengkung -->
 
         <ImageView
             android:id="@+id/imageProfile"
@@ -30,13 +30,13 @@
             android:id="@+id/btn_edit_photo"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:src="@drawable/ic_edit"
-            android:background="@drawable/circle_gray"
-            android:layout_alignBottom="@id/imageProfile"
             android:layout_alignEnd="@id/imageProfile"
-            android:padding="4dp"
+            android:layout_alignBottom="@id/imageProfile"
             android:layout_marginEnd="4dp"
-            android:elevation="4dp" />
+            android:background="@drawable/circle_gray"
+            android:elevation="4dp"
+            android:padding="4dp"
+            android:src="@drawable/ic_edit" />
     </RelativeLayout>
 
     <!-- Konten Putih -->
@@ -161,10 +161,10 @@
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="@color/blue"
-        app:menu="@menu/bottom_nav_menu"
+        android:layout_alignParentBottom="true"
+        android:background="#4677B2"
+        app:labelVisibilityMode="unlabeled"
         app:itemIconTint="@color/nav_item_color"
-        app:itemTextColor="@color/nav_item_color" />
-
+        app:itemTextColor="@color/nav_item_color"
+        app:menu="@menu/bottom_nav_menu" />
 </LinearLayout>

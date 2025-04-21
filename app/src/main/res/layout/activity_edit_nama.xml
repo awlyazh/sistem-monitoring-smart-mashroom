@@ -5,14 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E3F0FF"
-    android:padding="16dp"
     tools:context=".EditNamaActivity">
 
-    <!-- Konten utama -->
+    <!-- Scrollable content -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottom_navigation"
+        android:layout_above="@id/bottom_navigation"
         android:fillViewport="true">
 
         <LinearLayout
@@ -20,10 +19,11 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <!-- Header dengan background lengkung -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:background="@android:color/holo_blue_light">
+                android:background="@drawable/bg_header_rounded">
 
                 <ImageView
                     android:id="@+id/profile_image"
@@ -45,49 +45,55 @@
                     android:text="Soehardi"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:textColor="#334B79" />
+                    android:textColor="#F3F4F6" />
             </RelativeLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="Ubah Nama"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:textColor="#334B79" />
-
-            <EditText
-                android:id="@+id/edit_nama"
+            <!-- Konten dengan padding -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Soehardi"
-                android:background="@drawable/edittext_bg"
-                android:padding="12dp"
-                android:layout_marginTop="8dp" />
+                android:orientation="vertical"
+                android:padding="16dp">
 
-            <Button
-                android:id="@+id/btn_simpan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Simpan perubahan"
-                android:textColor="#FFFFFF"
-                android:backgroundTint="#3E6FB3"
-                android:layout_marginTop="32dp"
-                android:background="@drawable/rounded_background" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="Ubah Nama"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:textColor="#334B79" />
+
+                <EditText
+                    android:id="@+id/edit_nama"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Soehardi"
+                    android:background="@drawable/edittext_bg"
+                    android:padding="12dp"
+                    android:layout_marginTop="8dp" />
+
+                <Button
+                    android:id="@+id/btn_simpan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Simpan perubahan"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginTop="32dp"
+                    android:background="@drawable/rounded_background" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
-    <!-- Bottom Navigation -->
+    <!-- Bottom Navigation tanpa label -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="#4677B2"
-        app:labelVisibilityMode="labeled"
+        app:labelVisibilityMode="unlabeled"
         app:itemIconTint="@color/nav_item_color"
         app:itemTextColor="@color/nav_item_color"
         app:menu="@menu/bottom_nav_menu" />
-
 </RelativeLayout>

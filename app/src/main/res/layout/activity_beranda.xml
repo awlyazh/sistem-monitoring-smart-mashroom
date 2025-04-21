@@ -249,6 +249,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        app:labelVisibilityMode="unlabeled"
         android:background="#4677B2"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
