@@ -10,6 +10,7 @@
         <color name="purple_500">#9C27B0</color> <!-- Warna ungu -->
         <color name="teal_700">#3169A7</color>
 
+
         <!-- ON/OFF Button -->
         <color name="button_on">#66BB6A</color>  <!-- Tombol ON -->
         <color name="button_off">#EF5350</color> <!-- Tombol OFF -->
