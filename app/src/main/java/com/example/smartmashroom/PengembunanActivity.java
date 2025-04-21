@@ -61,8 +61,8 @@ public class PengembunanActivity extends AppCompatActivity {
 
         // Switch Otomatis/Manual
         switchMode.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            double suhu = getSuhu(txtSuhu);
-            double kelembaban = getKelembaban(txtFeels);
+            double suhu = getSuhu();
+            double kelembaban = getKelembaban();
 
             if (isChecked) {
                 // Mode Otomatis
@@ -88,39 +88,38 @@ public class PengembunanActivity extends AppCompatActivity {
             }
         });
 
-        // Button Manual ON/OFF
+        // Tombol Manual
         btnManual.setOnClickListener(v -> {
             isManualOn = !isManualOn;
             updateManualUI(btnManual);
+            if (isManualOn) {
+                txtStatus.setText("Manual: Pengembunan Dinyalakan");
+            } else {
+                txtStatus.setText("Manual: Pengembunan Dimatikan");
+            }
         });
     }
 
-    // Update UI berdasarkan tombol manual
-    private void updateManualUI(Button btnManual) {
-        TextView statusView = findViewById(R.id.textStatus); // Ambil TextView untuk status
+    // Metode untuk mendapatkan suhu
+    private double getSuhu() {
+        // Ganti dengan logika pengambilan suhu
+        return 25.1;  // Misalnya suhu sekarang 25.1
+    }
 
+    // Metode untuk mendapatkan kelembaban
+    private double getKelembaban() {
+        // Ganti dengan logika pengambilan kelembaban
+        return 85.0;  // Misalnya kelembaban 85%
+    }
+
+    // Metode untuk memperbarui status tombol manual
+    private void updateManualUI(Button btnManual) {
         if (isManualOn) {
             btnManual.setText("ON");
-            btnManual.setBackgroundResource(R.drawable.bg_button_on);
-            statusView.setText("Pengembunan: ON");
-            statusView.setTextColor(Color.GREEN);
+            btnManual.setBackgroundColor(ContextCompat.getColor(this, R.color.green)); // Hijau
         } else {
             btnManual.setText("OFF");
-            btnManual.setBackgroundResource(R.drawable.bg_button_off);
-            statusView.setText("Pengembunan: OFF");
-            statusView.setTextColor(Color.RED);
+            btnManual.setBackgroundColor(ContextCompat.getColor(this, R.color.red_light)); // Merah Muda
         }
-    }
-
-    // Ambil suhu dari TextView
-    private double getSuhu(TextView txtSuhu) {
-        String suhuText = txtSuhu.getText().toString().replace("°", "");
-        return Double.parseDouble(suhuText);
-    }
-
-    // Ambil kelembaban dari TextView
-    private double getKelembaban(TextView txtFeels) {
-        String feelsText = txtFeels.getText().toString().split(":")[1].replace("%", "").trim();
-        return Double.parseDouble(feelsText);
     }
 }
