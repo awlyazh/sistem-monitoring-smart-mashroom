@@ -1,10 +1,9 @@
 package com.example.smartmashroom;
 
-import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.animation.ValueAnimator;
 
 import com.github.lzyzsd.circleprogress.DonutProgress;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -21,15 +20,12 @@ public class BerandaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beranda);
 
-        // Inisialisasi DonutProgress
         humidityProgress = findViewById(R.id.tvHumidityCircle);
         tempProgress = findViewById(R.id.tvTempCircle);
 
-        // Animasi DonutProgress
         animateDonutProgress(humidityProgress, 0f, 90f, "%");
         animateDonutProgress(tempProgress, 0f, 25.1f, "°C");
 
-        // Bottom Navigation
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -37,8 +33,13 @@ public class BerandaActivity extends AppCompatActivity {
                 int id = item.getItemId();
 
                 if (id == R.id.menu_profile) {
-                    Intent intent = new Intent(BerandaActivity.this, ProfilActivity.class);
-                    startActivity(intent);
+                    startActivity(new Intent(BerandaActivity.this, ProfilActivity.class));
+                    return true;
+                } else if (id == R.id.menu_fogging) {
+                    startActivity(new Intent(BerandaActivity.this, PengembunanActivity.class));
+                    return true;
+                } else if (id == R.id.menu_notif) {
+                    startActivity(new Intent(BerandaActivity.this, NotifikasiActivity.class));
                     return true;
                 }
 
@@ -49,7 +50,7 @@ public class BerandaActivity extends AppCompatActivity {
 
     private void animateDonutProgress(DonutProgress donut, float from, float to, String suffix) {
         ValueAnimator animator = ValueAnimator.ofFloat(from, to);
-        animator.setDuration(1500); // durasi animasi 1.5 detik
+        animator.setDuration(1500);
         animator.addUpdateListener(animation -> {
             float value = (float) animation.getAnimatedValue();
             donut.setProgress(value);
