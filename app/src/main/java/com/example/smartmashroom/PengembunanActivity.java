@@ -76,14 +76,15 @@ public class PengembunanActivity extends AppCompatActivity {
                 } else {
                     txtStatus.setText("Kondisi Stabil, Pengembunan OFF");
                     cardHumidity.setBackgroundColor(ContextCompat.getColor(this, R.color.red_light)); // Merah Muda
-                    cardTemp.setBackgroundColor(ContextCompat.getColor(this, R.color.red_light));
+                    cardTemp.setBackgroundColor(ContextCompat.getColor(this, R.color.red_light)); // Merah Muda
                 }
             } else {
                 // Mode Manual
                 btnManual.setEnabled(true);
                 txtStatus.setText("Mode Manual: Atur Sendiri");
-                cardHumidity.setBackgroundColor(ContextCompat.getColor(this, R.color.yellow)); // Kuning
-                cardTemp.setBackgroundColor(ContextCompat.getColor(this, R.color.yellow));
+                // Warna tetap hijau dan biru untuk kartu, meskipun mode manual
+                cardHumidity.setBackgroundColor(ContextCompat.getColor(this, R.color.green)); // Hijau
+                cardTemp.setBackgroundColor(ContextCompat.getColor(this, R.color.blue)); // Biru
                 updateManualUI(btnManual);
             }
         });
