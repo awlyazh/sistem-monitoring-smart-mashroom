@@ -25,11 +25,6 @@
           <theme>@style/Theme.SmartMashroom</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_informasi.xml">
-        <config>
-          <theme>@style/Theme.SmartMashroom</theme>
-        </config>
-      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
         <config>
           <theme>@style/Theme.SmartMashroom</theme>
@@ -67,90 +62,162 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a78f3d62-3b31-429e-969f-4b4d1c0848ba" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gradle/8.10.2/checksums/checksums.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.10.2/dependencies-accessors/19666b7ee7477488faba75fa6199859f9eeb0a35/metadata.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.10.2/dependencies-accessors/19666b7ee7477488faba75fa6199859f9eeb0a35/sources/org/gradle/accessors/dm/LibrariesForLibs.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.10.2/dependencies-accessors/19666b7ee7477488faba75fa6199859f9eeb0a35/sources/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.10.2/dependencies-accessors/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.10.2/executionHistory/executionHistory.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.10.2/fileChanges/last-build.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.10.2/fileHashes/fileHashes.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.10.2/fileHashes/fileHashes.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.10.2/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/config.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/vcs-1/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea-backup/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea-backup/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea-backup/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea-backup/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/color/nav_item_color.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg_button_off.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg_button_on.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg_button_onoff.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg_card_off.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg_card_on_blue.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg_card_on_green.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg_gradient.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg_header_blue.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/card_white.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/circle_blue.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/circle_gray.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/circle_indicator_stabil.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/circle_indicator_tidak_stabil.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/circular_progress.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_edit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_eye_closed.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_eye_open.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_fog_wrapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_home_wrapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_humidity.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_info_wrapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_notif_wrapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_profile_wrapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_temperature.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rounded_buttom_blue.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/status_stable_bg.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/status_unstable_bg.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/.idea/deploymentTargetSelector.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/.idea/migrations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/proguard-rules.pro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/androidTest/java/com/example/smartmashroom/ExampleInstrumentedTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/java/com/example/smartmashroom/BerandaActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/java/com/example/smartmashroom/LoginActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/java/com/example/smartmashroom/MainActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/java/com/example/smartmashroom/ResetPasswordActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/drawable/card_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/drawable/gradient_bg.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/drawable/ic_apple.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/drawable/ic_fog.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/drawable/ic_google.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/drawable/ic_home.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/drawable/ic_info.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/drawable/ic_notif.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/drawable/ic_profile.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/drawable/mushroom_background.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/drawable/rounded_blue_button.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/drawable/rounded_edittext.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/drawable/rounded_green_button.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/drawable/rounded_white_bg.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/drawable/rounded_white_button.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/layout/activity_beranda.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/layout/activity_login.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/layout/activity_reset_password.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/menu/bottom_nav_menu.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/mipmap-hdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/mipmap-mdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/values-night/themes.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/values/themes.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/xml/backup_rules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/main/res/xml/data_extraction_rules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/app/src/test/java/com/example/smartmashroom/ExampleUnitTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/gradle/libs.versions.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/Project/sistem-monitoring-smart-mashroom-login/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/.idea/deploymentTargetSelector.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/.idea/migrations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/proguard-rules.pro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/androidTest/java/com/example/smartmashroom/ExampleInstrumentedTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/java/com/example/smartmashroom/BerandaActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/java/com/example/smartmashroom/LoginActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/java/com/example/smartmashroom/MainActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/java/com/example/smartmashroom/NotifikasiActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/java/com/example/smartmashroom/ResetPasswordActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/drawable/card_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/drawable/gradient_bg.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/drawable/ic_apple.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/drawable/ic_fog.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/drawable/ic_google.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/drawable/ic_home.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/drawable/ic_info.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/drawable/ic_notif.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/drawable/ic_profile.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/drawable/mushroom_background.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/drawable/rounded_blue_button.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/drawable/rounded_buttom_blue.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/drawable/rounded_edittext.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/drawable/rounded_green_button.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/drawable/rounded_white_bg.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/drawable/rounded_white_button.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/layout/activity_beranda.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/layout/activity_login.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/layout/activity_notifikasi.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/layout/activity_reset_password.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/menu/bottom_nav_menu.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/mipmap-hdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/mipmap-mdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/values-night/themes.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/values/themes.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/xml/backup_rules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/main/res/xml/data_extraction_rules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/app/src/test/java/com/example/smartmashroom/ExampleUnitTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/gradle/libs.versions.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documents/KULIAH/SM/sistem-monitoring-smart-mashroom-login/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.10.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10.2/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.10.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10.2/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/smartmashroom/BerandaActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/smartmashroom/BerandaActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/smartmashroom/EditEmailActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/smartmashroom/EditEmailActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/smartmashroom/EditNamaActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/smartmashroom/EditNamaActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/smartmashroom/EditPasswordActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/smartmashroom/EditPasswordActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/smartmashroom/InformasiActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/smartmashroom/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/smartmashroom/LoginActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/smartmashroom/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/smartmashroom/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/smartmashroom/NotifikasiActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/smartmashroom/NotifikasiActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/smartmashroom/PengembunanActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/smartmashroom/PengembunanActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/smartmashroom/ProfilActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/smartmashroom/ProfilActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/smartmashroom/ResetPasswordActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/smartmashroom/ResetPasswordActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_fog.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_fog.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_home.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_home.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_info.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_info.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_profile.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_profile.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/rounded_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rounded_background.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_beranda.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_beranda.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_edit_email.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_edit_email.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_edit_nama.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_edit_nama.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_edit_password.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_edit_password.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_informasi.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_notifikasi.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_notifikasi.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_pengembunan.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_pengembunan.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_profil.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_profil.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/bottom_nav_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/bottom_nav_menu.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_reset_password.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_reset_password.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,7 +284,7 @@
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -234,6 +301,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "android.gradle.sync.needed": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "Merging beranda",
@@ -347,12 +415,12 @@
       <map>
         <entry key="com.example.smartmashroom">
           <value>
-            <CheckInfo lastCheckTimestamp="1744954311510" />
+            <CheckInfo lastCheckTimestamp="1745163859817" />
           </value>
         </entry>
         <entry key="com.example.smartmashroom.test">
           <value>
-            <CheckInfo lastCheckTimestamp="1744954311510" />
+            <CheckInfo lastCheckTimestamp="1745163859816" />
           </value>
         </entry>
         <entry />

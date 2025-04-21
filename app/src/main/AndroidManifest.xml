@@ -23,6 +23,24 @@
         </activity>
 
         <!-- LoginActivity hanya bisa diakses dari dalam aplikasi -->
+<<<<<<< HEAD
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+
+        <!-- ResetPasswordActivity hanya bisa diakses dari dalam aplikasi -->
+        <activity
+            android:name=".ResetPasswordActivity"
+            android:exported="false" />
+
+        <!-- ✅ Tambahkan ini -->
+        <activity
+            android:name=".BerandaActivity"
+            android:exported="false" />
+
+    </application>
+
+=======
         <activity android:name=".LoginActivity" android:exported="false" />
 
         <!-- ResetPasswordActivity -->
@@ -52,4 +70,5 @@
         <activity android:name=".NotifikasiActivity" />
 
     </application>
+>>>>>>> 543f8b392e507ba6660bcfaf1cc0869d1a236be8
 </manifest>

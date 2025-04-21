@@ -25,7 +25,11 @@ public class LoginActivity extends AppCompatActivity {
         emailInput = findViewById(R.id.etEmail);
         passwordInput = findViewById(R.id.etPassword);
         loginBtn = findViewById(R.id.btnLogin);
+<<<<<<< HEAD
+        lupaSandi = findViewById(R.id.tvLupaSandi); // ID harus sesuai dengan XML
+=======
         lupaSandi = findViewById(R.id.tvForgotPassword); // ✅ ID disesuaikan dengan XML
+>>>>>>> 543f8b392e507ba6660bcfaf1cc0869d1a236be8
 
         // Aksi tombol Login
         loginBtn.setOnClickListener(new View.OnClickListener() {
