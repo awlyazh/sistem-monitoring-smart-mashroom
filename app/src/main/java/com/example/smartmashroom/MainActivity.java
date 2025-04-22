@@ -2,29 +2,29 @@ package com.example.smartmashroom;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-    private static final int SPLASH_DELAY = 2000; // Delay splash 2 detik
+
+    private Button btnMasuk;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Pindah ke LoginActivity setelah delay
-        new Handler().postDelayed(new Runnable() {
+        btnMasuk = findViewById(R.id.btnMasuk);
+
+        btnMasuk.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void run() {
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
-                finish(); // Tutup MainActivity agar tidak bisa dikembaliin
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish(); // Optional: supaya tidak bisa kembali ke MainActivity
             }
-        }, SPLASH_DELAY);
+        });
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 543f8b392e507ba6660bcfaf1cc0869d1a236be8
