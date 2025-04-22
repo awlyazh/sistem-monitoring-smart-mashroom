@@ -1,26 +1,35 @@
 package com.example.smartmashroom;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class PengembunanActivity extends AppCompatActivity {
 
     private boolean isManualOn = false;
+    private DatabaseReference mDatabase;  // Firebase Database Reference
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pengembunan);
+
+        // Inisialisasi Firebase Realtime Database
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         // Bottom Navigation
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -61,8 +70,8 @@ public class PengembunanActivity extends AppCompatActivity {
 
         // Switch Otomatis/Manual
         switchMode.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            double suhu = getSuhu(txtSuhu);
-            double kelembaban = getKelembaban(txtFeels);
+            double suhu = getSuhu();
+            double kelembaban = getKelembaban();
 
             if (isChecked) {
                 // Mode Otomatis
@@ -88,39 +97,77 @@ public class PengembunanActivity extends AppCompatActivity {
             }
         });
 
-        // Button Manual ON/OFF
+        // Tombol Manual
         btnManual.setOnClickListener(v -> {
             isManualOn = !isManualOn;
             updateManualUI(btnManual);
+            if (isManualOn) {
+                txtStatus.setText("Manual: Pengembunan Dinyalakan");
+            } else {
+                txtStatus.setText("Manual: Pengembunan Dimatikan");
+            }
+        });
+
+        // Ambil data dari Firebase
+        getDataFromFirebase();
+    }
+
+    private void getDataFromFirebase() {
+        // Ambil data suhu dan kelembaban dari Firebase
+        mDatabase.child("data").child("suhu").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    double suhu = dataSnapshot.getValue(Double.class);
+                    TextView txtSuhu = findViewById(R.id.textSuhu);
+                    txtSuhu.setText("Suhu: " + suhu + "°C");
+                } else {
+                    Toast.makeText(PengembunanActivity.this, "Data suhu tidak ditemukan", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(PengembunanActivity.this, "Error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        mDatabase.child("data").child("kelembaban").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    double kelembaban = dataSnapshot.getValue(Double.class);
+                    TextView txtKelembaban = findViewById(R.id.textFeels);
+                    txtKelembaban.setText("Kelembaban: " + kelembaban + "%");
+                } else {
+                    Toast.makeText(PengembunanActivity.this, "Data kelembaban tidak ditemukan", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(PengembunanActivity.this, "Error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
-    // Update UI berdasarkan tombol manual
-    private void updateManualUI(Button btnManual) {
-        TextView statusView = findViewById(R.id.textStatus); // Ambil TextView untuk status
+    private double getSuhu() {
+        // Ganti dengan logika pengambilan suhu dari Firebase
+        return 25.1;  // Misalnya suhu sekarang 25.1
+    }
 
+    private double getKelembaban() {
+        // Ganti dengan logika pengambilan kelembaban dari Firebase
+        return 85.0;  // Misalnya kelembaban 85%
+    }
+
+    private void updateManualUI(Button btnManual) {
         if (isManualOn) {
             btnManual.setText("ON");
-            btnManual.setBackgroundResource(R.drawable.bg_button_on);
-            statusView.setText("Pengembunan: ON");
-            statusView.setTextColor(Color.GREEN);
+            btnManual.setBackgroundColor(ContextCompat.getColor(this, R.color.green)); // Hijau
         } else {
             btnManual.setText("OFF");
-            btnManual.setBackgroundResource(R.drawable.bg_button_off);
-            statusView.setText("Pengembunan: OFF");
-            statusView.setTextColor(Color.RED);
+            btnManual.setBackgroundColor(ContextCompat.getColor(this, R.color.red_light)); // Merah Muda
         }
-    }
-
-    // Ambil suhu dari TextView
-    private double getSuhu(TextView txtSuhu) {
-        String suhuText = txtSuhu.getText().toString().replace("°", "");
-        return Double.parseDouble(suhuText);
-    }
-
-    // Ambil kelembaban dari TextView
-    private double getKelembaban(TextView txtFeels) {
-        String feelsText = txtFeels.getText().toString().split(":")[1].replace("%", "").trim();
-        return Double.parseDouble(feelsText);
     }
 }
