@@ -1,13 +1,17 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E6F0FA">
+    android:orientation="vertical"
+    android:background="#D8E8F9">
 
+    <!-- Konten Scrollable -->
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/bottom_navigation"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:fillViewport="true"
         android:clipToPadding="false">
 
@@ -25,7 +29,7 @@
                 android:padding="16dp"
                 android:layout_marginTop="24dp"
                 android:gravity="center"
-                android:background="@drawable/rounded_background"
+                android:background="@drawable/bg_header_blue"
                 android:layout_marginHorizontal="24dp">
 
                 <TextView
@@ -79,7 +83,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Sabtu, 22 Maret 2025"
-                    android:textColor="#000066"
+                    android:textColor="@color/dark_blue"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:gravity="center" />
@@ -92,6 +96,7 @@
                     android:textColor="#000066"
                     android:textSize="14sp"
                     android:gravity="center"
+                    android:layout_gravity="center"
                     android:layout_marginTop="2dp" />
             </LinearLayout>
 
@@ -102,7 +107,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Kelembaban Udara dan Suhu Udara Stabil"
-                android:backgroundTint="#1D5DBF"
+                android:backgroundTint="@color/blue"
                 android:textColor="#FFFFFF"
                 android:textSize="14sp"
                 android:layout_marginTop="16dp" />
@@ -125,7 +130,6 @@
                     android:orientation="vertical"
                     android:gravity="center">
 
-                    <!-- TextView for Kelembaban -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -134,7 +138,6 @@
                         android:textColor="#000066"
                         android:layout_marginBottom="8dp" />
 
-                    <!-- DonutProgress for Kelembaban -->
                     <com.github.lzyzsd.circleprogress.DonutProgress
                         android:id="@+id/tvHumidityCircle"
                         android:layout_width="120dp"
@@ -142,7 +145,7 @@
                         app:donut_progress="90"
                         app:donut_max="100"
                         app:donut_unfinished_color="#E0E0E0"
-                        app:donut_finished_color="#3366CC"
+                        app:donut_finished_color="@color/blue"
                         app:donut_text="90.0 %"
                         app:donut_text_color="#000066"
                         app:donut_background_color="#FFFFFF"
@@ -157,7 +160,6 @@
                     android:orientation="vertical"
                     android:gravity="center">
 
-                    <!-- TextView for Suhu -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -166,7 +168,6 @@
                         android:textColor="#000066"
                         android:layout_marginBottom="8dp" />
 
-                    <!-- DonutProgress for Suhu -->
                     <com.github.lzyzsd.circleprogress.DonutProgress
                         android:id="@+id/tvTempCircle"
                         android:layout_width="120dp"
@@ -174,7 +175,7 @@
                         app:donut_progress="25"
                         app:donut_max="50"
                         app:donut_unfinished_color="#E0E0E0"
-                        app:donut_finished_color="#3366CC"
+                        app:donut_finished_color="#4A78A6"
                         app:donut_text="25.1 °C"
                         app:donut_text_color="#000066"
                         app:donut_background_color="#FFFFFF"
@@ -201,19 +202,16 @@
                     android:orientation="horizontal"
                     android:padding="12dp"
                     android:elevation="4dp"
-                    android:layout_marginEnd="8dp">
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/ic_humidity" />
+                    android:layout_marginEnd="8dp"
+                    android:gravity="center">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="  Humidity\n  90.0 %"
+                        android:text="💧 Humidity\n  90.0 %"
                         android:textColor="#1E1E1E"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        android:gravity="center" />
                 </LinearLayout>
 
                 <!-- Temp Card -->
@@ -225,19 +223,16 @@
                     android:orientation="horizontal"
                     android:padding="12dp"
                     android:elevation="4dp"
-                    android:layout_marginStart="8dp">
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/ic_temperature" />
+                    android:layout_marginStart="8dp"
+                    android:gravity="center">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="  Temp. Control\n  25.1 °C"
+                        android:text=" 🌡 Temp. Control\n  25.1 °C"
                         android:textColor="#1E1E1E"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        android:gravity="center" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -249,10 +244,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:labelVisibilityMode="unlabeled"
         android:background="#4677B2"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
-        app:menu="@menu/bottom_nav_menu"
-        android:elevation="8dp" />
-</RelativeLayout>
+        app:labelVisibilityMode="unlabeled"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemTextColor="@color/nav_item_color"
+        app:menu="@menu/bottom_nav_menu"/>
+</LinearLayout>
