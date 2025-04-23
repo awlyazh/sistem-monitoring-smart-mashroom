@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "64906056361",
+    "firebase_url": "https://smartmushroom-c2ea5-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "smartmushroom-c2ea5",
+    "storage_bucket": "smartmushroom-c2ea5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:64906056361:android:ba41097d91eff1e642cfb8",
+        "android_client_info": {
+          "package_name": "com.example.smartmashroom"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAokWkG2PTCldFiTBe0po855BlT-Y6spOQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
