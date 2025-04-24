@@ -3,6 +3,7 @@
     <string name="app_name">SmartMushroom</string>
 
     <!-- 🔐 Reset Password Screen -->
+    <string name="hint_email">Masukkan Email</string>
     <string name="reset_password">Atur Ulang Sandi</string>
     <string name="hint_new_password">Masukkan sandi baru</string>
     <string name="hint_confirm_password">Konfirmasi sandi baru</string>
