@@ -5,13 +5,14 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -20,6 +21,8 @@ public class LoginActivity extends AppCompatActivity {
     private TextView lupaSandi;
     private ImageView passwordToggle;
     private boolean isPasswordVisible = false;
+
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,8 @@ public class LoginActivity extends AppCompatActivity {
         lupaSandi = findViewById(R.id.tvForgotPassword);
         passwordToggle = findViewById(R.id.ivPasswordToggle);
 
+        mAuth = FirebaseAuth.getInstance();
+
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,12 +48,16 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
-                if (email.equalsIgnoreCase("suardi@gmail.com") && password.equals("123456")) {
-                    startActivity(new Intent(LoginActivity.this, BerandaActivity.class));
-                    finish();
-                } else {
-                    Toast.makeText(LoginActivity.this, "Email atau password salah", Toast.LENGTH_SHORT).show();
-                }
+                mAuth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(LoginActivity.this, "Login berhasil", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(LoginActivity.this, BerandaActivity.class));
+                                finish();
+                            } else {
+                                Toast.makeText(LoginActivity.this, "Email atau password salah", Toast.LENGTH_SHORT).show();
+                            }
+                        });
             }
         });
 

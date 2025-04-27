@@ -1,26 +1,35 @@
 package com.example.smartmashroom;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class PengembunanActivity extends AppCompatActivity {
 
     private boolean isManualOn = false;
+    private DatabaseReference mDatabase;  // Firebase Database Reference
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pengembunan);
+
+        // Inisialisasi Firebase Realtime Database
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         // Bottom Navigation
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -99,21 +108,60 @@ public class PengembunanActivity extends AppCompatActivity {
                 txtStatus.setText("Manual: Pengembunan Dimatikan");
             }
         });
+
+        // Ambil data dari Firebase
+        getDataFromFirebase();
     }
 
-    // Metode untuk mendapatkan suhu
+    private void getDataFromFirebase() {
+        // Ambil data suhu dan kelembaban dari Firebase
+        mDatabase.child("data").child("suhu").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    double suhu = dataSnapshot.getValue(Double.class);
+                    TextView txtSuhu = findViewById(R.id.textSuhu);
+                    txtSuhu.setText("Suhu: " + suhu + "°C");
+                } else {
+                    Toast.makeText(PengembunanActivity.this, "Data suhu tidak ditemukan", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(PengembunanActivity.this, "Error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        mDatabase.child("data").child("kelembaban").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    double kelembaban = dataSnapshot.getValue(Double.class);
+                    TextView txtKelembaban = findViewById(R.id.textFeels);
+                    txtKelembaban.setText("Kelembaban: " + kelembaban + "%");
+                } else {
+                    Toast.makeText(PengembunanActivity.this, "Data kelembaban tidak ditemukan", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(PengembunanActivity.this, "Error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     private double getSuhu() {
-        // Ganti dengan logika pengambilan suhu
+        // Ganti dengan logika pengambilan suhu dari Firebase
         return 25.1;  // Misalnya suhu sekarang 25.1
     }
 
-    // Metode untuk mendapatkan kelembaban
     private double getKelembaban() {
-        // Ganti dengan logika pengambilan kelembaban
+        // Ganti dengan logika pengambilan kelembaban dari Firebase
         return 85.0;  // Misalnya kelembaban 85%
     }
 
-    // Metode untuk memperbarui status tombol manual
     private void updateManualUI(Button btnManual) {
         if (isManualOn) {
             btnManual.setText("ON");
