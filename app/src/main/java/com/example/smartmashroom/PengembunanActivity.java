@@ -25,7 +25,7 @@ public class PengembunanActivity extends AppCompatActivity {
     private double currentSuhu = 0.0;
     private double currentKelembapan = 0.0;
 
-    private TextView txtStatus, txtSuhu, txtFeels;
+    private TextView txtStatus, txtSuhu, txtFeels, textHumidity, textTempControl;
     private LinearLayout cardHumidity, cardTemp;
     private Button btnManual;
     private Switch switchMode;
@@ -69,6 +69,8 @@ public class PengembunanActivity extends AppCompatActivity {
         txtFeels = findViewById(R.id.textFeels);
         cardHumidity = findViewById(R.id.cardHumidity);
         cardTemp = findViewById(R.id.cardTemp);
+        textHumidity = findViewById(R.id.textHumidity);
+        textTempControl = findViewById(R.id.textTempControl);
 
         isManualOn = false;
         updateManualUI();
@@ -83,7 +85,7 @@ public class PengembunanActivity extends AppCompatActivity {
             txtStatus.setText(isManualOn ? "Manual: Pengembunan Dinyalakan" : "Manual: Pengembunan Dimatikan");
 
             // Update ke Firebase
-            mDatabase.child("status_pompa").setValue(isManualOn ? "ON" : "OFF");
+            mDatabase.child("pompa").child("status_pompa").setValue(isManualOn ? true : false);
         });
 
         // Ambil data dari Firebase secara real-time
@@ -143,11 +145,51 @@ public class PengembunanActivity extends AppCompatActivity {
                 Toast.makeText(PengembunanActivity.this, "Error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
+        mDatabase.child("sensor").child("kelembaban").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    currentKelembapan = dataSnapshot.getValue(Double.class);
+                    txtFeels.setText("Feels like: " + currentSuhu + "°\nHumidity: " + currentKelembapan + "%");
+                    textHumidity.setText("💧 Humidity\n" + currentKelembapan + " %");
+                    updateMode();
+                } else {
+                    Toast.makeText(PengembunanActivity.this, "Data kelembapan tidak ditemukan", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(PengembunanActivity.this, "Error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        mDatabase.child("sensor").child("suhu").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    currentSuhu = dataSnapshot.getValue(Double.class);
+                    txtSuhu.setText(currentSuhu + "°");
+                    textTempControl.setText("🌡 Temp. Control\n" + currentSuhu + " °C");
+                    updateMode();
+                } else {
+                    Toast.makeText(PengembunanActivity.this, "Data suhu tidak ditemukan", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(PengembunanActivity.this, "Error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     private void updateMode() {
         if (switchMode.isChecked()) {
             // Mode Otomatis
+            mDatabase.child("pompa").child("mode_pompa").setValue("otomatis");
             btnManual.setEnabled(false);
 
             if (currentSuhu < 24 && currentKelembapan < 80) {
@@ -159,15 +201,23 @@ public class PengembunanActivity extends AppCompatActivity {
                 cardHumidity.setBackgroundColor(ContextCompat.getColor(this, R.color.red_light));
                 cardTemp.setBackgroundColor(ContextCompat.getColor(this, R.color.red_light));
             }
+
         } else {
             // Mode Manual
+            mDatabase.child("pompa").child("mode_pompa").setValue("manual");
+
             btnManual.setEnabled(true);
             txtStatus.setText("Mode Manual: Atur Sendiri");
             cardHumidity.setBackgroundColor(ContextCompat.getColor(this, R.color.yellow));
             cardTemp.setBackgroundColor(ContextCompat.getColor(this, R.color.yellow));
+
+            // Set status_pompa sesuai dengan isManualOn
+            mDatabase.child("status_pompa").setValue(isManualOn ? "ON" : "OFF");
+
             updateManualUI();
         }
     }
+
 
     private void updateManualUI() {
         if (isManualOn) {
