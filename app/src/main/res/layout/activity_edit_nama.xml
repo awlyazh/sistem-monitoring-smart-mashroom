@@ -42,7 +42,7 @@
                     android:layout_below="@id/profile_image"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
-                    android:text="Soehardi"
+                    android:text="suardi"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="#F3F4F6" />

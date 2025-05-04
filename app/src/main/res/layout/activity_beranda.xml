@@ -28,9 +28,10 @@
                 android:orientation="vertical"
                 android:padding="16dp"
                 android:layout_marginTop="24dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginHorizontal="24dp"
                 android:gravity="center"
-                android:background="@drawable/bg_header_blue"
-                android:layout_marginHorizontal="24dp">
+                android:background="@drawable/bg_header_blue">
 
                 <TextView
                     android:id="@+id/tvGreeting"
@@ -205,7 +206,9 @@
                     android:layout_marginEnd="8dp"
                     android:gravity="center">
 
+                    <!-- Tambahkan ID pada TextView Humidity -->
                     <TextView
+                        android:id="@+id/tvHumidityText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="💧 Humidity\n  90.0 %"
@@ -227,6 +230,7 @@
                     android:gravity="center">
 
                     <TextView
+                        android:id="@+id/tvTempText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=" 🌡 Temp. Control\n  25.1 °C"
