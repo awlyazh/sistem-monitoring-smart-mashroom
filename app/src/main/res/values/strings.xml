@@ -70,4 +70,7 @@
 
     <!-- 🔙 Aksesibilitas untuk tombol kembali -->
     <string name="back_to_profile">Kembali ke Profil</string>
+
+    <!-- 🔒 Reset Password -->
+    <string name="hint_old_password">Masukkan sandi lama</string>
 </resources>

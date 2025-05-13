@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Header (Full width & lengkung) -->
+            <!-- Header -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
@@ -44,7 +44,7 @@
                     android:textColor="#FFFFFF" />
             </RelativeLayout>
 
-            <!-- Bagian konten utama dengan padding -->
+            <!-- Konten lihat email -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -54,55 +54,22 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ubah Email"
+                    android:text="Email Anda"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:layout_marginTop="40dp" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tv_email_lama"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Masukkan email baru yang valid. Contoh: nama@email.com"
+                    android:text="nama@email.com"
                     android:textSize="14sp"
                     android:textColor="@color/black"
-                    android:layout_marginTop="8dp" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:hint="Email lama">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_email_lama"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textEmailAddress"
-                        android:enabled="false" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:hint="Email baru">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_email_baru"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textEmailAddress" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <Button
-                    android:id="@+id/btn_simpan_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Simpan perubahan"
-                    android:textColor="@color/white"
-                    android:background="@drawable/rounded_button"
-                    android:layout_marginTop="40dp" />
+                    android:background="@drawable/rounded_field_background"
+                    android:padding="12dp" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
