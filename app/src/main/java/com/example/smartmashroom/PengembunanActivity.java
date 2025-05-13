@@ -1,11 +1,14 @@
 package com.example.smartmashroom;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 
 import com.google.firebase.database.DataSnapshot;
@@ -19,8 +22,8 @@ public class PengembunanActivity extends AppCompatActivity {
     private Switch switchAuto;
     private Button btnManual;
     private TextView textStatus;
-    private View cardHumidity;
-    private View cardTemp;
+    private CardView cardHumidity;
+    private CardView cardTemp;
 
     private DatabaseReference mDatabase;
 
@@ -41,13 +44,9 @@ public class PengembunanActivity extends AppCompatActivity {
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        // Mode switch listener
         switchAuto.setOnCheckedChangeListener((buttonView, isChecked) -> updateMode(isChecked));
-
-        // Tombol manual listener
         btnManual.setOnClickListener(v -> toggleManualMode());
 
-        // Pantau data sensor dari Firebase
         monitorSensorData();
     }
 
@@ -61,6 +60,8 @@ public class PengembunanActivity extends AppCompatActivity {
 
                     if (suhu != null) currentSuhu = suhu.floatValue();
                     if (kelembapan != null) currentKelembapan = kelembapan.floatValue();
+
+                    Log.d("Sensor", "Suhu: " + currentSuhu + " | Kelembapan: " + currentKelembapan);
 
                     if (switchAuto.isChecked()) {
                         updateAutoControl();
@@ -90,17 +91,17 @@ public class PengembunanActivity extends AppCompatActivity {
 
     private void updateAutoControl() {
         if (currentSuhu < 24 || currentSuhu > 27 || currentKelembapan < 80 || currentKelembapan > 90) {
-            // Tidak stabil, aktifkan pengembunan
+            // Tidak stabil
             mDatabase.child("status_pompa").setValue("ON");
             textStatus.setText("Pengembunan Aktif (Otomatis)");
-            cardHumidity.setBackgroundColor(ContextCompat.getColor(this, R.color.card_humid_unstable));
-            cardTemp.setBackgroundColor(ContextCompat.getColor(this, R.color.card_temp_unstable));
+            cardHumidity.setCardBackgroundColor(ContextCompat.getColor(this, R.color.card_humid_unstable));
+            cardTemp.setCardBackgroundColor(ContextCompat.getColor(this, R.color.card_temp_unstable));
         } else {
             // Stabil
             mDatabase.child("status_pompa").setValue("OFF");
             textStatus.setText("Kondisi Stabil, Pengembunan OFF");
-            cardHumidity.setBackgroundColor(ContextCompat.getColor(this, R.color.card_humid_stable));
-            cardTemp.setBackgroundColor(ContextCompat.getColor(this, R.color.card_temp_stable));
+            cardHumidity.setCardBackgroundColor(ContextCompat.getColor(this, R.color.card_humid_stable));
+            cardTemp.setCardBackgroundColor(ContextCompat.getColor(this, R.color.card_temp_stable));
         }
     }
 
@@ -114,13 +115,13 @@ public class PengembunanActivity extends AppCompatActivity {
         if (isManualOn) {
             textStatus.setText("Pengembunan Manual: Aktif");
             btnManual.setBackgroundColor(ContextCompat.getColor(this, R.color.button_on));
-            cardHumidity.setBackgroundColor(ContextCompat.getColor(this, R.color.card_temp_stable)); // Biru muda
-            cardTemp.setBackgroundColor(ContextCompat.getColor(this, R.color.card_humid_stable));    // Hijau muda
+            cardHumidity.setCardBackgroundColor(ContextCompat.getColor(this, R.color.card_humid_stable));
+            cardTemp.setCardBackgroundColor(ContextCompat.getColor(this, R.color.card_temp_stable));
         } else {
             textStatus.setText("Pengembunan Manual: OFF");
             btnManual.setBackgroundColor(ContextCompat.getColor(this, R.color.button_off));
-            cardHumidity.setBackgroundColor(ContextCompat.getColor(this, R.color.card_off));         // Abu-abu
-            cardTemp.setBackgroundColor(ContextCompat.getColor(this, R.color.card_off));             // Abu-abu
+            cardHumidity.setCardBackgroundColor(ContextCompat.getColor(this, R.color.card_off));
+            cardTemp.setCardBackgroundColor(ContextCompat.getColor(this, R.color.card_off));
         }
     }
 }
