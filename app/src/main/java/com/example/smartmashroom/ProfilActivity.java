@@ -23,11 +23,10 @@ import java.io.IOException;
 public class ProfilActivity extends AppCompatActivity {
 
     private static final int REQUEST_NAMA = 1;
-    private static final int REQUEST_EMAIL = 2;
     private static final int REQUEST_PASSWORD = 3;
     private static final int PICK_IMAGE = 100;
 
-    LinearLayout itemNama, itemPassword, itemEmail;
+    LinearLayout itemNama, itemPassword;
     TextView tvNama, tvEmail, tvPassword;
     ImageView imageProfile, ivTogglePassword, btnEditPhoto;
     Button btnKeluar;
@@ -46,14 +45,13 @@ public class ProfilActivity extends AppCompatActivity {
         // Inisialisasi UI
         itemNama = findViewById(R.id.item_nama);
         itemPassword = findViewById(R.id.item_password);
-        itemEmail = findViewById(R.id.item_email);
         tvNama = findViewById(R.id.tv_nama);
         tvEmail = findViewById(R.id.tv_email);
         tvPassword = findViewById(R.id.tv_password);
         imageProfile = findViewById(R.id.imageProfile);
         ivTogglePassword = findViewById(R.id.iv_toggle_password);
         btnEditPhoto = findViewById(R.id.btn_edit_photo);
-        btnKeluar = findViewById(R.id.btn_keluar); // Tombol keluar akun
+        btnKeluar = findViewById(R.id.btn_keluar);
 
         // Ambil data dari SharedPreferences
         SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
@@ -77,26 +75,18 @@ public class ProfilActivity extends AppCompatActivity {
             startActivityForResult(intent, REQUEST_PASSWORD);
         });
 
-        // Klik ubah email
-        itemEmail.setOnClickListener(v -> {
-            Intent intent = new Intent(ProfilActivity.this, EditEmailActivity.class);
-            intent.putExtra("email", email);
-            startActivityForResult(intent, REQUEST_EMAIL);
-        });
-
-        // Klik ubah foto profil via foto utama
+        // Klik ubah foto profil
         imageProfile.setOnClickListener(v -> {
             Intent pickPhoto = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             startActivityForResult(pickPhoto, PICK_IMAGE);
         });
 
-        // Klik ubah foto profil via icon pensil
         btnEditPhoto.setOnClickListener(v -> {
             Intent pickPhoto = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             startActivityForResult(pickPhoto, PICK_IMAGE);
         });
 
-        // Toggle password eye icon
+        // Toggle password visibility
         ivTogglePassword.setOnClickListener(v -> {
             if (tvPassword.getTransformationMethod() instanceof PasswordTransformationMethod) {
                 tvPassword.setTransformationMethod(null);
@@ -107,13 +97,12 @@ public class ProfilActivity extends AppCompatActivity {
             }
         });
 
-        // Aksi tombol keluar akun
+        // Logout
         btnKeluar.setOnClickListener(v -> {
             SharedPreferences.Editor editor = getSharedPreferences("UserPrefs", MODE_PRIVATE).edit();
-            editor.clear(); // hapus semua data
+            editor.clear();
             editor.apply();
 
-            // Arahkan ke halaman login
             Intent intent = new Intent(ProfilActivity.this, LoginActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
@@ -154,10 +143,6 @@ public class ProfilActivity extends AppCompatActivity {
                     nama = data.getStringExtra("namaBaru");
                     editor.putString("nama", nama);
                     break;
-                case REQUEST_EMAIL:
-                    email = data.getStringExtra("emailBaru");
-                    editor.putString("email", email);
-                    break;
                 case REQUEST_PASSWORD:
                     password = data.getStringExtra("passwordBaru");
                     editor.putString("password", password);
@@ -184,7 +169,7 @@ public class ProfilActivity extends AppCompatActivity {
         tvEmail.setText(email);
 
         if (password.isEmpty()) {
-            password = "123456"; // Set default jika kosong
+            password = "123456"; // Default jika kosong
         }
 
         tvPassword.setText(password);

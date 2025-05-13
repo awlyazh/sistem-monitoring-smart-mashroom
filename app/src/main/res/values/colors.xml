@@ -10,7 +10,6 @@
         <color name="purple_500">#9C27B0</color> <!-- Warna ungu -->
         <color name="teal_700">#3169A7</color>
 
-
         <!-- ON/OFF Button -->
         <color name="button_on">#66BB6A</color>  <!-- Tombol ON -->
         <color name="button_off">#EF5350</color> <!-- Tombol OFF -->
@@ -22,6 +21,9 @@
         <!-- Kartu Humidity -->
         <color name="card_humid_stable">#C8E6C9</color> <!-- Kelembapan Stabil (hijau muda) -->
         <color name="card_humid_unstable">#FFF9C4</color> <!-- Kelembapan Tidak Stabil (kuning muda) -->
+
+        <!-- Kartu Kondisi OFF -->
+        <color name="card_off">#D3D3D3</color> <!-- Warna abu-abu untuk Pengembunan OFF -->
 
         <!-- Tambahan -->
         <color name="colorRed">#F44336</color> <!-- Merah -->
