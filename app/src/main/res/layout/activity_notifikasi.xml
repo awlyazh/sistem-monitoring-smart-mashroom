@@ -5,240 +5,92 @@
     android:background="#E3EAFE">
 
     <!-- Header -->
-    <TextView
-        android:id="@+id/header"
+    <RelativeLayout
+        android:id="@+id/header_layout"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:gravity="center"
-        android:text="Histori Notifikasi"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        android:background="@drawable/rounded_buttom_blue"
-        android:layout_alignParentTop="true" />
+        android:background="@drawable/rounded_buttom_blue">
+
+        <TextView
+            android:id="@+id/header"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="Histori Notifikasi"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp" />
+
+        <ImageButton
+            android:id="@+id/btn_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Hapus"
+            android:src="@android:drawable/ic_menu_delete" />
+    </RelativeLayout>
 
     <!-- ScrollView for notification cards -->
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/header"
+        android:layout_below="@id/header_layout"
         android:layout_above="@id/bottom_navigation"
         android:fillViewport="true">
 
         <LinearLayout
+            android:id="@+id/notification_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Example notification card -->
+            <!-- Contoh notifikasi (ulang struktur ini jika pakai statis) -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:background="@drawable/bg_notifikasi"
                 android:padding="12dp"
                 android:layout_marginBottom="12dp"
                 android:elevation="4dp"
-                android:layout_marginHorizontal="8dp">
+                android:layout_marginHorizontal="8dp"
+                android:gravity="center_vertical">
 
-                <TextView
+                <CheckBox
+                    android:id="@+id/checkbox_notification"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="24 - 3 - 2025 Kelembaban Rendah"
-                    android:textColor="#D8000C"
-                    android:textStyle="bold"
-                    android:textSize="16sp" />
+                    android:layout_marginEnd="3dp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Kelembaban 71% dibawah batas aman&#10;Aktifkan pengembunan otomatis"
-                    android:textSize="14sp"
-                    android:layout_marginTop="6dp" />
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="24 - 3 - 2025 Kelembaban Rendah"
+                        android:textColor="#D8000C"
+                        android:textStyle="bold"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kelembaban 71% dibawah batas aman&#10;Pengembunan diaktifkan"
+                        android:textSize="14sp"
+                        android:layout_marginTop="6dp" />
+                </LinearLayout>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/bg_notifikasi"
-                android:padding="12dp"
-                android:layout_marginBottom="12dp"
-                android:elevation="4dp"
-                android:layout_marginHorizontal="8dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="24 - 3 - 2025 Kelembaban Rendah"
-                    android:textColor="#D8000C"
-                    android:textStyle="bold"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Kelembaban 71% dibawah batas aman&#10;Pengembunan diaktifkan"
-                    android:textSize="14sp"
-                    android:layout_marginTop="6dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/bg_notifikasi"
-                android:padding="12dp"
-                android:layout_marginBottom="12dp"
-                android:elevation="4dp"
-                android:layout_marginHorizontal="8dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="24 - 3 - 2025 Kelembaban Rendah"
-                    android:textColor="#D8000C"
-                    android:textStyle="bold"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Kelembaban 71% dibawah batas aman&#10;Pengembunan diaktifkan"
-                    android:textSize="14sp"
-                    android:layout_marginTop="6dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/bg_notifikasi"
-                android:padding="12dp"
-                android:layout_marginBottom="12dp"
-                android:elevation="4dp"
-                android:layout_marginHorizontal="8dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="24 - 3 - 2025 Kelembaban Rendah"
-                    android:textColor="#D8000C"
-                    android:textStyle="bold"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Kelembaban 71% dibawah batas aman&#10;Pengembunan diaktifkan"
-                    android:textSize="14sp"
-                    android:layout_marginTop="6dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/bg_notifikasi"
-                android:padding="12dp"
-                android:layout_marginBottom="12dp"
-                android:elevation="4dp"
-                android:layout_marginHorizontal="8dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="24 - 3 - 2025 Kelembaban Rendah"
-                    android:textColor="#D8000C"
-                    android:textStyle="bold"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Kelembaban 71% dibawah batas aman&#10;Pengembunan diaktifkan"
-                    android:textSize="14sp"
-                    android:layout_marginTop="6dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/bg_notifikasi"
-                android:padding="12dp"
-                android:layout_marginBottom="12dp"
-                android:elevation="4dp"
-                android:layout_marginHorizontal="8dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="24 - 3 - 2025 Kelembaban Rendah"
-                    android:textColor="#D8000C"
-                    android:textStyle="bold"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Kelembaban 71% dibawah batas aman&#10;Pengembunan diaktifkan"
-                    android:textSize="14sp"
-                    android:layout_marginTop="6dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/bg_notifikasi"
-                android:padding="12dp"
-                android:layout_marginBottom="12dp"
-                android:elevation="4dp"
-                android:layout_marginHorizontal="8dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="24 - 3 - 2025 Kelembaban Rendah"
-                    android:textColor="#D8000C"
-                    android:textStyle="bold"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Kelembaban 71% dibawah batas aman&#10;Pengembunan diaktifkan"
-                    android:textSize="14sp"
-                    android:layout_marginTop="6dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/bg_notifikasi"
-                android:padding="12dp"
-                android:layout_marginBottom="12dp"
-                android:elevation="4dp"
-                android:layout_marginHorizontal="8dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="24 - 3 - 2025 Kelembaban Rendah"
-                    android:textColor="#D8000C"
-                    android:textStyle="bold"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Kelembaban 71% dibawah batas aman&#10;Pengembunan diaktifkan"
-                    android:textSize="14sp"
-                    android:layout_marginTop="6dp" />
-            </LinearLayout>
+            <!-- Salin struktur di atas untuk notifikasi lainnya jika masih hardcoded -->
 
         </LinearLayout>
     </ScrollView>
