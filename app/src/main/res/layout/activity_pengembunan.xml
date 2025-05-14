@@ -147,7 +147,8 @@
                         android:id="@+id/textHumidity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="💧 Humidity\n85.0 %"
+                        android:text="💧
+                        Humidity\n85.0 %"
                         android:textSize="16sp" />
                 </LinearLayout>
 
