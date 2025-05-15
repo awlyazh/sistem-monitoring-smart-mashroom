@@ -76,7 +76,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="24 - 3 - 2025 Kelembaban Rendah"
+                        android:text="24 - 3 - 2025 Suhu dan Kelembaban Tidak Stabil"
                         android:textColor="#D8000C"
                         android:textStyle="bold"
                         android:textSize="16sp" />
@@ -84,7 +84,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Kelembaban 71% dibawah batas aman&#10;Pengembunan diaktifkan"
+                        android:text="Suhu dan Kelembaban dibawah batas aman&#10;Pengembunan diaktifkan"
                         android:textSize="14sp"
                         android:layout_marginTop="6dp" />
                 </LinearLayout>
@@ -117,7 +117,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="24 - 3 - 2025 Kelembaban Rendah"
+                        android:text="24 - 3 - 2025 Suhu dan Kelembaban Tidak Stabil"
                         android:textColor="#D8000C"
                         android:textStyle="bold"
                         android:textSize="16sp" />
@@ -125,7 +125,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Kelembaban 71% dibawah batas aman&#10;Pengembunan diaktifkan"
+                        android:text="Suhu dan Kelembaban dibawah batas aman&#10;Pengembunan diaktifkan"
                         android:textSize="14sp"
                         android:layout_marginTop="6dp" />
                 </LinearLayout>
@@ -158,7 +158,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="24 - 3 - 2025 Kelembaban Rendah"
+                        android:text="24 - 3 - 2025 Suhu dan Kelembaban Tidak Stabil"
                         android:textColor="#D8000C"
                         android:textStyle="bold"
                         android:textSize="16sp" />
@@ -166,7 +166,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Kelembaban 71% dibawah batas aman&#10;Pengembunan diaktifkan"
+                        android:text="Suhu dan Kelembaban dibawah batas aman&#10;Pengembunan diaktifkan"
                         android:textSize="14sp"
                         android:layout_marginTop="6dp" />
                 </LinearLayout>
@@ -198,7 +198,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="24 - 3 - 2025 Kelembaban Rendah"
+                        android:text="24 - 3 - 2025 Suhu dan Kelembaban Tidak Stabil"
                         android:textColor="#D8000C"
                         android:textStyle="bold"
                         android:textSize="16sp" />
@@ -206,7 +206,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Kelembaban 71% dibawah batas aman&#10;Pengembunan diaktifkan"
+                        android:text="Suhu dan Kelembaban dibawah batas aman&#10;Pengembunan diaktifkan"
                         android:textSize="14sp"
                         android:layout_marginTop="6dp" />
                 </LinearLayout>
@@ -238,7 +238,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="24 - 3 - 2025 Kelembaban Rendah"
+                        android:text="24 - 3 - 2025 Suhu dan Kelembaban Tidak Stabil"
                         android:textColor="#D8000C"
                         android:textStyle="bold"
                         android:textSize="16sp" />
@@ -246,7 +246,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Kelembaban 71% dibawah batas aman&#10;Pengembunan diaktifkan"
+                        android:text="Suhu dan Kelembaban dibawah batas aman&#10;Pengembunan diaktifkan"
                         android:textSize="14sp"
                         android:layout_marginTop="6dp" />
                 </LinearLayout>
@@ -278,7 +278,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="24 - 3 - 2025 Kelembaban Rendah"
+                        android:text="24 - 3 - 2025 Suhu dan Kelembaban Tidak Stabil"
                         android:textColor="#D8000C"
                         android:textStyle="bold"
                         android:textSize="16sp" />
@@ -286,7 +286,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Kelembaban 71% dibawah batas aman&#10;Pengembunan diaktifkan"
+                        android:text="Suhu dan Kelembaban dibawah batas aman&#10;Pengembunan diaktifkan"
                         android:textSize="14sp"
                         android:layout_marginTop="6dp" />
                 </LinearLayout>
