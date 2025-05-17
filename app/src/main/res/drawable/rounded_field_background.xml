@@ -1,0 +1,14 @@
+<!-- res/drawable/rounded_field_background.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <solid android:color="#FFFFFF" /> <!-- Warna background -->
+
+    <corners android:radius="12dp" /> <!-- Membuat sudut membulat -->
+
+    <padding
+        android:top="8dp"
+        android:bottom="8dp"
+        android:left="12dp"
+        android:right="12dp" />
+</shape>

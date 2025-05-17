@@ -1,45 +1,55 @@
 package com.example.smartmashroom;
 
-import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import android.view.MenuItem;
 
 public class NotifikasiActivity extends AppCompatActivity {
+
+    private LinearLayout notificationContainer;
+    private ImageButton btnDelete;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notifikasi);
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.menu_notif); // Set item aktif ke menu_notif
+        notificationContainer = findViewById(R.id.notification_container);
+        btnDelete = findViewById(R.id.btn_delete);
 
-        bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
+        btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
+            public void onClick(View v) {
+                int deletedCount = 0;
 
-                // Menavigasi ke halaman sesuai dengan item yang dipilih
-                if (id == R.id.menu_home) {
-                    startActivity(new Intent(getApplicationContext(), BerandaActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                } else if (id == R.id.menu_fogging) {
-                    startActivity(new Intent(getApplicationContext(), PengembunanActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                } else if (id == R.id.menu_notif) {
-                    // Halaman ini sudah aktif (Notifikasi)
-                    return true;
-                } else if (id == R.id.menu_profile) {
-                    startActivity(new Intent(getApplicationContext(), ProfilActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
+                // Kita gunakan loop mundur agar tidak terjadi masalah saat menghapus elemen
+                for (int i = notificationContainer.getChildCount() - 1; i >= 0; i--) {
+                    View notifView = notificationContainer.getChildAt(i);
+
+                    if (notifView instanceof LinearLayout) {
+                        LinearLayout notifLayout = (LinearLayout) notifView;
+
+                        // Cek apakah child pertama adalah CheckBox
+                        if (notifLayout.getChildCount() > 0 && notifLayout.getChildAt(0) instanceof CheckBox) {
+                            CheckBox checkBox = (CheckBox) notifLayout.getChildAt(0);
+                            if (checkBox.isChecked()) {
+                                notificationContainer.removeViewAt(i);
+                                deletedCount++;
+                            }
+                        }
+                    }
                 }
 
-                return false;
+                if (deletedCount > 0) {
+                    Toast.makeText(NotifikasiActivity.this, deletedCount + " notifikasi dihapus", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(NotifikasiActivity.this, "Tidak ada notifikasi yang dipilih", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

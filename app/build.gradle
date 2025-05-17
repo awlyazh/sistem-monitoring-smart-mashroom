@@ -41,18 +41,18 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.activity:activity:1.8.2'
 
-    // Circle Progress Library (non-version catalog, manual OK)
+    // Circle Progress Library
     implementation 'com.github.lzyzsd:circleprogress:1.2.1'
 
-    // Firebase (using BoM)
+    // Firebase (BoM: Bill of Materials)
     implementation platform('com.google.firebase:firebase-bom:33.12.0')
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-auth'
-    implementation 'com.google.firebase:firebase-database'  // Menambahkan Firebase Database
+    implementation 'com.google.firebase:firebase-database'
+    implementation 'com.google.firebase:firebase-storage' // ✅ Diperlukan untuk FirebaseStorage
 
     // Testing
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
-

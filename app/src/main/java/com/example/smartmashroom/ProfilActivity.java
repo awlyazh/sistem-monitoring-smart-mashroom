@@ -17,6 +17,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.io.IOException;
 
@@ -32,7 +36,7 @@ public class ProfilActivity extends AppCompatActivity {
     Button btnKeluar;
 
     String nama = "Soehardi";
-    String email = "jamutriamirdho@gmail.com";
+    String email = "";
     String password = "";
 
     Uri selectedImageUri;
@@ -53,10 +57,9 @@ public class ProfilActivity extends AppCompatActivity {
         btnEditPhoto = findViewById(R.id.btn_edit_photo);
         btnKeluar = findViewById(R.id.btn_keluar);
 
-        // Ambil data dari SharedPreferences
+        // Ambil data dari SharedPreferences untuk nama & password
         SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
         nama = prefs.getString("nama", nama);
-        email = prefs.getString("email", email);
         password = prefs.getString("password", password);
 
         updateUI();
@@ -102,6 +105,9 @@ public class ProfilActivity extends AppCompatActivity {
             SharedPreferences.Editor editor = getSharedPreferences("UserPrefs", MODE_PRIVATE).edit();
             editor.clear();
             editor.apply();
+
+            // Logout Firebase
+            FirebaseAuth.getInstance().signOut();
 
             Intent intent = new Intent(ProfilActivity.this, LoginActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -152,6 +158,9 @@ public class ProfilActivity extends AppCompatActivity {
                     try {
                         Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageUri);
                         imageProfile.setImageBitmap(bitmap);
+
+                        // Upload the image to Firebase Storage
+                        uploadProfileImage(selectedImageUri);
                     } catch (IOException e) {
                         e.printStackTrace();
                         Toast.makeText(this, "Gagal memuat gambar", Toast.LENGTH_SHORT).show();
@@ -165,15 +174,38 @@ public class ProfilActivity extends AppCompatActivity {
     }
 
     private void updateUI() {
+        // Ambil user dari Firebase Auth
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (currentUser != null) {
+            email = currentUser.getEmail();
+            tvEmail.setText(email);
+        } else {
+            tvEmail.setText("Tidak ada pengguna login");
+        }
+
         tvNama.setText(nama);
-        tvEmail.setText(email);
 
         if (password.isEmpty()) {
-            password = "123456"; // Default jika kosong
+            password = "123456";
         }
 
         tvPassword.setText(password);
         tvPassword.setTransformationMethod(new PasswordTransformationMethod());
         ivTogglePassword.setImageResource(R.drawable.ic_eye_closed);
+    }
+
+    private void uploadProfileImage(Uri imageUri) {
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReference();
+        StorageReference profileImageRef = storageRef.child("profile_images/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + ".jpg");
+
+        profileImageRef.putFile(imageUri)
+                .addOnSuccessListener(taskSnapshot -> {
+                    Toast.makeText(ProfilActivity.this, "Foto Profil berhasil diupdate", Toast.LENGTH_SHORT).show();
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(ProfilActivity.this, "Gagal mengupdate foto profil", Toast.LENGTH_SHORT).show();
+                });
     }
 }
