@@ -9,7 +9,7 @@
         android:id="@+id/header_layout"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:background="@drawable/rounded_buttom_blue">
+        android:background="@drawable/bg_header_blue">
 
         <TextView
             android:id="@+id/header"
@@ -84,7 +84,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Suhu dan Kelembaban dibawah batas aman&#10;Pengembunan diaktifkan"
+                        android:text="Suhu dan Kelembaban dibawah batas aman&#10;Pengabutan diaktifkan"
                         android:textSize="14sp"
                         android:layout_marginTop="6dp" />
                 </LinearLayout>
@@ -125,7 +125,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Suhu dan Kelembaban dibawah batas aman&#10;Pengembunan diaktifkan"
+                        android:text="Suhu dan Kelembaban dibawah batas aman&#10;Pengabutan diaktifkan"
                         android:textSize="14sp"
                         android:layout_marginTop="6dp" />
                 </LinearLayout>
@@ -166,7 +166,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Suhu dan Kelembaban dibawah batas aman&#10;Pengembunan diaktifkan"
+                        android:text="Suhu dan Kelembaban dibawah batas aman&#10;Pengabutan diaktifkan"
                         android:textSize="14sp"
                         android:layout_marginTop="6dp" />
                 </LinearLayout>
@@ -206,7 +206,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Suhu dan Kelembaban dibawah batas aman&#10;Pengembunan diaktifkan"
+                        android:text="Suhu dan Kelembaban dibawah batas aman&#10;Pengabutan diaktifkan"
                         android:textSize="14sp"
                         android:layout_marginTop="6dp" />
                 </LinearLayout>
@@ -246,7 +246,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Suhu dan Kelembaban dibawah batas aman&#10;Pengembunan diaktifkan"
+                        android:text="Suhu dan Kelembaban dibawah batas aman&#10;Pengabutan diaktifkan"
                         android:textSize="14sp"
                         android:layout_marginTop="6dp" />
                 </LinearLayout>
@@ -286,7 +286,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Suhu dan Kelembaban dibawah batas aman&#10;Pengembunan diaktifkan"
+                        android:text="Suhu dan Kelembaban dibawah batas aman&#10;Pengabutan diaktifkan"
                         android:textSize="14sp"
                         android:layout_marginTop="6dp" />
                 </LinearLayout>
