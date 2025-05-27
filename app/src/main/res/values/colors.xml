@@ -1,34 +1,50 @@
 <resources>
-        <!-- Dasar -->
-        <color name="black">#FF000000</color>
-        <color name="white">#FFFFFFFF</color>
-        <color name="blue">#4A78A6</color> <!-- Background utama -->
-        <color name="dark_blue">#3A5F85</color> <!-- Warna tombol submit -->
-        <color name="green">#4CAF50</color> <!-- Warna hijau -->
-        <color name="gray">#B0B0B0</color> <!-- Warna abu-abu untuk teks hint -->
-        <color name="light_gray">#F5F5F5</color> <!-- Latar belakang input -->
-        <color name="purple_500">#9C27B0</color> <!-- Warna ungu -->
-        <color name="teal_700">#3169A7</color>
+    <!-- Warna Dasar -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="blue">#4A78A6</color>          <!-- Background utama & warna kelembapan ON -->
+    <color name="dark_blue">#3A5F85</color>     <!-- Tombol utama -->
+    <color name="green">#4CAF50</color>         <!-- Warna umum hijau -->
+    <color name="gray">#B0B0B0</color>          <!-- Hint teks -->
+    <color name="light_gray">#F5F5F5</color>    <!-- Background input -->
+    <color name="purple_500">#9C27B0</color>
+    <color name="teal_700">#3169A7</color>
 
-        <!-- ON/OFF Button -->
-        <color name="button_on">#66BB6A</color>  <!-- Tombol ON -->
-        <color name="button_off">#EF5350</color> <!-- Tombol OFF -->
+    <!-- Tombol ON/OFF -->
+    <color name="button_on">#4CAF50</color>     <!-- Hijau untuk tombol ON -->
+    <color name="button_off">#9E9E9E</color>    <!-- Abu-abu untuk tombol OFF -->
 
-        <!-- Kartu Temperature -->
-        <color name="card_temp_stable">#BBDEFB</color> <!-- Suhu Stabil (biru muda) -->
-        <color name="card_temp_unstable">#FFCDD2</color> <!-- Suhu Tidak Stabil (merah muda) -->
+    <!-- Kartu Pengembunan OFF (abu-abu terang) -->
+    <color name="card_off">#B0B0B0</color>      <!-- Abu-abu -->
 
-        <!-- Kartu Humidity -->
-        <color name="card_humid_stable">#C8E6C9</color> <!-- Kelembapan Stabil (hijau muda) -->
-        <color name="card_humid_unstable">#FFF9C4</color> <!-- Kelembapan Tidak Stabil (kuning muda) -->
+    <!-- Warna Mode -->
+    <color name="auto_mode_active">#81D4FA</color>      <!-- Biru langit (otomatis aktif) -->
+    <color name="manual_mode_active">#A5D6A7</color>    <!-- Hijau terang (manual aktif) -->
+    <color name="mode_disabled">#BDBDBD</color>         <!-- Abu-abu gelap -->
 
-        <!-- Kartu Kondisi OFF -->
-        <color name="card_off">#D3D3D3</color> <!-- Warna abu-abu untuk Pengembunan OFF -->
+    <!-- Warna Tambahan -->
+    <color name="colorRed">#F44336</color>
+    <color name="colorGreen">#4CAF50</color>            <!-- Sama dengan "green" -->
+    <color name="red">#F44336</color>
+    <color name="yellow">#FFEB3B</color>
 
-        <!-- Tambahan -->
-        <color name="colorRed">#F44336</color> <!-- Merah -->
-        <color name="colorGreen">#4CAF50</color> <!-- Hijau -->
-        <color name="red">#F44336</color> <!-- Merah -->
-        <color name="red_light">#FFCDD2</color> <!-- Merah Muda -->
-        <color name="yellow">#FFEB3B</color> <!-- Kuning -->
+    <!-- Gradien Background (opsional) -->
+    <color name="background_gradient_start">#E3F2FD</color>
+    <color name="background_gradient_end">#BBDEFB</color>
+
+    <!-- Border Kartu -->
+    <color name="card_border">#90A4AE</color>           <!-- Abu kebiruan -->
+
+    <!-- Warna Card Humid ON: Biru pastel -->
+    <color name="card_humid_on">#A8D0F0</color>
+
+    <!-- Warna Card Temp ON: Hijau pastel cerah -->
+    <color name="card_temp_on">#B6E2A1</color>
+
+    <!-- Warna Stabil -->
+    <color name="card_temp_stable">#D5F5C1</color>
+    <color name="card_humid_stable">#B8DCFF</color>
+
+
+
 </resources>
