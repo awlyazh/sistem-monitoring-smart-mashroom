@@ -206,7 +206,9 @@
                     android:layout_marginEnd="8dp"
                     android:gravity="center">
 
+                    <!-- Tambahkan ID pada TextView Humidity -->
                     <TextView
+                        android:id="@+id/tvHumidityText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="💧 Humidity\n  90.0 %"
@@ -228,6 +230,7 @@
                     android:gravity="center">
 
                     <TextView
+                        android:id="@+id/tvTempText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=" 🌡 Temp. Control\n  25.1 °C"
