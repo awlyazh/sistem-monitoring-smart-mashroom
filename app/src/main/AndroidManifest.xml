@@ -4,7 +4,7 @@
 
     <!-- Tambahkan izin internet di sini -->
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -43,8 +43,6 @@
         <!-- EditPasswordActivity -->
         <activity android:name=".EditPasswordActivity" />
 
-        <!-- EditEmailActivity -->
-        <activity android:name=".EditEmailActivity" />
 
         <!-- PengembunanActivity -->
         <activity
@@ -53,6 +51,9 @@
 
         <!-- NotifikasiActivity -->
         <activity android:name=".NotifikasiActivity" />
+
+
+
 
     </application>
 </manifest>

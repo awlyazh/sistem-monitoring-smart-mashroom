@@ -68,6 +68,9 @@
     <string name="email_user">jamurtiramridho@gmail.com</string>
     <string name="hidden_password">******</string>
 
+    <string name="histori_notifikasi">Histori Notifikasi</string>
+
+
     <!-- 🔙 Aksesibilitas untuk tombol kembali -->
     <string name="back_to_profile">Kembali ke Profil</string>
 
