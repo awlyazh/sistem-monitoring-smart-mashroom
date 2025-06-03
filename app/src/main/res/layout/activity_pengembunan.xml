@@ -19,53 +19,60 @@
             android:orientation="vertical">
 
             <!-- HEADER -->
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="220dp"
                 android:orientation="vertical"
-                android:padding="16dp"
-                android:gravity="center_horizontal"
-                android:background="@drawable/bg_header_blue">
+                android:background="@drawable/bg_header_blue"
+                android:gravity="center"
+                android:padding="16dp">
 
+                <!-- Judul Utama -->
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pengembunan\nJamur Tiram"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    android:textColor="@android:color/white"
-                    android:textAlignment="center" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Taruna Jaya"
-                    android:textColor="@android:color/white"
-                    android:textStyle="bold"
-                    android:layout_marginTop="8dp"
-                    android:textAlignment="center" />
-
-                <TextView
-                    android:id="@+id/textSuhu"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="25.1°"
-                    android:textColor="@android:color/white"
+                    android:text="Pengabutan"
                     android:textSize="26sp"
                     android:textStyle="bold"
-                    android:textAlignment="center" />
+                    android:textColor="@android:color/white"
+                    android:gravity="center" />
 
+                <!-- Subjudul -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jamur Tiram"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:gravity="center"
+                    android:layout_marginTop="2dp" />
+
+                <!-- Nama Peternak -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Taruna Jaya"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="6dp" />
+
+                <!-- Sensor Data -->
                 <TextView
                     android:id="@+id/textFeels"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Feels like: 25.1°\nHumidity: 90.0%"
+                    android:text="Feels like: --°\nHumidity: --%"
+                    android:textSize="17sp"
                     android:textColor="@android:color/white"
+                    android:gravity="center"
+                    android:layout_marginTop="8dp"
                     android:textAlignment="center" />
             </LinearLayout>
 
-            <!-- Auto Switch -->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -97,11 +104,22 @@
                 android:id="@+id/textStatus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pengembunan manual jamur tiram sedang berhenti"
+                android:text="Pengabutan manual jamur tiram sedang berhenti"
                 android:textColor="#1A3F3D"
                 android:textAlignment="center"
                 android:textStyle="bold"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Tambahan TextView textKondisi -->
+            <TextView
+                android:id="@+id/textKondisi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kondisi awal"
+                android:textColor="#1A3F3D"
+                android:textAlignment="center"
+                android:textStyle="bold"
                 android:layout_marginBottom="16dp" />
 
             <!-- Button Manual ON/OFF -->
@@ -115,6 +133,7 @@
                 android:background="@drawable/bg_button_off"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
+
 
             <!-- Card Section (Status Sensor/Suhu & Humidity) -->
             <LinearLayout
@@ -132,7 +151,7 @@
                     android:layout_weight="1"
                     android:layout_height="100dp"
                     android:orientation="vertical"
-                    android:background="@color/card_temp_stable"
+                    android:background="@color/card_humid_stable"
                     android:padding="12dp"
                     android:layout_marginEnd="8dp">
 
@@ -147,7 +166,7 @@
                         android:id="@+id/textHumidity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="💧 Humidity\n85.0 %"
+                        android:text="💧\nHumidity\n85.0 %"
                         android:textSize="16sp" />
                 </LinearLayout>
 
@@ -158,7 +177,7 @@
                     android:layout_weight="1"
                     android:layout_height="100dp"
                     android:orientation="vertical"
-                    android:background="@color/card_humid_stable"
+                    android:background="@color/card_temp_stable"
                     android:padding="12dp"
                     android:layout_marginStart="8dp">
 
@@ -185,7 +204,6 @@
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:background="#4677B2"
         app:labelVisibilityMode="unlabeled"
         app:itemIconTint="@color/nav_item_color"
