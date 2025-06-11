@@ -157,6 +157,7 @@ public class PengembunanActivity extends AppCompatActivity {
 
     private void toggleManualMode() {
         isManualOn = !isManualOn;
+        mDatabase.child("pompa").child("status_pompa").setValue(isManualOn ? true : false);
         mDatabase.child("status_pompa").setValue(isManualOn ? "ON" : "OFF");
         updateManualUI();
     }
