@@ -10,6 +10,262 @@
     <!-- Konten Scrollable -->
     <ScrollView
         android:layout_width="match_parent"
+    <?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#D8E8F9">
+
+        <!-- Konten Scrollable -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true"
+            android:clipToPadding="false">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="16dp">
+
+                <!-- Header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginHorizontal="24dp"
+                    android:gravity="center"
+                    android:background="@drawable/bg_header_blue">
+
+                    <TextView
+                        android:id="@+id/tvGreeting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Halo, Soehardi!"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:id="@+id/tvWelcome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Selamat datang di Smart Mushroom"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp"
+                        android:gravity="center"
+                        android:layout_marginTop="4dp" />
+                </LinearLayout>
+
+                <!-- Gambar Jamur -->
+                <FrameLayout
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/circle_background">
+
+                    <ImageView
+                        android:id="@+id/imgMushroom"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/logo_jamur"
+                        android:scaleType="centerCrop"
+                        android:padding="16dp" />
+                </FrameLayout>
+
+                <!-- Tanggal dan Lokasi -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="12dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sabtu, 22 Maret 2025"
+                        android:textColor="@color/dark_blue"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:id="@+id/tvLocation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Taruna Jaya"
+                        android:textColor="#000066"
+                        android:textSize="14sp"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="2dp" />
+                </LinearLayout>
+
+                <!-- Status -->
+                <Button
+                    android:id="@+id/statusButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Kelembaban Udara dan Suhu Udara Stabil"
+                    android:backgroundTint="@color/blue"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:layout_marginTop="16dp" />
+
+                <!-- Kelembaban & Suhu -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:weightSum="2"
+                    android:paddingHorizontal="16dp">
+
+                    <!-- Kelembaban -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Kelembaban Udara"
+                            android:textSize="14sp"
+                            android:textColor="#000066"
+                            android:layout_marginBottom="8dp" />
+
+                        <com.github.lzyzsd.circleprogress.DonutProgress
+                            android:id="@+id/tvHumidityCircle"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            app:donut_progress="90"
+                            app:donut_max="100"
+                            app:donut_unfinished_color="#E0E0E0"
+                            app:donut_finished_color="@color/blue"
+                            app:donut_text="90.0 %"
+                            app:donut_text_color="#000066"
+                            app:donut_background_color="#FFFFFF"
+                            android:layout_gravity="center" />
+                    </LinearLayout>
+
+                    <!-- Suhu -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Suhu Udara"
+                            android:textSize="14sp"
+                            android:textColor="#000066"
+                            android:layout_marginBottom="8dp" />
+
+                        <com.github.lzyzsd.circleprogress.DonutProgress
+                            android:id="@+id/tvTempCircle"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            app:donut_progress="25"
+                            app:donut_max="50"
+                            app:donut_unfinished_color="#E0E0E0"
+                            app:donut_finished_color="#4A78A6"
+                            app:donut_text="25.1 °C"
+                            app:donut_text_color="#000066"
+                            app:donut_background_color="#FFFFFF"
+                            android:layout_gravity="center" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Card Informasi Detail -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:weightSum="2">
+
+                    <!-- Humidity Card -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/card_white"
+                        android:orientation="horizontal"
+                        android:padding="12dp"
+                        android:elevation="4dp"
+                        android:layout_marginEnd="8dp"
+                        android:gravity="center">
+
+                        <!-- Tambahkan ID pada TextView Humidity -->
+                        <TextView
+                            android:id="@+id/tvHumidityText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="💧 Humidity\n  90.0 %"
+                            android:textColor="#1E1E1E"
+                            android:textSize="14sp"
+                            android:gravity="center" />
+                    </LinearLayout>
+
+                    <!-- Temp Card -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/card_white"
+                        android:orientation="horizontal"
+                        android:padding="12dp"
+                        android:elevation="4dp"
+                        android:layout_marginStart="8dp"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/tvTempText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" 🌡 Temp. Control\n  25.1 °C"
+                            android:textColor="#1E1E1E"
+                            android:textSize="14sp"
+                            android:gravity="center" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- Bottom Navigation -->
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#4677B2"
+            app:labelVisibilityMode="unlabeled"
+            app:itemIconTint="@color/nav_item_color"
+            app:itemTextColor="@color/nav_item_color"
+            app:menu="@menu/bottom_nav_menu"/>
+    </LinearLayout>
         android:layout_height="0dp"
         android:layout_weight="1"
         android:fillViewport="true"
