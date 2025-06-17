@@ -35,6 +35,9 @@ public class NotifikasiActivity extends AppCompatActivity {
     private static final long SIX_HOURS_MILLIS = 6 * 60 * 60 * 1000;
     private static final int REQUEST_NOTIFICATION_PERMISSION = 1001;
 
+    private Double lastSuhu = null;
+    private Double lastKelembaban = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -162,23 +165,34 @@ public class NotifikasiActivity extends AppCompatActivity {
     }
 
     private void cekSuhuKelembaban(double suhu, double kelembaban) {
-        boolean suhuTidakStabil = true;
-        boolean kelembabanTidakStabil = false;
-
-        if (suhuTidakStabil || kelembabanTidakStabil) {
-            String status;
-            if (suhuTidakStabil && kelembabanTidakStabil) {
-                status = "Suhu dan Kelembaban Tidak Stabil";
-            } else if (suhuTidakStabil) {
-                status = "Suhu Tidak Stabil";
-            } else {
-                status = "Kelembaban Tidak Stabil";
+        // Hindari notifikasi jika tidak ada perubahan signifikan
+        if (lastSuhu != null && lastKelembaban != null) {
+            if (Math.abs(suhu - lastSuhu) < 0.5 && Math.abs(kelembaban - lastKelembaban) < 1) {
+                return;
             }
+        }
 
+        lastSuhu = suhu;
+        lastKelembaban = kelembaban;
+
+        List<String> masalah = new ArrayList<>();
+
+        if (suhu < 24) {
+            masalah.add("Suhu terlalu rendah");
+        } else if (suhu > 27) {
+            masalah.add("Suhu terlalu tinggi");
+        }
+
+        if (kelembaban < 80) {
+            masalah.add("Kelembaban terlalu rendah");
+        } else if (kelembaban > 90) {
+            masalah.add("Kelembaban terlalu tinggi");
+        }
+
+        if (!masalah.isEmpty()) {
+            String status = String.join(" dan ", masalah);
             Timestamp now = Timestamp.now();
             addNotification(status, now);
-
-            // ✅ Tampilkan notifikasi popup
             NotifikasiHelper.showNotification(this, status);
         }
     }

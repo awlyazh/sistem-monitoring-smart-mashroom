@@ -14,7 +14,6 @@
         android:layout_weight="1"
         android:fillViewport="true"
         android:clipToPadding="false">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -32,7 +31,6 @@
                 android:layout_marginHorizontal="24dp"
                 android:gravity="center"
                 android:background="@drawable/bg_header_blue">
-
                 <TextView
                     android:id="@+id/tvGreeting"
                     android:layout_width="wrap_content"
@@ -42,7 +40,6 @@
                     android:textStyle="bold"
                     android:textSize="20sp"
                     android:gravity="center" />
-
                 <TextView
                     android:id="@+id/tvWelcome"
                     android:layout_width="wrap_content"
@@ -61,7 +58,6 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/circle_background">
-
                 <ImageView
                     android:id="@+id/imgMushroom"
                     android:layout_width="match_parent"
@@ -78,7 +74,6 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="12dp"
                 android:orientation="vertical">
-
                 <TextView
                     android:id="@+id/tvDate"
                     android:layout_width="wrap_content"
@@ -88,7 +83,6 @@
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:gravity="center" />
-
                 <TextView
                     android:id="@+id/tvLocation"
                     android:layout_width="wrap_content"
@@ -130,7 +124,6 @@
                     android:layout_weight="1"
                     android:orientation="vertical"
                     android:gravity="center">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -138,7 +131,6 @@
                         android:textSize="14sp"
                         android:textColor="#000066"
                         android:layout_marginBottom="8dp" />
-
                     <com.github.lzyzsd.circleprogress.DonutProgress
                         android:id="@+id/tvHumidityCircle"
                         android:layout_width="120dp"
@@ -160,7 +152,6 @@
                     android:layout_weight="1"
                     android:orientation="vertical"
                     android:gravity="center">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -168,7 +159,6 @@
                         android:textSize="14sp"
                         android:textColor="#000066"
                         android:layout_marginBottom="8dp" />
-
                     <com.github.lzyzsd.circleprogress.DonutProgress
                         android:id="@+id/tvTempCircle"
                         android:layout_width="120dp"
@@ -205,13 +195,12 @@
                     android:elevation="4dp"
                     android:layout_marginEnd="8dp"
                     android:gravity="center">
-
-                    <!-- Tambahkan ID pada TextView Humidity -->
                     <TextView
                         android:id="@+id/tvHumidityText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="💧 Humidity\n  90.0 %"
+                        android:text="💧 Humidity
+  90.0 %"
                         android:textColor="#1E1E1E"
                         android:textSize="14sp"
                         android:gravity="center" />
@@ -228,12 +217,12 @@
                     android:elevation="4dp"
                     android:layout_marginStart="8dp"
                     android:gravity="center">
-
                     <TextView
                         android:id="@+id/tvTempText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=" 🌡 Temp. Control\n  25.1 °C"
+                        android:text=" 🌡 Temp. Control
+  25.1 °C"
                         android:textColor="#1E1E1E"
                         android:textSize="14sp"
                         android:gravity="center" />
