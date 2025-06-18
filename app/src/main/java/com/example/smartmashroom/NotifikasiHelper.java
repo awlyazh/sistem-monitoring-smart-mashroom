@@ -17,16 +17,13 @@ public class NotifikasiHelper {
     private static final String CHANNEL_DESC = "Notifikasi suhu dan kelembaban jamur";
 
     public static void showNotification(Context context, String message) {
-        // Cek izin POST_NOTIFICATIONS (Android 13+)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if (ContextCompat.checkSelfPermission(context, android.Manifest.permission.POST_NOTIFICATIONS)
                     != PackageManager.PERMISSION_GRANTED) {
-                // Tidak ada izin, batalkan notifikasi
                 return;
             }
         }
 
-        // Buat channel (Android 8+)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel(
                     CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_HIGH
@@ -39,7 +36,7 @@ public class NotifikasiHelper {
         }
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_notif) // ganti sesuai dengan drawable kamu
+                .setSmallIcon(android.R.drawable.ic_dialog_alert) // Bisa diganti ic_notif
                 .setContentTitle("SmartMushroom")
                 .setContentText(message)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
