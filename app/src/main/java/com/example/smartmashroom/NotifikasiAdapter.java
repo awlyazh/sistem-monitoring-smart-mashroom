@@ -23,23 +23,30 @@ public class NotifikasiAdapter extends RecyclerView.Adapter<NotifikasiAdapter.Vi
 
     @NonNull
     @Override
-    public NotifikasiAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_notification, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NotifikasiAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         NotifikasiItem item = notifList.get(position);
+
+        // Format tanggal
         String tanggalFormatted = item.getTanggal() != null ?
                 new SimpleDateFormat("dd MMM yyyy, HH:mm", Locale.getDefault())
                         .format(item.getTanggal().toDate()) :
                 "Tanggal tidak tersedia";
 
-        holder.checkBox.setText("[" + tanggalFormatted + "] " + item.getStatus());
+        // Set teks ke TextView, bukan ke CheckBox
+        holder.textStatus.setText(item.getStatus());
+        holder.textTanggal.setText("[" + tanggalFormatted + "]");
+
+        // Set status CheckBox
         holder.checkBox.setChecked(item.isSelected());
 
+        // Listener perubahan checkbox
         holder.checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             item.setSelected(isChecked);
         });
@@ -52,10 +59,13 @@ public class NotifikasiAdapter extends RecyclerView.Adapter<NotifikasiAdapter.Vi
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         CheckBox checkBox;
+        TextView textStatus, textTanggal;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            checkBox = itemView.findViewById(R.id.textTitle); // Sesuaikan dengan id checkbox di item_notification.xml
+            checkBox = itemView.findViewById(R.id.checkBox);
+            textStatus = itemView.findViewById(R.id.textStatus);
+            textTanggal = itemView.findViewById(R.id.textTanggal);
         }
     }
 }
