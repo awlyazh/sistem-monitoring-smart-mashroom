@@ -40,6 +40,10 @@ public class PengembunanActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // ✅ HILANGKAN ACTION BAR PUTIH
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         setContentView(R.layout.activity_pengembunan);
 
         switchAuto = findViewById(R.id.switchAuto);

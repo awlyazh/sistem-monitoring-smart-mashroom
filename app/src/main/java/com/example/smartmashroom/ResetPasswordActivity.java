@@ -19,9 +19,15 @@ public class ResetPasswordActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // ✅ Tambahkan baris ini untuk menyembunyikan ActionBar putih di atas
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         setContentView(R.layout.activity_reset_password);
 
-        EditText etEmail = findViewById(R.id.etEmail); // TAMBAHKAN FIELD EMAIL DI LAYOUT
+        EditText etEmail = findViewById(R.id.etEmail);
         EditText etNewPassword = findViewById(R.id.etNewPassword);
         EditText etConfirmPassword = findViewById(R.id.etConfirmPassword);
         ImageView ivToggleNewPassword = findViewById(R.id.ivToggleNewPassword);

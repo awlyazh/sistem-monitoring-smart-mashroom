@@ -19,6 +19,12 @@ public class EditNamaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // ✅ Sembunyikan action bar putih di atas
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         setContentView(R.layout.activity_edit_nama);
 
         editNama = findViewById(R.id.edit_nama);
@@ -43,7 +49,7 @@ public class EditNamaActivity extends AppCompatActivity {
 
         // ===== BOTTOM NAVIGATION =====
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
-        bottomNav.setSelectedItemId(R.id.menu_profile); // set item aktif
+        bottomNav.setSelectedItemId(R.id.menu_profile);
 
         bottomNav.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
@@ -61,6 +67,7 @@ public class EditNamaActivity extends AppCompatActivity {
                 startActivity(new Intent(EditNamaActivity.this, ProfilActivity.class));
                 return true;
             }
+
             return false;
         });
     }
