@@ -102,7 +102,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Kelembaban Udara dan Suhu Udara Stabil"
-                android:background="#457BAA"
+                android:background="@drawable/bg_status_blue"
                 android:textColor="#FFFFFF"
                 android:paddingHorizontal="16dp"
                 android:paddingVertical="8dp"
@@ -111,7 +111,7 @@
                 android:layout_marginTop="16dp"
                 android:gravity="center"
                 android:layout_marginBottom="8dp"
-                android:elevation="2dp"
+                android:elevation="0dp"
                 android:layout_marginHorizontal="16dp"
                 android:backgroundTint="@null" />
 
@@ -200,7 +200,6 @@
                     android:background="@drawable/card_white"
                     android:orientation="horizontal"
                     android:padding="12dp"
-                    android:elevation="4dp"
                     android:layout_marginEnd="8dp"
                     android:gravity="center">
                     <TextView
@@ -221,14 +220,13 @@
                     android:background="@drawable/card_white"
                     android:orientation="horizontal"
                     android:padding="12dp"
-                    android:elevation="4dp"
                     android:layout_marginStart="8dp"
                     android:gravity="center">
                     <TextView
                         android:id="@+id/tvTempText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=" 🌡 Temp. Control\n25.1 °C"
+                        android:text="🌡 Temp. Control\n25.1 °C"
                         android:textColor="#1E1E1E"
                         android:textSize="14sp"
                         android:gravity="center" />
