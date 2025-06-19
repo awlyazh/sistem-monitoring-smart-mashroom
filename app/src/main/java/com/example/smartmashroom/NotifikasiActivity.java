@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -41,6 +42,13 @@ public class NotifikasiActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // ✅ HILANGKAN ACTION BAR PUTIH
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
+
         setContentView(R.layout.activity_notifikasi);
 
         recyclerView = findViewById(R.id.recyclerViewNotifikasi);
