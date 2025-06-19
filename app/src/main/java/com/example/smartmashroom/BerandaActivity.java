@@ -26,14 +26,19 @@ public class BerandaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // ✅ Sembunyikan action bar putih
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         setContentView(R.layout.activity_beranda);
 
         humidityProgress = findViewById(R.id.tvHumidityCircle);
         tempProgress = findViewById(R.id.tvTempCircle);
-
         tvHumidityText = findViewById(R.id.tvHumidityText);
         tvTempText = findViewById(R.id.tvTempText);
-        tvStatus = findViewById(R.id.tvStatus); // Tambahkan TextView status
+        tvStatus = findViewById(R.id.tvStatus);
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -87,17 +92,17 @@ public class BerandaActivity extends AppCompatActivity {
                     // Atur status keseluruhan
                     if (isHumidityStable && isTempStable) {
                         tvStatus.setText("Kelembaban Udara dan Suhu Udara Stabil");
-                        tvStatus.setBackgroundColor(Color.parseColor("#457BAA")); // warna biru
+                        tvStatus.setBackgroundColor(Color.parseColor("#457BAA")); // biru
                     } else {
                         tvStatus.setText("Kelembaban Udara dan Suhu Udara Tidak Stabil");
-                        tvStatus.setBackgroundColor(Color.RED); // warna merah
+                        tvStatus.setBackgroundColor(Color.RED);
                     }
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                // Error handling
+                // error log
             }
         });
     }

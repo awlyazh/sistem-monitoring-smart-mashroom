@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.method.PasswordTransformationMethod;
@@ -44,6 +45,14 @@ public class ProfilActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // ✅ Hilangkan ActionBar putih di atas
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
+
+
         setContentView(R.layout.activity_profil);
 
         // Inisialisasi UI
@@ -57,28 +66,24 @@ public class ProfilActivity extends AppCompatActivity {
         btnEditPhoto = findViewById(R.id.btn_edit_photo);
         btnKeluar = findViewById(R.id.btn_keluar);
 
-        // Ambil data dari SharedPreferences untuk nama & password
         SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
         nama = prefs.getString("nama", nama);
         password = prefs.getString("password", password);
 
         updateUI();
 
-        // Klik ubah nama
         itemNama.setOnClickListener(v -> {
             Intent intent = new Intent(ProfilActivity.this, EditNamaActivity.class);
             intent.putExtra("nama", nama);
             startActivityForResult(intent, REQUEST_NAMA);
         });
 
-        // Klik ubah password
         itemPassword.setOnClickListener(v -> {
             Intent intent = new Intent(ProfilActivity.this, EditPasswordActivity.class);
             intent.putExtra("password", password);
             startActivityForResult(intent, REQUEST_PASSWORD);
         });
 
-        // Klik ubah foto profil
         imageProfile.setOnClickListener(v -> {
             Intent pickPhoto = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             startActivityForResult(pickPhoto, PICK_IMAGE);
@@ -89,7 +94,6 @@ public class ProfilActivity extends AppCompatActivity {
             startActivityForResult(pickPhoto, PICK_IMAGE);
         });
 
-        // Toggle password visibility
         ivTogglePassword.setOnClickListener(v -> {
             if (tvPassword.getTransformationMethod() instanceof PasswordTransformationMethod) {
                 tvPassword.setTransformationMethod(null);
@@ -100,13 +104,11 @@ public class ProfilActivity extends AppCompatActivity {
             }
         });
 
-        // Logout
         btnKeluar.setOnClickListener(v -> {
             SharedPreferences.Editor editor = getSharedPreferences("UserPrefs", MODE_PRIVATE).edit();
             editor.clear();
             editor.apply();
 
-            // Logout Firebase
             FirebaseAuth.getInstance().signOut();
 
             Intent intent = new Intent(ProfilActivity.this, LoginActivity.class);
@@ -115,7 +117,6 @@ public class ProfilActivity extends AppCompatActivity {
             finish();
         });
 
-        // Bottom Navigation
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.menu_profile);
 
@@ -158,8 +159,6 @@ public class ProfilActivity extends AppCompatActivity {
                     try {
                         Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageUri);
                         imageProfile.setImageBitmap(bitmap);
-
-                        // Upload the image to Firebase Storage
                         uploadProfileImage(selectedImageUri);
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -174,7 +173,6 @@ public class ProfilActivity extends AppCompatActivity {
     }
 
     private void updateUI() {
-        // Ambil user dari Firebase Auth
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
         if (currentUser != null) {
@@ -201,11 +199,9 @@ public class ProfilActivity extends AppCompatActivity {
         StorageReference profileImageRef = storageRef.child("profile_images/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + ".jpg");
 
         profileImageRef.putFile(imageUri)
-                .addOnSuccessListener(taskSnapshot -> {
-                    Toast.makeText(ProfilActivity.this, "Foto Profil berhasil diupdate", Toast.LENGTH_SHORT).show();
-                })
-                .addOnFailureListener(e -> {
-                    Toast.makeText(ProfilActivity.this, "Gagal mengupdate foto profil", Toast.LENGTH_SHORT).show();
-                });
+                .addOnSuccessListener(taskSnapshot ->
+                        Toast.makeText(ProfilActivity.this, "Foto Profil berhasil diupdate", Toast.LENGTH_SHORT).show())
+                .addOnFailureListener(e ->
+                        Toast.makeText(ProfilActivity.this, "Gagal mengupdate foto profil", Toast.LENGTH_SHORT).show());
     }
 }

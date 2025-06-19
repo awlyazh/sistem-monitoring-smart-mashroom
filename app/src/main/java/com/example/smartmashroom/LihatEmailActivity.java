@@ -17,11 +17,17 @@ public class LihatEmailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_email); // jika sudah ganti nama XML, ganti juga di sini
+
+        // ✅ Hilangkan ActionBar putih
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
+        setContentView(R.layout.activity_edit_email); // ganti jika layout sudah diganti namanya
 
         tvEmailLama = findViewById(R.id.tv_email_lama);
 
-        // Ambil email dari Firebase (atau bisa juga dari Intent jika dikirim dari activity sebelumnya)
+        // Ambil email dari Firebase
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             tvEmailLama.setText(user.getEmail());

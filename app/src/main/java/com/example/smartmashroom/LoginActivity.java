@@ -32,6 +32,12 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // ✅ Tambahkan ini untuk menyembunyikan ActionBar putih di atas
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         setContentView(R.layout.activity_login);
 
         emailInput = findViewById(R.id.etEmail);
@@ -46,72 +52,60 @@ public class LoginActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
-        // Cek apakah rememberMe dicentang sebelumnya
         if (sharedPreferences.getBoolean("rememberMe", false)) {
             String savedEmail = sharedPreferences.getString("email", "");
             String savedPassword = sharedPreferences.getString("password", "");
-
             emailInput.setText(savedEmail);
             passwordInput.setText(savedPassword);
             cbRememberMe.setChecked(true);
         }
 
-        loginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String email = emailInput.getText().toString().trim();
-                String password = passwordInput.getText().toString().trim();
+        loginBtn.setOnClickListener(v -> {
+            String email = emailInput.getText().toString().trim();
+            String password = passwordInput.getText().toString().trim();
 
-                if (email.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(LoginActivity.this, "Email dan sandi tidak boleh kosong", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                // Simpan email dan password jika checkbox dicentang
-                if (cbRememberMe.isChecked()) {
-                    editor.putBoolean("rememberMe", true);
-                    editor.putString("email", email);
-                    editor.putString("password", password);
-                    editor.apply();
-                } else {
-                    editor.clear();
-                    editor.apply();
-                }
-
-                mAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(task -> {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(LoginActivity.this, "Login berhasil", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(LoginActivity.this, BerandaActivity.class));
-                                finish();
-                            } else {
-                                Toast.makeText(LoginActivity.this, "Email atau password salah", Toast.LENGTH_SHORT).show();
-                            }
-                        });
+            if (email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(LoginActivity.this, "Email dan sandi tidak boleh kosong", Toast.LENGTH_SHORT).show();
+                return;
             }
+
+            if (cbRememberMe.isChecked()) {
+                editor.putBoolean("rememberMe", true);
+                editor.putString("email", email);
+                editor.putString("password", password);
+                editor.apply();
+            } else {
+                editor.clear();
+                editor.apply();
+            }
+
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(LoginActivity.this, "Login berhasil", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(LoginActivity.this, BerandaActivity.class));
+                            finish();
+                        } else {
+                            Toast.makeText(LoginActivity.this, "Email atau password salah", Toast.LENGTH_SHORT).show();
+                        }
+                    });
         });
 
-        lupaSandi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, ResetPasswordActivity.class));
-            }
+        lupaSandi.setOnClickListener(v -> {
+            startActivity(new Intent(LoginActivity.this, ResetPasswordActivity.class));
         });
 
-        passwordToggle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isPasswordVisible) {
-                    passwordInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                    passwordToggle.setImageResource(R.drawable.ic_eye_closed);
-                    isPasswordVisible = false;
-                } else {
-                    passwordInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
-                    passwordToggle.setImageResource(R.drawable.ic_eye_open);
-                    isPasswordVisible = true;
-                }
-                passwordInput.setSelection(passwordInput.getText().length());
+        passwordToggle.setOnClickListener(v -> {
+            if (isPasswordVisible) {
+                passwordInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                passwordToggle.setImageResource(R.drawable.ic_eye_closed);
+                isPasswordVisible = false;
+            } else {
+                passwordInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                passwordToggle.setImageResource(R.drawable.ic_eye_open);
+                isPasswordVisible = true;
             }
+            passwordInput.setSelection(passwordInput.getText().length());
         });
     }
 }

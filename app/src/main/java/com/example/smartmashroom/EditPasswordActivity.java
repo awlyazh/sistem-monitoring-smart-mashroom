@@ -20,6 +20,12 @@ public class EditPasswordActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // ✅ Hilangkan ActionBar putih
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         setContentView(R.layout.activity_edit_password);
 
         etOldPassword = findViewById(R.id.et_old_password);
@@ -54,7 +60,7 @@ public class EditPasswordActivity extends AppCompatActivity {
 
         // ==== Bottom Navigation ====
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
-        bottomNav.setSelectedItemId(R.id.menu_profile); // aktifkan tab Profil
+        bottomNav.setSelectedItemId(R.id.menu_profile);
 
         bottomNav.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
