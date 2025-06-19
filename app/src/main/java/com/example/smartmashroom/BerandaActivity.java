@@ -1,7 +1,8 @@
-                                                                    package com.example.smartmashroom;
+package com.example.smartmashroom;
 
 import android.animation.ValueAnimator;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -20,8 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class BerandaActivity extends AppCompatActivity {
 
     DonutProgress humidityProgress, tempProgress;
-    TextView tvHumidityText, tvTempText;
-
+    TextView tvHumidityText, tvTempText, tvStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +33,7 @@ public class BerandaActivity extends AppCompatActivity {
 
         tvHumidityText = findViewById(R.id.tvHumidityText);
         tvTempText = findViewById(R.id.tvTempText);
+        tvStatus = findViewById(R.id.tvStatus); // Tambahkan TextView status
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -64,14 +65,32 @@ public class BerandaActivity extends AppCompatActivity {
                     Float humidity = snapshot.child("kelembaban").getValue(Float.class);
                     Float temperature = snapshot.child("suhu").getValue(Float.class);
 
+                    boolean isHumidityStable = false;
+                    boolean isTempStable = false;
+
                     if (humidity != null) {
+                        isHumidityStable = humidity == 80.0f;
+                        int color = isHumidityStable ? Color.parseColor("#2196F3") : Color.RED;
+                        humidityProgress.setFinishedStrokeColor(color);
                         animateDonutProgress(humidityProgress, humidityProgress.getProgress(), humidity, "%");
                         tvHumidityText.setText("💧 Humidity\n  " + humidity + " %");
                     }
 
                     if (temperature != null) {
+                        isTempStable = temperature >= 24.0f && temperature <= 27.0f;
+                        int color = isTempStable ? Color.parseColor("#2196F3") : Color.RED;
+                        tempProgress.setFinishedStrokeColor(color);
                         animateDonutProgress(tempProgress, tempProgress.getProgress(), temperature, "°C");
                         tvTempText.setText("🌡 Temp. Control\n  " + temperature + " °C");
+                    }
+
+                    // Atur status keseluruhan
+                    if (isHumidityStable && isTempStable) {
+                        tvStatus.setText("Kelembaban Udara dan Suhu Udara Stabil");
+                        tvStatus.setBackgroundColor(Color.parseColor("#457BAA")); // warna biru
+                    } else {
+                        tvStatus.setText("Kelembaban Udara dan Suhu Udara Tidak Stabil");
+                        tvStatus.setBackgroundColor(Color.RED); // warna merah
                     }
                 }
             }
@@ -81,7 +100,6 @@ public class BerandaActivity extends AppCompatActivity {
                 // Error handling
             }
         });
-
     }
 
     private void animateDonutProgress(DonutProgress donut, float from, float to, String suffix) {
