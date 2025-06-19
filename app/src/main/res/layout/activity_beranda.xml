@@ -95,17 +95,25 @@
                     android:layout_marginTop="2dp" />
             </LinearLayout>
 
-            <!-- Status -->
-            <Button
-                android:id="@+id/statusButton"
+            <!-- Status TextView -->
+            <TextView
+                android:id="@+id/tvStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Kelembaban Udara dan Suhu Udara Stabil"
-                android:backgroundTint="@color/blue"
+                android:background="#457BAA"
                 android:textColor="#FFFFFF"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp"
+                android:textStyle="bold"
                 android:textSize="14sp"
-                android:layout_marginTop="16dp" />
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:layout_marginBottom="8dp"
+                android:elevation="2dp"
+                android:layout_marginHorizontal="16dp"
+                android:backgroundTint="@null" />
 
             <!-- Kelembaban & Suhu -->
             <LinearLayout
@@ -199,8 +207,7 @@
                         android:id="@+id/tvHumidityText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="💧 Humidity
-  90.0 %"
+                        android:text="💧 Humidity\n90.0 %"
                         android:textColor="#1E1E1E"
                         android:textSize="14sp"
                         android:gravity="center" />
@@ -221,8 +228,7 @@
                         android:id="@+id/tvTempText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=" 🌡 Temp. Control
-  25.1 °C"
+                        android:text=" 🌡 Temp. Control\n25.1 °C"
                         android:textColor="#1E1E1E"
                         android:textSize="14sp"
                         android:gravity="center" />

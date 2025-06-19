@@ -56,6 +56,8 @@ public class NotifikasiActivity extends AppCompatActivity {
         loadNotifications();
 
         btnDelete.setOnClickListener(v -> {
+            adapter.setShowCheckboxes(true); // Tampilkan checkbox untuk memilih
+
             List<NotifikasiItem> selected = new ArrayList<>();
             for (NotifikasiItem item : notifList) {
                 if (item.isSelected()) selected.add(item);
@@ -76,6 +78,7 @@ public class NotifikasiActivity extends AppCompatActivity {
                                 doc.getReference().delete();
                             }
                             notifList.removeAll(selected);
+                            adapter.setShowCheckboxes(false); // Sembunyikan kembali checkbox
                             adapter.notifyDataSetChanged();
                             Toast.makeText(this, selected.size() + " notifikasi dihapus", Toast.LENGTH_SHORT).show();
                         })
@@ -165,7 +168,6 @@ public class NotifikasiActivity extends AppCompatActivity {
     }
 
     private void cekSuhuKelembaban(double suhu, double kelembaban) {
-        // Hindari notifikasi jika tidak ada perubahan signifikan
         if (lastSuhu != null && lastKelembaban != null) {
             if (Math.abs(suhu - lastSuhu) < 0.5 && Math.abs(kelembaban - lastKelembaban) < 1) {
                 return;

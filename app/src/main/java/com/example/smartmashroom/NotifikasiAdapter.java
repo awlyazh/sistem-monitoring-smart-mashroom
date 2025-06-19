@@ -16,6 +16,7 @@ import java.util.Locale;
 public class NotifikasiAdapter extends RecyclerView.Adapter<NotifikasiAdapter.ViewHolder> {
 
     private List<NotifikasiItem> notifList;
+    private boolean showCheckboxes = false;
 
     public NotifikasiAdapter(List<NotifikasiItem> notifList) {
         this.notifList = notifList;
@@ -33,28 +34,56 @@ public class NotifikasiAdapter extends RecyclerView.Adapter<NotifikasiAdapter.Vi
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         NotifikasiItem item = notifList.get(position);
 
-        // Format tanggal
         String tanggalFormatted = item.getTanggal() != null ?
                 new SimpleDateFormat("dd MMM yyyy, HH:mm", Locale.getDefault())
                         .format(item.getTanggal().toDate()) :
                 "Tanggal tidak tersedia";
 
-        // Set teks ke TextView, bukan ke CheckBox
         holder.textStatus.setText(item.getStatus());
         holder.textTanggal.setText("[" + tanggalFormatted + "]");
 
-        // Set status CheckBox
+        // Reset listener checkbox saat view direcycle
+        holder.checkBox.setOnCheckedChangeListener(null);
         holder.checkBox.setChecked(item.isSelected());
 
-        // Listener perubahan checkbox
+        // Atur visibilitas checkbox
+        holder.checkBox.setVisibility(showCheckboxes ? View.VISIBLE : View.GONE);
+
+        // Pasang listener checkbox
         holder.checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             item.setSelected(isChecked);
+        });
+
+        // Klik status untuk toggle checkbox mode
+        holder.textStatus.setOnClickListener(v -> {
+            showCheckboxes = !showCheckboxes;
+
+            // Reset semua dan centang yang diklik
+            for (int i = 0; i < notifList.size(); i++) {
+                notifList.get(i).setSelected(false);
+            }
+
+            if (showCheckboxes) {
+                item.setSelected(true);
+            }
+
+            notifyDataSetChanged();
         });
     }
 
     @Override
     public int getItemCount() {
         return notifList.size();
+    }
+
+    // Optional: method tambahan kalau kamu mau atur dari luar
+    public void setShowCheckboxes(boolean show) {
+        this.showCheckboxes = show;
+        notifyDataSetChanged();
+    }
+
+    public List<NotifikasiItem> getNotifList() {
+        return notifList;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
