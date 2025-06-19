@@ -40,6 +40,10 @@ public class PengembunanActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // ✅ HILANGKAN ACTION BAR PUTIH
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         setContentView(R.layout.activity_pengembunan);
 
         switchAuto = findViewById(R.id.switchAuto);
@@ -157,6 +161,7 @@ public class PengembunanActivity extends AppCompatActivity {
 
     private void toggleManualMode() {
         isManualOn = !isManualOn;
+        mDatabase.child("pompa").child("status_pompa").setValue(isManualOn ? true : false);
         mDatabase.child("status_pompa").setValue(isManualOn ? "ON" : "OFF");
         updateManualUI();
     }

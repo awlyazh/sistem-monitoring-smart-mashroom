@@ -1,6 +1,6 @@
 <resources>
     <!-- 🔰 App Name -->
-    <string name="app_name">SmartMushroom</string>
+    <string name="app_name"></string>
 
     <!-- 🔐 Reset Password Screen -->
     <string name="hint_email">Masukkan Email</string>
@@ -67,6 +67,9 @@
     <string name="nama_user">Soehardi</string>
     <string name="email_user">jamurtiramridho@gmail.com</string>
     <string name="hidden_password">******</string>
+
+    <string name="histori_notifikasi">Histori Notifikasi</string>
+
 
     <!-- 🔙 Aksesibilitas untuk tombol kembali -->
     <string name="back_to_profile">Kembali ke Profil</string>

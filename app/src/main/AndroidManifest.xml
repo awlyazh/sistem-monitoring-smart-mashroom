@@ -2,8 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.smartmashroom">
 
-    <!-- Tambahkan izin internet di sini -->
+    <!-- Tambahkan izin internet dan notifikasi -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +14,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SmartMashroom">
+        android:theme="@style/Theme.SmartMushroom"> <!-- ✅ Diperbaiki di sini -->
 
         <!-- MainActivity sebagai launcher utama -->
         <activity
@@ -25,34 +26,14 @@
             </intent-filter>
         </activity>
 
-        <!-- LoginActivity hanya bisa diakses dari dalam aplikasi -->
         <activity android:name=".LoginActivity" android:exported="false" />
-
-        <!-- ResetPasswordActivity -->
         <activity android:name=".ResetPasswordActivity" android:exported="false" />
-
-        <!-- BerandaActivity -->
         <activity android:name=".BerandaActivity" android:exported="false" />
-
-        <!-- ProfilActivity -->
         <activity android:name=".ProfilActivity" android:exported="false" />
-
-        <!-- EditNamaActivity -->
         <activity android:name=".EditNamaActivity" android:exported="false" />
-
-        <!-- EditPasswordActivity -->
-        <activity android:name=".EditPasswordActivity" />
-
-        <!-- EditEmailActivity -->
-        <activity android:name=".EditEmailActivity" />
-
-        <!-- PengembunanActivity -->
-        <activity
-            android:name=".PengembunanActivity"
-            android:exported="false" />
-
-        <!-- NotifikasiActivity -->
-        <activity android:name=".NotifikasiActivity" />
+        <activity android:name=".EditPasswordActivity" android:exported="false" />
+        <activity android:name=".PengembunanActivity" android:exported="false" />
+        <activity android:name=".NotifikasiActivity" android:exported="false" />
 
     </application>
 </manifest>

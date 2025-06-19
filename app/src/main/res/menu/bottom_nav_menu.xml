@@ -18,6 +18,6 @@
 
     <item
         android:id="@+id/menu_profile"
-        android:icon="@drawable/ic_profile"
+        android:icon="@drawable/ic_profil"
         android:title="Profil" />
 </menu>

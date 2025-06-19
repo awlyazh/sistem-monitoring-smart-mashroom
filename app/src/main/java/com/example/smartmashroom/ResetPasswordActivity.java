@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class ResetPasswordActivity extends AppCompatActivity {
 
     private boolean isNewPasswordVisible = false;
@@ -17,13 +19,22 @@ public class ResetPasswordActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // ✅ Tambahkan baris ini untuk menyembunyikan ActionBar putih di atas
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         setContentView(R.layout.activity_reset_password);
 
+        EditText etEmail = findViewById(R.id.etEmail);
         EditText etNewPassword = findViewById(R.id.etNewPassword);
         EditText etConfirmPassword = findViewById(R.id.etConfirmPassword);
         ImageView ivToggleNewPassword = findViewById(R.id.ivToggleNewPassword);
         ImageView ivToggleConfirmPassword = findViewById(R.id.ivToggleConfirmPassword);
         Button btnSubmit = findViewById(R.id.btnSubmitNewPassword);
+
+        FirebaseAuth auth = FirebaseAuth.getInstance();
 
         // Toggle sandi baru
         ivToggleNewPassword.setOnClickListener(v -> {
@@ -51,21 +62,24 @@ public class ResetPasswordActivity extends AppCompatActivity {
             etConfirmPassword.setSelection(etConfirmPassword.getText().length());
         });
 
-        // Validasi dan submit
+        // Validasi dan submit reset password via email
         btnSubmit.setOnClickListener(v -> {
-            String newPassword = etNewPassword.getText().toString();
-            String confirmPassword = etConfirmPassword.getText().toString();
+            String email = etEmail.getText().toString().trim();
 
-            if (newPassword.isEmpty() || confirmPassword.isEmpty()) {
-                Toast.makeText(this, "Semua kolom harus diisi", Toast.LENGTH_SHORT).show();
-            } else if (newPassword.length() < 6) {
-                etNewPassword.setError("Minimal 6 karakter");
-            } else if (!newPassword.equals(confirmPassword)) {
-                etConfirmPassword.setError("Sandi tidak cocok");
-            } else {
-                Toast.makeText(this, "Sandi berhasil diubah", Toast.LENGTH_SHORT).show();
-                finish();
+            if (email.isEmpty()) {
+                etEmail.setError("Email harus diisi");
+                return;
             }
+
+            auth.sendPasswordResetEmail(email)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(this, "Link reset telah dikirim ke email Anda", Toast.LENGTH_LONG).show();
+                            finish();
+                        } else {
+                            Toast.makeText(this, "Gagal mengirim email reset: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    });
         });
     }
 }
