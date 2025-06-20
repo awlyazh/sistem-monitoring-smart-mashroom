@@ -4,6 +4,8 @@ import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -18,27 +20,29 @@ import com.google.firebase.database.ValueEventListener;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class BerandaActivity extends AppCompatActivity {
 
     DonutProgress humidityProgress, tempProgress;
-    TextView tvHumidityText, tvTempText, tvStatus;
+    TextView tvHumidityText, tvTempText, tvStatus, tvDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // ✅ Sembunyikan action bar putih
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
-
         setContentView(R.layout.activity_beranda);
 
         humidityProgress = findViewById(R.id.tvHumidityCircle);
         tempProgress = findViewById(R.id.tvTempCircle);
+
         tvHumidityText = findViewById(R.id.tvHumidityText);
         tvTempText = findViewById(R.id.tvTempText);
         tvStatus = findViewById(R.id.tvStatus);
+        tvDate = findViewById(R.id.tvDate); // Realtime tanggal & waktu
+
+        updateDateTime(); // Menjalankan waktu realtime
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -89,12 +93,18 @@ public class BerandaActivity extends AppCompatActivity {
                         tvTempText.setText("🌡 Temp. Control\n  " + temperature + " °C");
                     }
 
-                    // Atur status keseluruhan
+                    // Logika status lengkap
                     if (isHumidityStable && isTempStable) {
                         tvStatus.setText("Kelembaban Udara dan Suhu Udara Stabil");
-                        tvStatus.setBackgroundColor(Color.parseColor("#457BAA")); // biru
+                        tvStatus.setBackgroundColor(Color.parseColor("#457BAA")); // Biru stabil
+                    } else if (!isHumidityStable && isTempStable) {
+                        tvStatus.setText("Kelembaban Udara Tidak Stabil");
+                        tvStatus.setBackgroundColor(Color.RED);
+                    } else if (isHumidityStable && !isTempStable) {
+                        tvStatus.setText("Suhu Udara Tidak Stabil");
+                        tvStatus.setBackgroundColor(Color.RED);
                     } else {
-                        tvStatus.setText("Kelembaban Udara dan Suhu Udara Tidak Stabil");
+                        tvStatus.setText("Kelembaban dan Suhu Udara Tidak Stabil");
                         tvStatus.setBackgroundColor(Color.RED);
                     }
                 }
@@ -102,7 +112,7 @@ public class BerandaActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                // error log
+                // Error handling
             }
         });
     }
@@ -116,5 +126,22 @@ public class BerandaActivity extends AppCompatActivity {
             donut.setText(String.format("%.1f %s", value, suffix));
         });
         animator.start();
+    }
+
+    private void updateDateTime() {
+        Handler handler = new Handler(Looper.getMainLooper());
+
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                SimpleDateFormat sdf = new SimpleDateFormat("EEEE, dd MMMM yyyy", new Locale("id", "ID"));
+                String currentDateTime = sdf.format(new Date());
+                tvDate.setText(currentDateTime);
+
+                handler.postDelayed(this, 1000);
+            }
+        };
+
+        handler.post(runnable);
     }
 }
