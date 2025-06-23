@@ -1,10 +1,11 @@
+// NotifikasiActivity.java - Versi Final (Firebase Realtime + Double Click Checkbox)
+
 package com.example.smartmashroom;
 
 import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,8 +20,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.Timestamp;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +35,7 @@ public class NotifikasiActivity extends AppCompatActivity {
     private NotifikasiAdapter adapter;
     private List<NotifikasiItem> notifList;
     private ImageButton btnDelete;
-    private FirebaseFirestore db;
+    private DatabaseReference databaseReference;
 
     private static final long SIX_HOURS_MILLIS = 6 * 60 * 60 * 1000;
     private static final int REQUEST_NOTIFICATION_PERMISSION = 1001;
@@ -43,18 +47,14 @@ public class NotifikasiActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // ✅ HILANGKAN ACTION BAR PUTIH
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
-
 
         setContentView(R.layout.activity_notifikasi);
 
         recyclerView = findViewById(R.id.recyclerViewNotifikasi);
         btnDelete = findViewById(R.id.btn_delete);
-        db = FirebaseFirestore.getInstance();
-
         notifList = new ArrayList<>();
         adapter = new NotifikasiAdapter(notifList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -64,7 +64,7 @@ public class NotifikasiActivity extends AppCompatActivity {
         loadNotifications();
 
         btnDelete.setOnClickListener(v -> {
-            adapter.setShowCheckboxes(true); // Tampilkan checkbox untuk memilih
+            adapter.setShowCheckboxes(true);
 
             List<NotifikasiItem> selected = new ArrayList<>();
             for (NotifikasiItem item : notifList) {
@@ -77,23 +77,14 @@ public class NotifikasiActivity extends AppCompatActivity {
             }
 
             for (NotifikasiItem item : selected) {
-                db.collection("notifikasi")
-                        .whereEqualTo("status", item.getStatus())
-                        .whereEqualTo("tanggal", item.getTanggal())
-                        .get()
-                        .addOnSuccessListener(snapshot -> {
-                            for (QueryDocumentSnapshot doc : snapshot) {
-                                doc.getReference().delete();
-                            }
-                            notifList.removeAll(selected);
-                            adapter.setShowCheckboxes(false); // Sembunyikan kembali checkbox
-                            adapter.notifyDataSetChanged();
-                            Toast.makeText(this, selected.size() + " notifikasi dihapus", Toast.LENGTH_SHORT).show();
-                        })
-                        .addOnFailureListener(e ->
-                                Toast.makeText(this, "Gagal menghapus notifikasi", Toast.LENGTH_SHORT).show()
-                        );
+                DatabaseReference notifRef = FirebaseDatabase.getInstance().getReference("notifikasi").child(item.getId());
+                notifRef.removeValue();
             }
+
+            notifList.removeAll(selected);
+            adapter.setShowCheckboxes(false);
+            adapter.notifyDataSetChanged();
+            Toast.makeText(this, selected.size() + " notifikasi dihapus", Toast.LENGTH_SHORT).show();
         });
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
@@ -120,59 +111,73 @@ public class NotifikasiActivity extends AppCompatActivity {
             return false;
         });
 
-        db.collection("sensor_data").document("latest")
-                .addSnapshotListener((snapshot, e) -> {
-                    if (e != null || snapshot == null || !snapshot.exists()) return;
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("sensor");
 
-                    Double suhu = snapshot.getDouble("suhu");
-                    Double kelembaban = snapshot.getDouble("kelembaban");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Double suhu = snapshot.child("suhu").getValue(Double.class);
+                Double kelembaban = snapshot.child("kelembaban").getValue(Double.class);
 
-                    if (suhu != null && kelembaban != null) {
-                        cekSuhuKelembaban(suhu, kelembaban);
-                    }
-                });
+                if (suhu != null && kelembaban != null) {
+                    cekSuhuKelembaban(suhu, kelembaban);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("FirebaseError", "Gagal mengambil data: " + error.getMessage());
+            }
+        });
     }
 
     private void loadNotifications() {
-        db.collection("notifikasi")
-                .get()
-                .addOnSuccessListener(querySnapshot -> {
-                    notifList.clear();
-                    for (QueryDocumentSnapshot doc : querySnapshot) {
-                        String status = doc.getString("status");
-                        Timestamp tanggal = doc.getTimestamp("tanggal");
-                        notifList.add(new NotifikasiItem(status, tanggal));
+        FirebaseDatabase.getInstance().getReference("notifikasi").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                notifList.clear();
+                for (DataSnapshot data : snapshot.getChildren()) {
+                    NotifikasiItem item = data.getValue(NotifikasiItem.class);
+                    if (item != null) {
+                        item.setId(data.getKey());
+                        notifList.add(item);
                     }
-                    adapter.notifyDataSetChanged();
-                })
-                .addOnFailureListener(e -> {
-                    Log.e("FirestoreError", "Gagal mengambil notifikasi", e);
-                    Toast.makeText(this, "Gagal mengambil notifikasi: " + e.getMessage(), Toast.LENGTH_LONG).show();
-                });
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(NotifikasiActivity.this, "Gagal mengambil notifikasi", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
-    public void addNotification(String status, Timestamp currentTimestamp) {
+    public void addNotification(String status, Timestamp currentTimestamp, double suhu, double kelembaban) {
         long now = System.currentTimeMillis();
         SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
         long lastSavedTimestamp = prefs.getLong("lastSavedTimestamp", 0);
 
-        notifList.add(0, new NotifikasiItem(status, currentTimestamp));
+        NotifikasiItem newItem = new NotifikasiItem(status, currentTimestamp,
+                String.format("%.1f \u00B0C", suhu),
+                String.format("%.1f %%", kelembaban));
+
+        notifList.add(0, newItem);
         adapter.notifyItemInserted(0);
         recyclerView.scrollToPosition(0);
 
         if (now - lastSavedTimestamp > SIX_HOURS_MILLIS) {
-            saveNotificationToFirestore(status, currentTimestamp);
+            saveNotificationToRealtimeDatabase(newItem);
             prefs.edit().putLong("lastSavedTimestamp", now).apply();
         }
     }
 
-    private void saveNotificationToFirestore(String status, Timestamp timestamp) {
-        db.collection("notifikasi")
-                .add(new NotifikasiItem(status, timestamp))
-                .addOnSuccessListener(docRef ->
-                        Toast.makeText(this, "Notifikasi disimpan", Toast.LENGTH_SHORT).show())
-                .addOnFailureListener(e ->
-                        Toast.makeText(this, "Gagal menyimpan notifikasi", Toast.LENGTH_SHORT).show());
+    private void saveNotificationToRealtimeDatabase(NotifikasiItem item) {
+        DatabaseReference notifRef = FirebaseDatabase.getInstance().getReference("notifikasi").push();
+        item.setId(notifRef.getKey());
+        notifRef.setValue(item)
+                .addOnSuccessListener(aVoid -> Toast.makeText(this, "Notifikasi disimpan", Toast.LENGTH_SHORT).show())
+                .addOnFailureListener(e -> Toast.makeText(this, "Gagal menyimpan notifikasi", Toast.LENGTH_SHORT).show());
     }
 
     private void cekSuhuKelembaban(double suhu, double kelembaban) {
@@ -188,9 +193,9 @@ public class NotifikasiActivity extends AppCompatActivity {
         List<String> masalah = new ArrayList<>();
 
         if (suhu < 24) {
-            masalah.add("Suhu terlalu rendah");
+            masalah.add("Suhu terlalu dingin");
         } else if (suhu > 27) {
-            masalah.add("Suhu terlalu tinggi");
+            masalah.add("Suhu terlalu panas");
         }
 
         if (kelembaban < 80) {
@@ -202,8 +207,9 @@ public class NotifikasiActivity extends AppCompatActivity {
         if (!masalah.isEmpty()) {
             String status = String.join(" dan ", masalah);
             Timestamp now = Timestamp.now();
-            addNotification(status, now);
-            NotifikasiHelper.showNotification(this, status);
+            addNotification(status, now, suhu, kelembaban);
+            String pesan = status + " | Suhu: " + suhu + "°C | Kelembaban: " + kelembaban + "%";
+            NotifikasiHelper.showNotification(this, pesan);
         }
     }
 

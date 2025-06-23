@@ -27,7 +27,11 @@ public class PengembunanActivity extends AppCompatActivity {
     private Button btnManual;
     private TextView textStatus;
     private TextView textKondisi;
-    private TextView textFeels; // Tambahan untuk menampilkan suhu dan kelembapan dari Firebase
+    private TextView textFeels;
+    private TextView textHumidity;
+    private TextView textTempControl;
+    private TextView textStatusHumidity;
+    private TextView textStatusTemp;
     private View cardHumidity;
     private View cardTemp;
 
@@ -40,7 +44,6 @@ public class PengembunanActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // ✅ HILANGKAN ACTION BAR PUTIH
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
@@ -50,7 +53,11 @@ public class PengembunanActivity extends AppCompatActivity {
         btnManual = findViewById(R.id.btnManual);
         textStatus = findViewById(R.id.textStatus);
         textKondisi = findViewById(R.id.textKondisi);
-        textFeels = findViewById(R.id.textFeels); // Inisialisasi
+        textFeels = findViewById(R.id.textFeels);
+        textHumidity = findViewById(R.id.textHumidity);
+        textTempControl = findViewById(R.id.textTempControl);
+        textStatusHumidity = findViewById(R.id.textStatusHumidity);
+        textStatusTemp = findViewById(R.id.textStatusTemp);
         cardHumidity = findViewById(R.id.cardHumidity);
         cardTemp = findViewById(R.id.cardTemp);
 
@@ -64,58 +71,63 @@ public class PengembunanActivity extends AppCompatActivity {
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setSelectedItemId(R.id.menu_fogging);
 
-        bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
+        bottomNav.setOnNavigationItemSelectedListener(item -> {
+            int id = item.getItemId();
 
-                if (id == R.id.menu_home) {
-                    startActivity(new Intent(PengembunanActivity.this, BerandaActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                } else if (id == R.id.menu_fogging) {
-                    return true;
-                } else if (id == R.id.menu_notif) {
-                    startActivity(new Intent(PengembunanActivity.this, NotifikasiActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                } else if (id == R.id.menu_profile) {
-                    startActivity(new Intent(PengembunanActivity.this, ProfilActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                }
-                return false;
+            if (id == R.id.menu_home) {
+                startActivity(new Intent(PengembunanActivity.this, BerandaActivity.class));
+                overridePendingTransition(0, 0);
+                return true;
+            } else if (id == R.id.menu_fogging) {
+                return true;
+            } else if (id == R.id.menu_notif) {
+                startActivity(new Intent(PengembunanActivity.this, NotifikasiActivity.class));
+                overridePendingTransition(0, 0);
+                return true;
+            } else if (id == R.id.menu_profile) {
+                startActivity(new Intent(PengembunanActivity.this, ProfilActivity.class));
+                overridePendingTransition(0, 0);
+                return true;
             }
+            return false;
         });
     }
 
     private void monitorSensorData() {
-        mDatabase.child("sensor").addValueEventListener(new ValueEventListener() {
+        DatabaseReference sensorRef = mDatabase.child("sensor");
+
+        sensorRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot snapshot) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     Double suhu = snapshot.child("suhu").getValue(Double.class);
-                    Double kelembapan = snapshot.child("kelembapan").getValue(Double.class);
+                    Double kelembaban = snapshot.child("kelembaban").getValue(Double.class);
 
-                    if (suhu != null) currentSuhu = suhu.floatValue();
-                    if (kelembapan != null) currentKelembapan = kelembapan.floatValue();
+                    if (suhu != null && kelembaban != null) {
+                        currentSuhu = suhu.floatValue();
+                        currentKelembapan = kelembaban.floatValue();
 
-                    // Format nilai suhu dan kelembapan ke 1 angka di belakang koma
-                    String suhuText = String.format(Locale.US, "%.1f", currentSuhu);
-                    String humidText = String.format(Locale.US, "%.1f", currentKelembapan);
+                        String suhuText = String.format(Locale.US, "%.1f", currentSuhu);
+                        String humidText = String.format(Locale.US, "%.1f", currentKelembapan);
 
-                    // Tampilkan di TextView
-                    textFeels.setText("Feels like: " + suhuText + "°\nHumidity: " + humidText + "%");
+                        textFeels.setText("Feels like: " + suhuText + "°\nHumidity: " + humidText + "%");
+                        textHumidity.setText("\uD83D\uDCA7\nHumidity\n" + humidText + " %");
+                        textTempControl.setText("\uD83C\uDF21 Temp. Control\n" + suhuText + " °C");
 
-                    if (switchAuto.isChecked()) {
-                        updateAutoControl();
+                        if (switchAuto.isChecked()) {
+                            updateAutoControl();
+                        }
+                    } else {
+                        textStatus.setText("Data suhu atau kelembapan null.");
                     }
+                } else {
+                    textStatus.setText("Data sensor tidak ditemukan.");
                 }
             }
 
             @Override
-            public void onCancelled(DatabaseError error) {
-                textStatus.setText("Gagal membaca data sensor.");
+            public void onCancelled(@NonNull DatabaseError error) {
+                textStatus.setText("Gagal membaca data sensor: " + error.getMessage());
             }
         });
     }
@@ -136,13 +148,17 @@ public class PengembunanActivity extends AppCompatActivity {
     }
 
     private void updateAutoControl() {
-        if (currentSuhu < 24 || currentSuhu > 27 || currentKelembapan < 80 || currentKelembapan > 90) {
+        boolean kondisiTidakStabil = currentSuhu < 24 || currentSuhu > 27 || currentKelembapan < 80 || currentKelembapan > 90;
+
+        if (kondisiTidakStabil) {
             mDatabase.child("status_pompa").setValue("ON");
             textStatus.setText("Kondisi Tidak Stabil, Pompa ON");
             textKondisi.setText("Kondisi Tidak Stabil");
 
             cardHumidity.setBackgroundColor(ContextCompat.getColor(this, R.color.card_humid_on));
             cardTemp.setBackgroundColor(ContextCompat.getColor(this, R.color.card_temp_on));
+            textStatusHumidity.setText("Status: On");
+            textStatusTemp.setText("Status: On");
 
             btnManual.setBackground(ContextCompat.getDrawable(this, R.drawable.bg_button_on));
             btnManual.setText("ON");
@@ -153,6 +169,8 @@ public class PengembunanActivity extends AppCompatActivity {
 
             cardHumidity.setBackgroundColor(ContextCompat.getColor(this, R.color.card_off));
             cardTemp.setBackgroundColor(ContextCompat.getColor(this, R.color.card_off));
+            textStatusHumidity.setText("Status: Off");
+            textStatusTemp.setText("Status: Off");
 
             btnManual.setBackground(ContextCompat.getDrawable(this, R.drawable.bg_button_off));
             btnManual.setText("OFF");
@@ -161,7 +179,7 @@ public class PengembunanActivity extends AppCompatActivity {
 
     private void toggleManualMode() {
         isManualOn = !isManualOn;
-        mDatabase.child("pompa").child("status_pompa").setValue(isManualOn ? true : false);
+        mDatabase.child("pompa").child("status_pompa").setValue(isManualOn);
         mDatabase.child("status_pompa").setValue(isManualOn ? "ON" : "OFF");
         updateManualUI();
     }
@@ -175,6 +193,8 @@ public class PengembunanActivity extends AppCompatActivity {
 
             cardHumidity.setBackgroundColor(ContextCompat.getColor(this, R.color.card_humid_on));
             cardTemp.setBackgroundColor(ContextCompat.getColor(this, R.color.card_temp_on));
+            textStatusHumidity.setText("Status: On");
+            textStatusTemp.setText("Status: On");
         } else {
             textStatus.setText("Pengabutan Manual: OFF");
             btnManual.setBackground(ContextCompat.getDrawable(this, R.drawable.bg_button_off));
@@ -183,6 +203,8 @@ public class PengembunanActivity extends AppCompatActivity {
 
             cardHumidity.setBackgroundColor(ContextCompat.getColor(this, R.color.card_off));
             cardTemp.setBackgroundColor(ContextCompat.getColor(this, R.color.card_off));
+            textStatusHumidity.setText("Status: Off");
+            textStatusTemp.setText("Status: Off");
         }
     }
 }
