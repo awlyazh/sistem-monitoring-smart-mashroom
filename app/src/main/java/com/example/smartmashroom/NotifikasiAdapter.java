@@ -1,5 +1,8 @@
+// NotifikasiAdapter.java - Support Double Click Checkbox
+
 package com.example.smartmashroom;
 
+import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +20,7 @@ public class NotifikasiAdapter extends RecyclerView.Adapter<NotifikasiAdapter.Vi
 
     private List<NotifikasiItem> notifList;
     private boolean showCheckboxes = false;
+    private long lastClickTime = 0;
 
     public NotifikasiAdapter(List<NotifikasiItem> notifList) {
         this.notifList = notifList;
@@ -41,35 +45,24 @@ public class NotifikasiAdapter extends RecyclerView.Adapter<NotifikasiAdapter.Vi
 
         holder.textStatus.setText(item.getStatus());
         holder.textTanggal.setText("[" + tanggalFormatted + "]");
-        holder.textSuhu.setText("Suhu: " + item.getSuhu() + " °C");
-        holder.textKelembaban.setText("Kelembaban: " + item.getKelembaban() + " %");
+        holder.textSuhu.setText("Suhu: " + item.getSuhu());
+        holder.textKelembaban.setText("Kelembaban: " + item.getKelembaban());
 
-        // Reset listener checkbox saat view direcycle
         holder.checkBox.setOnCheckedChangeListener(null);
         holder.checkBox.setChecked(item.isSelected());
-
-        // Atur visibilitas checkbox
         holder.checkBox.setVisibility(showCheckboxes ? View.VISIBLE : View.GONE);
 
-        // Pasang listener checkbox
         holder.checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             item.setSelected(isChecked);
         });
 
-        // Klik status untuk toggle checkbox mode
-        holder.textStatus.setOnClickListener(v -> {
-            showCheckboxes = !showCheckboxes;
-
-            // Reset semua dan centang yang diklik
-            for (int i = 0; i < notifList.size(); i++) {
-                notifList.get(i).setSelected(false);
+        holder.itemView.setOnClickListener(v -> {
+            long clickTime = SystemClock.elapsedRealtime();
+            if (clickTime - lastClickTime < 400) { // double click threshold
+                showCheckboxes = !showCheckboxes;
+                notifyDataSetChanged();
             }
-
-            if (showCheckboxes) {
-                item.setSelected(true);
-            }
-
-            notifyDataSetChanged();
+            lastClickTime = clickTime;
         });
     }
 
@@ -81,10 +74,6 @@ public class NotifikasiAdapter extends RecyclerView.Adapter<NotifikasiAdapter.Vi
     public void setShowCheckboxes(boolean show) {
         this.showCheckboxes = show;
         notifyDataSetChanged();
-    }
-
-    public List<NotifikasiItem> getNotifList() {
-        return notifList;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

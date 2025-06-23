@@ -1,18 +1,20 @@
+// NotifikasiItem.java - Support Firebase Realtime Database
+
 package com.example.smartmashroom;
 
 import com.google.firebase.Timestamp;
 
 public class NotifikasiItem {
+    private String id;
     private String status;
     private Timestamp tanggal;
     private String suhu;
     private String kelembaban;
-    private boolean selected = false; // untuk checkbox
+    private boolean selected = false;
 
-    // Constructor kosong untuk Firebase
-    public NotifikasiItem() {}
+    public NotifikasiItem() {
+    }
 
-    // Constructor lengkap
     public NotifikasiItem(String status, Timestamp tanggal, String suhu, String kelembaban) {
         this.status = status;
         this.tanggal = tanggal;
@@ -20,7 +22,14 @@ public class NotifikasiItem {
         this.kelembaban = kelembaban;
     }
 
-    // Getter dan Setter
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getStatus() {
         return status;
     }
