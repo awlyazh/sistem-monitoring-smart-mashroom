@@ -48,6 +48,19 @@
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/textSuhu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Suhu: -" />
+
+            <TextView
+                android:id="@+id/textKelembaban"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kelembaban: -" />
+
+
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

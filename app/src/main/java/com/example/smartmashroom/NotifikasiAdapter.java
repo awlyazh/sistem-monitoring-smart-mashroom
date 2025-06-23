@@ -41,6 +41,8 @@ public class NotifikasiAdapter extends RecyclerView.Adapter<NotifikasiAdapter.Vi
 
         holder.textStatus.setText(item.getStatus());
         holder.textTanggal.setText("[" + tanggalFormatted + "]");
+        holder.textSuhu.setText("Suhu: " + item.getSuhu() + " °C");
+        holder.textKelembaban.setText("Kelembaban: " + item.getKelembaban() + " %");
 
         // Reset listener checkbox saat view direcycle
         holder.checkBox.setOnCheckedChangeListener(null);
@@ -76,7 +78,6 @@ public class NotifikasiAdapter extends RecyclerView.Adapter<NotifikasiAdapter.Vi
         return notifList.size();
     }
 
-    // Optional: method tambahan kalau kamu mau atur dari luar
     public void setShowCheckboxes(boolean show) {
         this.showCheckboxes = show;
         notifyDataSetChanged();
@@ -88,13 +89,15 @@ public class NotifikasiAdapter extends RecyclerView.Adapter<NotifikasiAdapter.Vi
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         CheckBox checkBox;
-        TextView textStatus, textTanggal;
+        TextView textStatus, textTanggal, textSuhu, textKelembaban;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             checkBox = itemView.findViewById(R.id.checkBox);
             textStatus = itemView.findViewById(R.id.textStatus);
             textTanggal = itemView.findViewById(R.id.textTanggal);
+            textSuhu = itemView.findViewById(R.id.textSuhu);
+            textKelembaban = itemView.findViewById(R.id.textKelembaban);
         }
     }
 }
