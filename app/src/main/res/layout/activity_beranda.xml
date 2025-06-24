@@ -58,13 +58,14 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/circle_background">
+
                 <ImageView
                     android:id="@+id/imgMushroom"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/logo_jamur"
+                    android:padding="16dp"
                     android:scaleType="centerCrop"
-                    android:padding="16dp" />
+                    android:src="@drawable/logo_jamur" />
             </FrameLayout>
 
             <!-- Tanggal dan Lokasi -->
