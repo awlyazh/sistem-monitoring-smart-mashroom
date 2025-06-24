@@ -53,8 +53,8 @@
 
             <!-- Gambar Jamur -->
             <FrameLayout
-                android:layout_width="200dp"
-                android:layout_height="200dp"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/circle_background">
@@ -63,7 +63,7 @@
                     android:id="@+id/imgMushroom"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="16dp"
+                    android:padding="1dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/logo_jamur" />
             </FrameLayout>
@@ -81,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:text="Sabtu, 22 Maret 2025"
                     android:textColor="@color/dark_blue"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:textStyle="bold"
                     android:gravity="center" />
                 <TextView
@@ -105,10 +105,10 @@
                 android:text="Kelembaban Udara dan Suhu Udara Stabil"
                 android:background="@drawable/bg_status_blue"
                 android:textColor="#FFFFFF"
-                android:paddingHorizontal="16dp"
-                android:paddingVertical="8dp"
+                android:paddingHorizontal="6dp"
+                android:paddingVertical="6dp"
                 android:textStyle="bold"
-                android:textSize="14sp"
+                android:textSize="13sp"
                 android:layout_marginTop="16dp"
                 android:gravity="center"
                 android:layout_marginBottom="8dp"
