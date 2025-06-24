@@ -78,7 +78,7 @@ public class BerandaActivity extends AppCompatActivity {
                     boolean isTempStable = false;
 
                     if (humidity != null) {
-                        isHumidityStable = humidity == 80.0f;
+                        isHumidityStable = humidity >= 80.0f && humidity <= 90.0f;
                         int color = isHumidityStable ? Color.parseColor("#2196F3") : Color.RED;
                         humidityProgress.setFinishedStrokeColor(color);
                         animateDonutProgress(humidityProgress, humidityProgress.getProgress(), humidity, "%");
