@@ -15,16 +15,15 @@
         android:paddingBottom="20dp"
         android:background="@drawable/bg_header_blue"> <!-- tetap pakai lengkung -->
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageProfile"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="35dp"
-            android:background="@drawable/circle_background"
-            android:padding="4dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_profile" />
+            android:src="@drawable/ic_profile"
+            app:civ_border_width="2dp"
+            app:civ_border_color="#FFFFFF" />
 
         <ImageView
             android:id="@+id/btn_edit_photo"
@@ -114,7 +113,7 @@
             android:layout_height="1dp"
             android:background="@color/gray" />
 
-        <!-- Email (versi tanpa ikon) -->
+        <!-- Email -->
         <LinearLayout
             android:id="@+id/item_email"
             android:layout_width="match_parent"
