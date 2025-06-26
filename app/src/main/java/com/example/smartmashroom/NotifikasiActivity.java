@@ -23,11 +23,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class NotifikasiActivity extends AppCompatActivity {
 
@@ -46,11 +43,9 @@ public class NotifikasiActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
-
         setContentView(R.layout.activity_notifikasi);
 
         recyclerView = findViewById(R.id.recyclerViewNotifikasi);
@@ -65,7 +60,6 @@ public class NotifikasiActivity extends AppCompatActivity {
 
         btnDelete.setOnClickListener(v -> {
             adapter.setShowCheckboxes(true);
-
             List<NotifikasiItem> selected = new ArrayList<>();
             for (NotifikasiItem item : notifList) {
                 if (item.isSelected()) selected.add(item);
@@ -92,7 +86,6 @@ public class NotifikasiActivity extends AppCompatActivity {
 
         bottomNav.setOnNavigationItemSelectedListener(item -> {
             int id = item.getItemId();
-
             if (id == R.id.menu_home) {
                 startActivity(new Intent(this, BerandaActivity.class));
                 overridePendingTransition(0, 0);
@@ -112,7 +105,6 @@ public class NotifikasiActivity extends AppCompatActivity {
         });
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("sensor");
-
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -137,10 +129,29 @@ public class NotifikasiActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 notifList.clear();
                 for (DataSnapshot data : snapshot.getChildren()) {
-                    NotifikasiItem item = data.getValue(NotifikasiItem.class);
-                    if (item != null) {
-                        item.setId(data.getKey());
+                    try {
+                        String id = data.getKey();
+                        String status = data.child("status").getValue(String.class);
+                        String suhu = data.child("suhu").getValue(String.class);
+                        String kelembaban = data.child("kelembaban").getValue(String.class);
+                        boolean selected = Boolean.TRUE.equals(data.child("selected").getValue(Boolean.class));
+
+                        long tanggal = 0L;
+                        Object tanggalObj = data.child("tanggal").getValue();
+                        if (tanggalObj instanceof Long) {
+                            tanggal = (Long) tanggalObj;
+                        } else if (tanggalObj instanceof Double) {
+                            tanggal = ((Double) tanggalObj).longValue();
+                        } else {
+                            tanggal = System.currentTimeMillis(); // fallback
+                        }
+
+                        NotifikasiItem item = new NotifikasiItem(status, tanggal, suhu, kelembaban);
+                        item.setId(id);
+                        item.setSelected(selected);
                         notifList.add(item);
+                    } catch (Exception e) {
+                        Log.e("ParseError", "Gagal parsing notifikasi: " + e.getMessage());
                     }
                 }
                 adapter.notifyDataSetChanged();
