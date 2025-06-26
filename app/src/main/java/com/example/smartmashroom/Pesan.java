@@ -2,7 +2,7 @@ package com.example.smartmashroom;
 
 public class Pesan {
     private String status;
-    private long tanggal; // timestamp dalam bentuk long (Unix time millis)
+    private Object tanggal; // ✅ Disimpan sebagai Object agar bisa handle Long atau Double dari Firebase
 
     public Pesan() {}
 
@@ -19,11 +19,24 @@ public class Pesan {
         this.status = status;
     }
 
+    // ✅ Getter fleksibel: bisa handle jika tanggal berupa Long atau Double
     public long getTanggal() {
-        return tanggal;
+        if (tanggal instanceof Long) {
+            return (Long) tanggal;
+        } else if (tanggal instanceof Double) {
+            return ((Double) tanggal).longValue();
+        } else {
+            return System.currentTimeMillis(); // fallback kalau tidak diketahui
+        }
     }
 
+    // ✅ Setter: masih menerima long agar fleksibel saat membuat objek
     public void setTanggal(long tanggal) {
         this.tanggal = tanggal;
+    }
+
+    // (Opsional) Jika kamu butuh ambil raw-nya sebagai Object
+    public Object getRawTanggal() {
+        return tanggal;
     }
 }
