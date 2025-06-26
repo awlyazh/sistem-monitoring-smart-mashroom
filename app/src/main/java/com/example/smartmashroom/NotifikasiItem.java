@@ -3,17 +3,17 @@ package com.example.smartmashroom;
 public class NotifikasiItem {
     private String id;
     private String status;
-    private long tanggal; // Ganti Timestamp jadi long (Unix time in millis)
+    private Object tanggal; // ✅ Ubah dari long → Object agar aman dari error Firebase
     private String suhu;
     private String kelembaban;
     private boolean selected = false;
 
-    // Konstruktor kosong wajib untuk Firebase
+    // Konstruktor kosong (wajib untuk Firebase)
     public NotifikasiItem() {
     }
 
     // Konstruktor utama
-    public NotifikasiItem(String status, long tanggal, String suhu, String kelembaban) {
+    public NotifikasiItem(String status, Object tanggal, String suhu, String kelembaban) {
         this.status = status;
         this.tanggal = tanggal;
         this.suhu = suhu;
@@ -37,10 +37,18 @@ public class NotifikasiItem {
         this.status = status;
     }
 
+    // Getter tanggal dengan pengecekan aman
     public long getTanggal() {
-        return tanggal;
+        if (tanggal instanceof Long) {
+            return (Long) tanggal;
+        } else if (tanggal instanceof Double) {
+            return ((Double) tanggal).longValue(); // kalau Firebase simpan sebagai double
+        } else {
+            return 0L; // fallback aman
+        }
     }
 
+    // Setter tetap terima long
     public void setTanggal(long tanggal) {
         this.tanggal = tanggal;
     }

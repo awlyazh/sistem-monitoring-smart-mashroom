@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.smartmashroom"
-        minSdk 23
+        minSdk 29 // ✅ Diperbarui dari 23 ke 29 untuk keamanan
         targetSdk 35
         versionCode 1
         versionName "1.0"
@@ -19,6 +19,8 @@ android {
 
     buildTypes {
         release {
+            // ✅ Menonaktifkan mode debug pada versi rilis
+            debuggable false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -49,7 +51,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.firebase:firebase-database'
-    implementation 'com.google.firebase:firebase-storage' // ✅ Diperlukan untuk FirebaseStorage
+    implementation 'com.google.firebase:firebase-storage'
     implementation 'com.google.firebase:firebase-firestore:25.1.4'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 

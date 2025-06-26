@@ -32,6 +32,12 @@ public class BerandaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // ✅ Tambahkan ini untuk menyembunyikan ActionBar putih di atas
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         setContentView(R.layout.activity_beranda);
 
         humidityProgress = findViewById(R.id.tvHumidityCircle);
