@@ -1,27 +1,26 @@
-// NotifikasiItem.java - Support Firebase Realtime Database
-
 package com.example.smartmashroom;
-
-import com.google.firebase.Timestamp;
 
 public class NotifikasiItem {
     private String id;
     private String status;
-    private Timestamp tanggal;
+    private long tanggal; // Ganti Timestamp jadi long (Unix time in millis)
     private String suhu;
     private String kelembaban;
     private boolean selected = false;
 
+    // Konstruktor kosong wajib untuk Firebase
     public NotifikasiItem() {
     }
 
-    public NotifikasiItem(String status, Timestamp tanggal, String suhu, String kelembaban) {
+    // Konstruktor utama
+    public NotifikasiItem(String status, long tanggal, String suhu, String kelembaban) {
         this.status = status;
         this.tanggal = tanggal;
         this.suhu = suhu;
         this.kelembaban = kelembaban;
     }
 
+    // Getter & Setter
     public String getId() {
         return id;
     }
@@ -38,11 +37,11 @@ public class NotifikasiItem {
         this.status = status;
     }
 
-    public Timestamp getTanggal() {
+    public long getTanggal() {
         return tanggal;
     }
 
-    public void setTanggal(Timestamp tanggal) {
+    public void setTanggal(long tanggal) {
         this.tanggal = tanggal;
     }
 

@@ -1,14 +1,12 @@
 package com.example.smartmashroom;
 
-import com.google.firebase.Timestamp;
-
 public class Pesan {
     private String status;
-    private Timestamp tanggal;
+    private long tanggal; // timestamp dalam bentuk long (Unix time millis)
 
     public Pesan() {}
 
-    public Pesan(String status, Timestamp tanggal) {
+    public Pesan(String status, long tanggal) {
         this.status = status;
         this.tanggal = tanggal;
     }
@@ -21,11 +19,11 @@ public class Pesan {
         this.status = status;
     }
 
-    public Timestamp getTanggal() {
+    public long getTanggal() {
         return tanggal;
     }
 
-    public void setTanggal(Timestamp tanggal) {
+    public void setTanggal(long tanggal) {
         this.tanggal = tanggal;
     }
 }
