@@ -1,5 +1,3 @@
-// NotifikasiAdapter.java - Support Double Click Checkbox
-
 package com.example.smartmashroom;
 
 import android.os.SystemClock;
@@ -38,10 +36,9 @@ public class NotifikasiAdapter extends RecyclerView.Adapter<NotifikasiAdapter.Vi
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         NotifikasiItem item = notifList.get(position);
 
-        String tanggalFormatted = item.getTanggal() != null ?
-                new SimpleDateFormat("dd MMM yyyy, HH:mm", Locale.getDefault())
-                        .format(item.getTanggal().toDate()) :
-                "Tanggal tidak tersedia";
+        long waktuMillis = item.getTanggal(); // tanggal dalam bentuk long
+        String tanggalFormatted = new SimpleDateFormat("dd MMM yyyy, HH:mm", Locale.getDefault())
+                .format(waktuMillis);
 
         holder.textStatus.setText(item.getStatus());
         holder.textTanggal.setText("[" + tanggalFormatted + "]");

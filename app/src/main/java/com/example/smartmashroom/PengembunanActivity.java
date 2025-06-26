@@ -131,7 +131,6 @@ public class PengembunanActivity extends AppCompatActivity {
             }
         });
     }
-
     private void updateMode(boolean isAutomatic) {
         if (isAutomatic) {
             mDatabase.child("pompa").child("mode_pompa").setValue("otomatis");
@@ -146,7 +145,6 @@ public class PengembunanActivity extends AppCompatActivity {
             updateManualUI();
         }
     }
-
     private void updateAutoControl() {
         boolean kondisiTidakStabil = currentSuhu < 24 || currentSuhu > 27 || currentKelembapan < 80 || currentKelembapan > 90;
 
@@ -176,14 +174,12 @@ public class PengembunanActivity extends AppCompatActivity {
             btnManual.setText("OFF");
         }
     }
-
     private void toggleManualMode() {
         isManualOn = !isManualOn;
         mDatabase.child("pompa").child("status_pompa").setValue(isManualOn);
         mDatabase.child("status_pompa").setValue(isManualOn ? "ON" : "OFF");
         updateManualUI();
     }
-
     private void updateManualUI() {
         if (isManualOn) {
             textStatus.setText("Pengabutan Manual: Aktif");

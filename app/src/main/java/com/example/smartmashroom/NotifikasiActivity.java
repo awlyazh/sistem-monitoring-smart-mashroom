@@ -1,5 +1,3 @@
-// NotifikasiActivity.java - Versi Final (Firebase Realtime + Double Click Checkbox)
-
 package com.example.smartmashroom;
 
 import android.Manifest;
@@ -19,15 +17,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.Timestamp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class NotifikasiActivity extends AppCompatActivity {
 
@@ -153,12 +153,12 @@ public class NotifikasiActivity extends AppCompatActivity {
         });
     }
 
-    public void addNotification(String status, Timestamp currentTimestamp, double suhu, double kelembaban) {
+    public void addNotification(String status, long waktuMillis, double suhu, double kelembaban) {
         long now = System.currentTimeMillis();
         SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
         long lastSavedTimestamp = prefs.getLong("lastSavedTimestamp", 0);
 
-        NotifikasiItem newItem = new NotifikasiItem(status, currentTimestamp,
+        NotifikasiItem newItem = new NotifikasiItem(status, waktuMillis,
                 String.format("%.1f \u00B0C", suhu),
                 String.format("%.1f %%", kelembaban));
 
@@ -206,8 +206,8 @@ public class NotifikasiActivity extends AppCompatActivity {
 
         if (!masalah.isEmpty()) {
             String status = String.join(" dan ", masalah);
-            Timestamp now = Timestamp.now();
-            addNotification(status, now, suhu, kelembaban);
+            long waktuMillis = System.currentTimeMillis();
+            addNotification(status, waktuMillis, suhu, kelembaban);
             String pesan = status + " | Suhu: " + suhu + "°C | Kelembaban: " + kelembaban + "%";
             NotifikasiHelper.showNotification(this, pesan);
         }
