@@ -2,11 +2,11 @@ package com.example.smartmashroom;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,15 +25,8 @@ public class PengembunanActivity extends AppCompatActivity {
 
     private Switch switchAuto;
     private Button btnManual;
-    private TextView textStatus;
-    private TextView textKondisi;
-    private TextView textFeels;
-    private TextView textHumidity;
-    private TextView textTempControl;
-    private TextView textStatusHumidity;
-    private TextView textStatusTemp;
-    private View cardHumidity;
-    private View cardTemp;
+    private TextView textStatus, textKondisi, textFeels, textHumidity, textTempControl, textStatusHumidity, textStatusTemp;
+    private LinearLayout layoutHumidity, layoutTemp;
 
     private DatabaseReference mDatabase;
 
@@ -49,6 +42,7 @@ public class PengembunanActivity extends AppCompatActivity {
         }
         setContentView(R.layout.activity_pengembunan);
 
+        // Inisialisasi UI
         switchAuto = findViewById(R.id.switchAuto);
         btnManual = findViewById(R.id.btnManual);
         textStatus = findViewById(R.id.textStatus);
@@ -58,16 +52,18 @@ public class PengembunanActivity extends AppCompatActivity {
         textTempControl = findViewById(R.id.textTempControl);
         textStatusHumidity = findViewById(R.id.textStatusHumidity);
         textStatusTemp = findViewById(R.id.textStatusTemp);
-        cardHumidity = findViewById(R.id.cardHumidity);
-        cardTemp = findViewById(R.id.cardTemp);
+        layoutHumidity = findViewById(R.id.layoutHumidity);
+        layoutTemp = findViewById(R.id.layoutTemp);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
+        // Event listener
         switchAuto.setOnCheckedChangeListener((buttonView, isChecked) -> updateMode(isChecked));
         btnManual.setOnClickListener(v -> toggleManualMode());
 
         monitorSensorData();
 
+        // Bottom nav
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setSelectedItemId(R.id.menu_fogging);
 
@@ -111,8 +107,8 @@ public class PengembunanActivity extends AppCompatActivity {
                         String humidText = String.format(Locale.US, "%.1f", currentKelembapan);
 
                         textFeels.setText("Feels like: " + suhuText + "°\nHumidity: " + humidText + "%");
-                        textHumidity.setText("\uD83D\uDCA7\nHumidity\n" + humidText + " %");
-                        textTempControl.setText("\uD83C\uDF21 Temp. Control\n" + suhuText + " °C");
+                        textHumidity.setText(humidText + " %");
+                        textTempControl.setText(suhuText + " °C");
 
                         if (switchAuto.isChecked()) {
                             updateAutoControl();
@@ -131,6 +127,7 @@ public class PengembunanActivity extends AppCompatActivity {
             }
         });
     }
+
     private void updateMode(boolean isAutomatic) {
         if (isAutomatic) {
             mDatabase.child("pompa").child("mode_pompa").setValue("otomatis");
@@ -145,6 +142,7 @@ public class PengembunanActivity extends AppCompatActivity {
             updateManualUI();
         }
     }
+
     private void updateAutoControl() {
         boolean kondisiTidakStabil = currentSuhu < 24 || currentSuhu > 27 || currentKelembapan < 80 || currentKelembapan > 90;
 
@@ -153,8 +151,8 @@ public class PengembunanActivity extends AppCompatActivity {
             textStatus.setText("Kondisi Tidak Stabil, Pompa ON");
             textKondisi.setText("Kondisi Tidak Stabil");
 
-            cardHumidity.setBackgroundColor(ContextCompat.getColor(this, R.color.card_humid_on));
-            cardTemp.setBackgroundColor(ContextCompat.getColor(this, R.color.card_temp_on));
+            layoutHumidity.setBackground(ContextCompat.getDrawable(this, R.drawable.bg_card_humidity));
+            layoutTemp.setBackground(ContextCompat.getDrawable(this, R.drawable.bg_card_temp));
             textStatusHumidity.setText("Status: On");
             textStatusTemp.setText("Status: On");
 
@@ -165,8 +163,8 @@ public class PengembunanActivity extends AppCompatActivity {
             textStatus.setText("Kondisi Stabil, Pompa OFF");
             textKondisi.setText("Kondisi Stabil");
 
-            cardHumidity.setBackgroundColor(ContextCompat.getColor(this, R.color.card_off));
-            cardTemp.setBackgroundColor(ContextCompat.getColor(this, R.color.card_off));
+            layoutHumidity.setBackground(ContextCompat.getDrawable(this, R.drawable.bg_card_humidity_off));
+            layoutTemp.setBackground(ContextCompat.getDrawable(this, R.drawable.bg_card_temp_off));
             textStatusHumidity.setText("Status: Off");
             textStatusTemp.setText("Status: Off");
 
@@ -174,12 +172,14 @@ public class PengembunanActivity extends AppCompatActivity {
             btnManual.setText("OFF");
         }
     }
+
     private void toggleManualMode() {
         isManualOn = !isManualOn;
         mDatabase.child("pompa").child("status_pompa").setValue(isManualOn);
         mDatabase.child("status_pompa").setValue(isManualOn ? "ON" : "OFF");
         updateManualUI();
     }
+
     private void updateManualUI() {
         if (isManualOn) {
             textStatus.setText("Pengabutan Manual: Aktif");
@@ -187,8 +187,8 @@ public class PengembunanActivity extends AppCompatActivity {
             btnManual.setText("ON");
             textKondisi.setText("Mode Manual");
 
-            cardHumidity.setBackgroundColor(ContextCompat.getColor(this, R.color.card_humid_on));
-            cardTemp.setBackgroundColor(ContextCompat.getColor(this, R.color.card_temp_on));
+            layoutHumidity.setBackground(ContextCompat.getDrawable(this, R.drawable.bg_card_humidity));
+            layoutTemp.setBackground(ContextCompat.getDrawable(this, R.drawable.bg_card_temp));
             textStatusHumidity.setText("Status: On");
             textStatusTemp.setText("Status: On");
         } else {
@@ -197,8 +197,8 @@ public class PengembunanActivity extends AppCompatActivity {
             btnManual.setText("OFF");
             textKondisi.setText("Mode Manual");
 
-            cardHumidity.setBackgroundColor(ContextCompat.getColor(this, R.color.card_off));
-            cardTemp.setBackgroundColor(ContextCompat.getColor(this, R.color.card_off));
+            layoutHumidity.setBackground(ContextCompat.getDrawable(this, R.drawable.bg_card_humidity_off));
+            layoutTemp.setBackground(ContextCompat.getDrawable(this, R.drawable.bg_card_temp_off));
             textStatusHumidity.setText("Status: Off");
             textStatusTemp.setText("Status: Off");
         }
