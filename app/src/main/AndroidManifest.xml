@@ -8,6 +8,10 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 
+    <!-- ✅ Izin proteksi internal untuk activity Firebase -->
+    <permission android:name="com.example.smartmashroom.AUTH_INTERNAL_ACCESS_ONLY"
+        android:protectionLevel="signature" />
+
     <application
         android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -22,6 +26,12 @@
         <activity
             android:name="com.google.firebase.auth.internal.RecaptchaActivity"
             tools:node="remove" />
+
+        <!-- ✅ Lindungi GenericIdpActivity -->
+        <activity
+            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+            android:exported="true"
+            android:permission="com.example.smartmashroom.AUTH_INTERNAL_ACCESS_ONLY" />
 
         <!-- ✅ Launcher utama -->
         <activity
