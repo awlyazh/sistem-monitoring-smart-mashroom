@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.smartmashroom">
 
-    <!-- Tambahkan izin internet dan notifikasi -->
+    <!-- ✅ Izin yang dibutuhkan aplikasi -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher_foreground"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher_foreground"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SmartMushroom"> <!-- ✅ Diperbaiki di sini -->
+        android:theme="@style/Theme.SmartMushroom">
 
-        <!-- MainActivity sebagai launcher utama -->
+        <!-- ✅ Hapus RecaptchaActivity dari Firebase -->
+        <activity
+            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+            tools:node="remove" />
+
+        <!-- ✅ Launcher utama -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -28,6 +33,7 @@
             </intent-filter>
         </activity>
 
+        <!-- ✅ Activity lainnya tidak diekspor -->
         <activity android:name=".LoginActivity" android:exported="false" />
         <activity android:name=".ResetPasswordActivity" android:exported="false" />
         <activity android:name=".BerandaActivity" android:exported="false" />
@@ -36,6 +42,5 @@
         <activity android:name=".EditPasswordActivity" android:exported="false" />
         <activity android:name=".PengembunanActivity" android:exported="false" />
         <activity android:name=".NotifikasiActivity" android:exported="false" />
-
     </application>
 </manifest>
