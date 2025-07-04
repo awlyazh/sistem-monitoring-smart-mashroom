@@ -45,6 +45,16 @@
     <color name="card_temp_stable">#D5F5C1</color>
     <color name="card_humid_stable">#B8DCFF</color>
 
+    <color name="blue_primary">#4677B2</color>
+    <color name="blue_light">#84B3E3</color>
+    <color name="green_on">#4CAF50</color>
+
+
+    <color name="teal_200">#80CBC4</color>
+
+
+
+
 
 
 </resources>

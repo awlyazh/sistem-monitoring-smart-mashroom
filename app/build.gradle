@@ -35,30 +35,45 @@ android {
     }
 
     packagingOptions {
-        exclude 'androidx/profileinstaller/**'
+        jniLibs {
+            excludes += ['androidx/profileinstaller/**']
+        }
+        resources {
+            excludes += ['androidx/profileinstaller/**']
+        }
     }
 }
 
 dependencies {
-    // Komponen UI
+    // ✅ Tambahan untuk menyelesaikan error manifest
+    implementation 'com.google.android.gms:play-services-auth:20.7.0' // untuk RevocationBoundService
+    implementation 'androidx.profileinstaller:profileinstaller:1.3.1' // untuk ProfileInstallReceiver
+
+    // UI Komponen
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.11.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.activity:activity:1.8.2'
+    implementation 'androidx.cardview:cardview:1.0.0'
 
-    // Circle Progress
+    // Circle Progress UI
     implementation 'com.github.lzyzsd:circleprogress:1.2.1'
 
-    // Firebase (menggunakan BoM)
+    // Firebase tanpa analytics
     implementation platform('com.google.firebase:firebase-bom:33.12.0')
-    implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.firebase:firebase-database'
     implementation 'com.google.firebase:firebase-storage'
     implementation 'com.google.firebase:firebase-firestore:25.1.4'
 
+    // Encrypted SharedPreferences
+    implementation 'androidx.security:security-crypto:1.1.0-alpha06'
+
     // CircleImageView
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    // gRPC Optional
+    implementation 'io.grpc:grpc-okhttp:1.63.0'
 
     // Testing
     testImplementation 'junit:junit:4.13.2'
