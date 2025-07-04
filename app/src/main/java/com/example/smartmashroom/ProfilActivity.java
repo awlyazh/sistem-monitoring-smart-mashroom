@@ -42,7 +42,7 @@ public class ProfilActivity extends AppCompatActivity {
     ImageView imageProfile, ivTogglePassword, btnEditPhoto;
     Button btnKeluar;
 
-    String nama = "Soehardi";
+    String nama = ""; // ✅ Tidak lagi hardcoded
     String email = "";
     char[] passwordChars = null;
 
@@ -53,11 +53,7 @@ public class ProfilActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
-
+        if (getSupportActionBar() != null) getSupportActionBar().hide();
         setContentView(R.layout.activity_profil);
 
         itemNama = findViewById(R.id.item_nama);
@@ -72,7 +68,7 @@ public class ProfilActivity extends AppCompatActivity {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             securePrefs = getSecurePrefs();
-            nama = securePrefs.getString("nama", nama);
+            nama = securePrefs.getString("nama", "Pengguna"); // ✅ Default aman
             String pass = securePrefs.getString("password", "");
             passwordChars = pass != null ? pass.toCharArray() : new char[0];
         }
@@ -102,7 +98,6 @@ public class ProfilActivity extends AppCompatActivity {
         });
 
         ivTogglePassword.setOnClickListener(v -> {
-            // Tidak menampilkan password asli, tetap tampil bintang
             Toast.makeText(this, "Password disembunyikan demi keamanan", Toast.LENGTH_SHORT).show();
         });
 
@@ -142,10 +137,8 @@ public class ProfilActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (resultCode == RESULT_OK && data != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             SharedPreferences.Editor editor = securePrefs.edit();
-
             switch (requestCode) {
                 case REQUEST_NAMA:
                     nama = data.getStringExtra("namaBaru");
@@ -175,7 +168,6 @@ public class ProfilActivity extends AppCompatActivity {
                     }
                     break;
             }
-
             editor.apply();
             updateUI();
         }
@@ -183,7 +175,6 @@ public class ProfilActivity extends AppCompatActivity {
 
     private void updateUI() {
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-
         if (currentUser != null) {
             email = currentUser.getEmail();
             tvEmail.setText(email);
@@ -192,7 +183,7 @@ public class ProfilActivity extends AppCompatActivity {
         }
 
         tvNama.setText(nama);
-        tvPassword.setText("********"); // Tidak menampilkan password asli
+        tvPassword.setText("********"); // ✅ Tetap aman
         tvPassword.setTransformationMethod(new PasswordTransformationMethod());
         ivTogglePassword.setImageResource(R.drawable.ic_eye_closed);
     }
