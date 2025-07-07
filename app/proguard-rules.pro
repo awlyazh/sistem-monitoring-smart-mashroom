@@ -1,21 +1,41 @@
-# Add project specific ProGuard rules here.
-# You can control the set of applied configuration files using the
-# proguardFiles setting in build.gradle.
-#
-# For more details, see
-#   http://developer.android.com/guide/developing/tools/proguard.html
+##########################################
+# ✅ JANGAN OBFUSKASI CLASS UTAMA APP
+-keep class com.example.smartmashroom.** { *; }
 
-# If your project uses WebView with JS, uncomment the following
-# and specify the fully qualified class name to the JavaScript interface
-# class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
+##########################################
+# ✅ PERTAHANKAN ANNOTATIONS (untuk Firebase, Retrofit, dll)
+-keepattributes *Annotation*
 
-# Uncomment this to preserve the line number information for
-# debugging stack traces.
+##########################################
+# ✅ JANGAN OBFUSKASI MODEL DARI FIREBASE / JSON
+-keep class com.google.firebase.** { *; }
+-keep class com.google.gson.** { *; }
+-keep class com.squareup.moshi.** { *; }
+
+##########################################
+# ✅ RETROFIT & OKHTTP SUPPORT (jika digunakan)
+-dontwarn okhttp3.**
+-dontwarn retrofit2.**
+-keep class retrofit2.** { *; }
+-keep interface retrofit2.** { *; }
+
+##########################################
+# ✅ PERTAHANKAN CLASS YANG MENGGUNAKAN VIEWBINDING
+-keep class **.databinding.*Binding { *; }
+
+##########################################
+# ✅ SEMBUNYIKAN STRING SENSITIF (opsional, butuh tools tambahan)
+# ProGuard/R8 tidak bisa enkripsi string secara default,
+# tapi ini bisa bantu sembunyikan struktur kode.
+-assumenosideeffects class java.lang.String {
+    public static java.lang.String format(...);
+}
+
+##########################################
+# ✅ PROTEKSI UNTUK KELAS ENCODER (misal class yang kamu ubah tadi)
+# -keep class com.google.android.rappor.Encoder { *; }
+# -keep class com.google.android.rappor.HmacDrbg { *; }
+
+##########################################
+# ✅ JANGAN OBFUSKASI UNTUK DEBUGGING (opsional)
 #-keepattributes SourceFile,LineNumberTable
-
-# If you keep the line number information, uncomment this to
-# hide the original source file name.
-#-renamesourcefileattribute SourceFile

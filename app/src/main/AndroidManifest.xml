@@ -8,8 +8,9 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 
-    <!-- ✅ Izin proteksi internal untuk activity Firebase -->
-    <permission android:name="com.example.smartmashroom.AUTH_INTERNAL_ACCESS_ONLY"
+    <!-- ✅ Izin proteksi internal -->
+    <permission
+        android:name="com.example.smartmashroom.AUTH_INTERNAL_ACCESS_ONLY"
         android:protectionLevel="signature" />
 
     <application
@@ -21,6 +22,18 @@
         android:roundIcon="@mipmap/ic_launcher_foreground"
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartMushroom">
+
+        <!-- ✅ Lindungi service Google agar tidak diekspor -->
+        <service
+            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+            android:exported="false"
+            tools:replace="android:exported" />
+
+        <!-- ✅ Lindungi receiver dari AndroidX agar tidak diekspor -->
+        <receiver
+            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+            android:exported="false"
+            tools:replace="android:exported" />
 
         <!-- ✅ Hapus RecaptchaActivity dari Firebase -->
         <activity
@@ -52,5 +65,7 @@
         <activity android:name=".EditPasswordActivity" android:exported="false" />
         <activity android:name=".PengembunanActivity" android:exported="false" />
         <activity android:name=".NotifikasiActivity" android:exported="false" />
+        <activity android:name=".LihatEmailActivity" android:exported="false" />
+
     </application>
 </manifest>
